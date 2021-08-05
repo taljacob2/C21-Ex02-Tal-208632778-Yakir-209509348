@@ -8,11 +8,11 @@ using MiscUtil;
 
 namespace C21_Ex02_01.Team.UI.InputUtils
 {
-    /// <summary>
-    ///     Converts a generic input string to an object.
-    /// </summary>
     public static class InputUtils
     {
+        /// <summary>
+        ///     Converts a generic input string to an object.
+        /// </summary>
         public static T Convert<T>(string i_Message)
         {
             Console.Out.WriteLine(i_Message);
