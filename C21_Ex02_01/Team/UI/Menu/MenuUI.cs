@@ -22,10 +22,10 @@ namespace C21_Ex02_01.Team.UI
 
             string range = "(range: " + k_MinimumPixels + " to " +
                            k_MaximumPixels + ")";
-            int rows = InputUtils.InputUtils.Convert("Number of Rows: "
-                                                     + range, k_MinimumPixels,
+            int rows = InputUtil.InputUtil.Convert("Number of Rows: "
+                                                   + range, k_MinimumPixels,
                 k_MaximumPixels);
-            int cols = InputUtils.InputUtils.Convert(
+            int cols = InputUtil.InputUtil.Convert(
                 "Number of Columns: " + range, k_MinimumPixels,
                 k_MaximumPixels);
 

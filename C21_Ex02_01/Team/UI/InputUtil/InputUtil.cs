@@ -6,9 +6,9 @@ using MiscUtil;
 
 #endregion
 
-namespace C21_Ex02_01.Team.UI.InputUtils
+namespace C21_Ex02_01.Team.UI.InputUtil
 {
-    public static class InputUtils
+    public static class InputUtil
     {
         /// <summary>
         ///     Converts a generic input string to an object.
