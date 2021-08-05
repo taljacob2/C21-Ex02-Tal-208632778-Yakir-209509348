@@ -28,6 +28,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
             }
             catch (Exception)
             {
+                Console.Out.WriteLine("Bad input. Please try again...");
                 return Convert<T>(i_Message);
             }
         }
@@ -42,6 +43,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
             if (!isConvertedInRange(converted, i_MinimumRange, i_MaximumRange)
             )
             {
+                Console.Out.WriteLine("Bad input. Please try again...");
                 return Convert(i_Message, i_MinimumRange, i_MaximumRange);
             }
 
