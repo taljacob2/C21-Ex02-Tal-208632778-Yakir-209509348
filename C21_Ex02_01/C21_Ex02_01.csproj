@@ -36,6 +36,9 @@
         <Reference Include="Ex02.ConsoleUtils, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\..\..\..\..\..\Temp\Ex02.ConsoleUtils.dll</HintPath>
         </Reference>
+        <Reference Include="MiscUtil, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d3c42c4bfacf7596">
+          <HintPath>..\..\..\#Downloads\MiscUtil-Src-r285\MiscUtil-r285\MiscUtil.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />

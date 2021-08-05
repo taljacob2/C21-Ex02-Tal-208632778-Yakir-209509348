@@ -2,6 +2,7 @@
 
 using System;
 using System.ComponentModel;
+using MiscUtil;
 
 #endregion
 
@@ -31,17 +32,25 @@ namespace C21_Ex02_01.Team.UI.InputUtils
             }
         }
 
-        // public static T Convert<T>(string i_Message, T i_MinimumRange,
-        //     T i_MaximumRange)
-        // {
-        //     T converted = Convert<T>(i_Message);
-        // }
-        //
-        // private static bool isConvertedInRange<T>(T i_Converted,
-        //     T i_MinimumRange, T i_MaximumRange)
-        // {
-        //     return (i_Converted. <= i_MaximumRange) &&
-        //            (i_Converted >= i_MinimumRange);
-        // }
+        public static T Convert<T>(string i_Message, T i_MinimumRange,
+            T i_MaximumRange)
+        {
+            T converted = Convert<T>(i_Message);
+            if (!isConvertedInRange(converted, i_MinimumRange, i_MaximumRange)
+            )
+            {
+                return Convert(i_Message, i_MinimumRange, i_MaximumRange);
+            }
+
+            return converted;
+        }
+
+        private static bool isConvertedInRange<T>(T i_Converted,
+            T i_MinimumRange, T i_MaximumRange)
+        {
+            return Operator.LessThanOrEqual(i_Converted, i_MaximumRange) &&
+                   Operator
+                       .GreaterThanOrEqual(i_Converted, i_MinimumRange);
+        }
     }
 }
