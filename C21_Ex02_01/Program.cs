@@ -11,7 +11,7 @@ namespace C21_Ex02_01
         public static void Main(string[] i_Args)
         {
             MenuUI menuUi = new MenuUI();
-            menuUi.Run();
+            MenuUI.Run();
         }
     }
 }

@@ -8,12 +8,12 @@ namespace C21_Ex02_01.Team.UI
 {
     public class MenuUI
     {
-        public void Run()
+        public static void Run()
         {
             requestMatrix();
         }
 
-        private void requestMatrix()
+        private static void requestMatrix()
         {
             const int k_MinimumPixels = 4;
             const int k_MaximumPixels = 8;
@@ -22,16 +22,14 @@ namespace C21_Ex02_01.Team.UI
 
             string range = "(range: " + k_MinimumPixels + " to " +
                            k_MaximumPixels + ")";
-            int rows =
-                InputUtils.InputUtils.Convert("Number of Rows: " +
-                                              range, k_MinimumPixels,
-                    k_MaximumPixels);
-            int cols =
-                InputUtils.InputUtils.Convert(
-                    "Number of Columns: " + range, k_MinimumPixels,
-                    k_MaximumPixels);
+            int rows = InputUtils.InputUtils.Convert("Number of Rows: "
+                                                     + range, k_MinimumPixels,
+                k_MaximumPixels);
+            int cols = InputUtils.InputUtils.Convert(
+                "Number of Columns: " + range, k_MinimumPixels,
+                k_MaximumPixels);
 
-            Console.Out.WriteLine("rows = {0}", rows); // debug check
+            Console.Out.WriteLine("rows = {0}", rows); // debug check 
             Console.Out.WriteLine("cols = {0}", cols); // debug check
         }
     }
