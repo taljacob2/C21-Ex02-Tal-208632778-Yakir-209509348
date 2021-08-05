@@ -32,6 +32,9 @@ namespace C21_Ex02_01.Team.UI.InputUtils
             }
         }
 
+        /// <summary>
+        ///     Converts a generic input string to an object, with a given range.
+        /// </summary>
         public static T Convert<T>(string i_Message, T i_MinimumRange,
             T i_MaximumRange)
         {
@@ -45,6 +48,15 @@ namespace C21_Ex02_01.Team.UI.InputUtils
             return converted;
         }
 
+        /// <summary>
+        ///     Generic comparison by range.
+        ///     <see cref="Operator" />
+        /// </summary>
+        /// <param name="i_Converted" />
+        /// <param name="i_MinimumRange" />
+        /// <param name="i_MaximumRange" />
+        /// <typeparam name="T">must be Comparable</typeparam>
+        /// <returns />
         private static bool isConvertedInRange<T>(T i_Converted,
             T i_MinimumRange, T i_MaximumRange)
         {
