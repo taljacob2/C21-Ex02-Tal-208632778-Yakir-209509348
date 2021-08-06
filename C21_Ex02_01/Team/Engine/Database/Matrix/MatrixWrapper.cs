@@ -10,6 +10,8 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
 {
     public class MatrixWrapper<T>
     {
+        protected const char k_Space = ' ';
+
         public MatrixWrapper(byte i_Rows, byte i_Cols)
         {
             Rows = i_Rows;
@@ -42,6 +44,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
                 for (int j = 0; j < Cols; j++)
                 {
                     stringBuilder.Append(Matrix[i, j]);
+                    stringBuilder.Append(k_Space);
                 }
 
                 stringBuilder.Append(Environment.NewLine);
