@@ -33,19 +33,6 @@ namespace C21_Ex02_01.Team.UI
             Engine.Engine.Database = new Database(board, playersWrapper);
         }
 
-        private static void requestOpponentPlayer(out eOpponent o_Opponent)
-        {
-            const byte k_MinimumRange = 1;
-            const byte k_MaximumRange = 2;
-            string mainMessage =
-                requestOpponentPlayerMainMessage(k_MinimumRange,
-                    k_MaximumRange);
-
-            string stringOpponent = requestStringOpponent(mainMessage,
-                k_MinimumRange, k_MaximumRange);
-            Enum.TryParse(stringOpponent, out o_Opponent);
-        }
-
         private static void requestBoard(out byte o_Rows, out byte o_Cols)
         {
             const byte k_MinimumRange = 4;
@@ -60,11 +47,25 @@ namespace C21_Ex02_01.Team.UI
                 $"Number of Columns: {range}", k_MinimumRange,
                 k_MaximumRange);
         }
+
+        private static void requestOpponentPlayer(out eOpponent o_Opponent)
+        {
+            const byte k_MinimumRange = 1;
+            const byte k_MaximumRange = 2;
+            string mainMessage =
+                requestOpponentPlayerMainMessage(k_MinimumRange,
+                    k_MaximumRange);
+
+            string stringOpponent = requestOpponentPlayerToString(mainMessage,
+                k_MinimumRange, k_MaximumRange);
+            Enum.TryParse(stringOpponent, out o_Opponent);
+        }
     }
 
     public static partial class MenuUI
     {
-        private static string requestStringOpponent(string i_MainMessage,
+        private static string requestOpponentPlayerToString(
+            string i_MainMessage,
             byte i_MinimumRange,
             byte i_MaximumRange)
         {
