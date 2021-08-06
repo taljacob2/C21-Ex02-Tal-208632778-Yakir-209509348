@@ -23,22 +23,22 @@ namespace C21_Ex02_01.Team.UI
         private static void initializeDatabase()
         {
             requestBoard(out byte rows, out byte cols);
-            requestPlayers(out eWhoToPlayAgainst whoToPlayAgainst);
+            requestPlayers(out eOpponent opponent);
 
             // Initialize Database: Create a new readonly matrix in database:
             Board board = new Board(rows, cols);
             PlayersWrapper playersWrapper =
-                new PlayersWrapper(
-                    new PlayersWrapperSettings(whoToPlayAgainst));
+                new PlayersWrapper(new PlayersWrapperSettings(opponent));
 
             Engine.Engine.Database = new Database(board, playersWrapper);
         }
 
         private static void requestPlayers(
-            out eWhoToPlayAgainst o_WhoToPlayAgainst)
+            out eOpponent i_Opponent)
         {
             // TODO : need to implement:
-            o_WhoToPlayAgainst = eWhoToPlayAgainst.Human;
+            Console.Out.WriteLine("Please enter a matrix size.");
+            i_Opponent = eOpponent.Human;
         }
 
         private static void requestBoard(out byte o_Rows, out byte o_Cols)

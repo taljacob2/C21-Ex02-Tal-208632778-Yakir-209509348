@@ -2,17 +2,17 @@
 {
     public class PlayersWrapperSettings
     {
-        public enum eWhoToPlayAgainst
+        public enum eOpponent
         {
             Human,
             Computer
         }
 
-        public PlayersWrapperSettings(eWhoToPlayAgainst i_WhoToPlayAgainst)
+        public PlayersWrapperSettings(eOpponent i_Opponent)
         {
-            WhoToPlayAgainst = i_WhoToPlayAgainst;
+            Opponent = i_Opponent;
         }
 
-        public eWhoToPlayAgainst WhoToPlayAgainst { get; }
+        public eOpponent Opponent { get; }
     }
 }
