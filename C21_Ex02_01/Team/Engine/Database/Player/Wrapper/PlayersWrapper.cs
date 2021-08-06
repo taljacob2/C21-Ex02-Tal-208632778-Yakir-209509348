@@ -17,6 +17,22 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
 
         public PlayersWrapperSettings PlayersWrapperSettings { get; }
 
-        public IPlayer[] Players { get; } = new IPlayer[k_NumberOfPlayers];
+        /// <summary>
+        ///     Places a <see cref="Human" /> as the first player,
+        ///     and <i>may</i> place a <see cref="Computer" /> as the second player.
+        /// </summary>
+        private IPlayer[] Players { get; } = new IPlayer[k_NumberOfPlayers];
+
+        public IPlayer GetPlayerOne()
+        {
+            return Players[0];
+        }
+
+        /// <summary />
+        /// <returns>Note: May return a <see cref="Computer" /></returns>
+        public IPlayer GetPlayerTwo()
+        {
+            return Players[1];
+        }
     }
 }
