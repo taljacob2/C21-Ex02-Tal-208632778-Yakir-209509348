@@ -36,7 +36,7 @@ namespace C21_Ex02_01.Team.Engine.Database
             return stringBuilder.ToString();
         }
 
-        private class RowAppender
+        private struct RowAppender
         {
             private readonly Board r_Board;
 
