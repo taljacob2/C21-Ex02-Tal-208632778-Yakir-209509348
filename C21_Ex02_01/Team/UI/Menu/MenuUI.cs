@@ -54,17 +54,17 @@ namespace C21_Ex02_01.Team.UI
 
         private static void requestBoard(out byte o_Rows, out byte o_Cols)
         {
-            const byte k_MinimumPixels = 4;
-            const byte k_MaximumPixels = 8;
+            const byte k_MinimumRange = 4;
+            const byte k_MaximumRange = 8;
 
             Console.Out.WriteLine("Please enter a matrix size.");
 
-            string range = $"(range: {k_MinimumPixels} to {k_MaximumPixels})";
-            o_Rows = Convert($"Number of Rows: {range}", k_MinimumPixels,
-                k_MaximumPixels);
+            string range = $"(range: {k_MinimumRange} to {k_MaximumRange})";
+            o_Rows = Convert($"Number of Rows: {range}", k_MinimumRange,
+                k_MaximumRange);
             o_Cols = Convert(
-                $"Number of Columns: {range}", k_MinimumPixels,
-                k_MaximumPixels);
+                $"Number of Columns: {range}", k_MinimumRange,
+                k_MaximumRange);
         }
     }
 }
