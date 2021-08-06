@@ -48,7 +48,7 @@
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Team\Engine\Database\Database.cs" />
-        <Compile Include="Team\Engine\Database\Matrix\Matrix.cs" />
+        <Compile Include="Team\Engine\Database\Matrix\MatrixWrapper.cs" />
         <Compile Include="Team\Engine\Engine.cs" />
         <Compile Include="Team\UI\InputUtil\InputUtil.cs" />
         <Compile Include="Team\UI\Menu\MenuUI.cs" />

@@ -2,6 +2,6 @@
 {
     public class Database
     {
-        public Matrix.Matrix Matrix { get; set; }
+        public Matrix.MatrixWrapper MatrixWrapper { get; set; }
     }
 }

@@ -30,15 +30,10 @@ namespace C21_Ex02_01.Team.UI
                 "Number of Columns: " + range, k_MinimumPixels,
                 k_MaximumPixels);
 
-            Console.Out.WriteLine("rows = {0}", rows); // debug check 
-            Console.Out.WriteLine("cols = {0}", cols); // debug check
+            // Update matrix in database:
+            Engine.Engine.Database.MatrixWrapper = new MatrixWrapper(rows, cols);
 
-            Matrix matrix = new Matrix(rows, cols);
-
-            // Engine.Engine.Database.Matrix = matrix;
-
-            // Console.Out.WriteLine("Matrix = {0}", Engine.Engine.Database.Matrix);
-            Console.Out.WriteLine("Matrix = {0}", matrix);
+            Console.Out.WriteLine("Engine.Engine.Database.MatrixWrapper = {0}", Engine.Engine.Database.MatrixWrapper);
         }
     }
 }
