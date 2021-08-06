@@ -10,12 +10,12 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
     {
         private const byte k_NumberOfPlayers = 2;
 
-        public PlayersWrapper(PlayersManagerSettings i_PlayersManagerSettings)
+        public PlayersWrapper(PlayersWrapperSettings i_PlayersWrapperSettings)
         {
-            PlayersManagerSettings = i_PlayersManagerSettings;
+            PlayersWrapperSettings = i_PlayersWrapperSettings;
         }
 
-        public PlayersManagerSettings PlayersManagerSettings { get; }
+        public PlayersWrapperSettings PlayersWrapperSettings { get; }
 
         public IPlayer[] Players { get; } = new IPlayer[k_NumberOfPlayers];
     }

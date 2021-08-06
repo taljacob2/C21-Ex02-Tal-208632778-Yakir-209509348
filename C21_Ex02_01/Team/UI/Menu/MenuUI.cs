@@ -6,7 +6,7 @@ using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Player.Wrapper;
 using C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings;
 using static C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings.
-    PlayersManagerSettings;
+    PlayersWrapperSettings;
 using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
 
 #endregion
@@ -29,7 +29,7 @@ namespace C21_Ex02_01.Team.UI
             Board board = new Board(rows, cols);
             PlayersWrapper playersWrapper =
                 new PlayersWrapper(
-                    new PlayersManagerSettings(whoToPlayAgainst));
+                    new PlayersWrapperSettings(whoToPlayAgainst));
 
             Engine.Engine.Database = new Database(board, playersWrapper);
         }

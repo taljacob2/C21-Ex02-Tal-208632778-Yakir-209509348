@@ -1,6 +1,6 @@
 ﻿namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings
 {
-    public class PlayersManagerSettings
+    public class PlayersWrapperSettings
     {
         public enum eWhoToPlayAgainst
         {
@@ -8,7 +8,7 @@
             Computer
         }
 
-        public PlayersManagerSettings(eWhoToPlayAgainst i_WhoToPlayAgainst)
+        public PlayersWrapperSettings(eWhoToPlayAgainst i_WhoToPlayAgainst)
         {
             WhoToPlayAgainst = i_WhoToPlayAgainst;
         }
