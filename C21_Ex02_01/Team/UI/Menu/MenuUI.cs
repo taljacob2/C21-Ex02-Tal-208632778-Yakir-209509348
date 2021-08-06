@@ -2,6 +2,7 @@
 
 using System;
 using C21_Ex02_01.Team.Engine.Database.Matrix;
+using static C21_Ex02_01.Team.Engine.Engine;
 
 #endregion
 
@@ -31,7 +32,7 @@ namespace C21_Ex02_01.Team.UI
                 k_MaximumPixels);
 
             // Update matrix in database:
-            Engine.Engine.Database.MatrixWrapper = new MatrixWrapper(rows, cols);
+            Database.MatrixWrapper = new MatrixWrapper(rows, cols);
         }
     }
 }
