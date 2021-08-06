@@ -20,7 +20,10 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
 
         public byte Cols { get; }
 
-        public T[,] Matrix { get; }
+        /// <summary>
+        ///     private for encapsulation and safety of Matrix.
+        /// </summary>
+        private T[,] Matrix { get; }
 
         public override string ToString()
         {
@@ -53,6 +56,36 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
                     Matrix[i, j] = i_ElementToFill;
                 }
             }
+        }
+
+        /// <summary />
+        /// <param name="i_Row" />
+        /// <param name="i_Col" />
+        /// <param name="i_ElementToSet" />
+        /// <returns>true on success, false on fail.</returns>
+        public bool SetElement(byte i_Row, byte i_Col, T i_ElementToSet)
+        {
+            if (i_Row > Rows || i_Col > Cols)
+            {
+                return false;
+            }
+
+            Matrix[i_Row, i_Col] = i_ElementToSet;
+            return true;
+        }
+
+        /// <summary />
+        /// <param name="i_Row" />
+        /// <param name="i_Col" />
+        /// <returns>default, when the request is of out of bounds.</returns>
+        public T GetElement(byte i_Row, byte i_Col)
+        {
+            if (i_Row > Rows || i_Col > Cols)
+            {
+                return default(T);
+            }
+
+            return Matrix[i_Row, i_Col];
         }
     }
 }
