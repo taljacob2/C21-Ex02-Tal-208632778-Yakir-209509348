@@ -13,7 +13,7 @@ using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
 
 namespace C21_Ex02_01.Team.UI
 {
-    public static class MenuUI
+    public static partial class MenuUI
     {
         public static void RunGame()
         {
@@ -23,7 +23,7 @@ namespace C21_Ex02_01.Team.UI
         private static void initializeDatabase()
         {
             requestBoard(out byte rows, out byte cols);
-            requestPlayers(out eOpponent opponent);
+            requestOpponentPlayer(out eOpponent opponent);
 
             // Initialize Database: Create a new readonly matrix in database:
             Board board = new Board(rows, cols);
@@ -33,22 +33,16 @@ namespace C21_Ex02_01.Team.UI
             Engine.Engine.Database = new Database(board, playersWrapper);
         }
 
-        private static void requestPlayers(out eOpponent o_Opponent)
+        private static void requestOpponentPlayer(out eOpponent o_Opponent)
         {
             const byte k_MinimumRange = 1;
             const byte k_MaximumRange = 2;
-            string titleMessage =
-                "Please choose an opponent." + Environment.NewLine;
-            string humanMessage = $"{k_MinimumRange}. {eOpponent.Human}" +
-                                  Environment.NewLine;
-            string computerMessage = $"{k_MaximumRange}. {eOpponent.Computer}";
-            string mainMessage = titleMessage + humanMessage + computerMessage;
+            string mainMessage =
+                requestOpponentPlayerMainMessage(k_MinimumRange,
+                    k_MaximumRange);
 
-
-            byte byteOpponent =
-                Convert(mainMessage, k_MinimumRange, k_MaximumRange);
-            byteOpponent -= k_MinimumRange;
-            string stringOpponent = $"{(eOpponent) byteOpponent:G}";
+            string stringOpponent = requestStringOpponent(mainMessage,
+                k_MinimumRange, k_MaximumRange);
             Enum.TryParse(stringOpponent, out o_Opponent);
         }
 
@@ -65,6 +59,32 @@ namespace C21_Ex02_01.Team.UI
             o_Cols = Convert(
                 $"Number of Columns: {range}", k_MinimumRange,
                 k_MaximumRange);
+        }
+    }
+
+    public static partial class MenuUI
+    {
+        private static string requestStringOpponent(string i_MainMessage,
+            byte i_MinimumRange,
+            byte i_MaximumRange)
+        {
+            byte byteOpponent =
+                Convert(i_MainMessage, i_MinimumRange, i_MaximumRange);
+            byteOpponent -= i_MinimumRange;
+            string stringOpponent = $"{(eOpponent) byteOpponent:G}";
+            return stringOpponent;
+        }
+
+        private static string requestOpponentPlayerMainMessage(
+            byte i_MinimumRange, byte i_MaximumRange)
+        {
+            string titleMessage =
+                "Please choose an opponent." + Environment.NewLine;
+            string humanMessage = $"{i_MinimumRange}. {eOpponent.Human}" +
+                                  Environment.NewLine;
+            string computerMessage = $"{i_MaximumRange}. {eOpponent.Computer}";
+            string mainMessage = titleMessage + humanMessage + computerMessage;
+            return mainMessage;
         }
     }
 }
