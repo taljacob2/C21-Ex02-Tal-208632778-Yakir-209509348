@@ -32,8 +32,6 @@ namespace C21_Ex02_01.Team.UI
 
             // Update matrix in database:
             Engine.Engine.Database.MatrixWrapper = new MatrixWrapper(rows, cols);
-
-            Console.Out.WriteLine("Engine.Engine.Database.MatrixWrapper = {0}", Engine.Engine.Database.MatrixWrapper);
         }
     }
 }
