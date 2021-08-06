@@ -1,4 +1,10 @@
-﻿namespace C21_Ex02_01.Team.Engine.Database.Matrix
+﻿#region
+
+using System;
+
+#endregion
+
+namespace C21_Ex02_01.Team.Engine.Database.Matrix
 {
     public class MatrixWrapper
     {
@@ -19,6 +25,14 @@
         {
             return
                 $"[Rows = {Rows}, Cols = {Cols}, matrix.Length = {Matrix.Length}]";
+        }
+
+        public void PrintMatrix()
+        {
+            foreach (char element in Matrix)
+            {
+                Console.Out.Write(element);
+            }
         }
     }
 }

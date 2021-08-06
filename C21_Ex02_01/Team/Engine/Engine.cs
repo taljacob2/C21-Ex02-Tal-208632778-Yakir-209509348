@@ -2,6 +2,6 @@
 {
     public static class Engine
     {
-        public static Database.Database Database { get; set; } = new Database.Database();
+        public static Database.Database Database { get; set; }
     }
 }

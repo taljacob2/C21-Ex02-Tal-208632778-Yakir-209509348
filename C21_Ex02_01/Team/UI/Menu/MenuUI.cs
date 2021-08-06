@@ -1,8 +1,8 @@
 ﻿#region
 
 using System;
+using C21_Ex02_01.Team.Engine.Database;
 using C21_Ex02_01.Team.Engine.Database.Matrix;
-using static C21_Ex02_01.Team.Engine.Engine;
 
 #endregion
 
@@ -13,9 +13,11 @@ namespace C21_Ex02_01.Team.UI
         public static void Run()
         {
             requestMatrix();
-            
+
             // DEBUG print matrix
-            Console.Out.WriteLine("Database.MatrixWrapper = {0}", Database.MatrixWrapper);
+            Console.Out.WriteLine("Database.MatrixWrapper = {0}",
+                Engine.Engine.Database.MatrixWrapper);
+            Engine.Engine.Database.MatrixWrapper.PrintMatrix();
         }
 
         private static void requestMatrix()
@@ -28,14 +30,15 @@ namespace C21_Ex02_01.Team.UI
             string range = "(range: " + k_MinimumPixels + " to " +
                            k_MaximumPixels + ")";
             byte rows = InputUtil.InputUtil.Convert("Number of Rows: "
-                                                   + range, k_MinimumPixels,
+                                                    + range, k_MinimumPixels,
                 k_MaximumPixels);
             byte cols = InputUtil.InputUtil.Convert(
                 "Number of Columns: " + range, k_MinimumPixels,
                 k_MaximumPixels);
 
-            // Create a matrix in database:
-            Database.MatrixWrapper = new MatrixWrapper(rows, cols);
+            // Initialize Database: Create a new readonly matrix in database:
+            Engine.Engine.Database =
+                new Database(new MatrixWrapper(rows, cols));
         }
     }
 }
