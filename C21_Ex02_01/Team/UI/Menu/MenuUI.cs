@@ -8,7 +8,7 @@ using static C21_Ex02_01.Team.Engine.Engine;
 
 namespace C21_Ex02_01.Team.UI
 {
-    public class MenuUI
+    public static class MenuUI
     {
         public static void Run()
         {
