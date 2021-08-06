@@ -13,25 +13,28 @@ namespace C21_Ex02_01.Team.UI
         public static void Run()
         {
             requestMatrix();
+            
+            // DEBUG print matrix
+            Console.Out.WriteLine("Database.MatrixWrapper = {0}", Database.MatrixWrapper);
         }
 
         private static void requestMatrix()
         {
-            const int k_MinimumPixels = 4;
-            const int k_MaximumPixels = 8;
+            const byte k_MinimumPixels = 4;
+            const byte k_MaximumPixels = 8;
 
             Console.Out.WriteLine("Please enter a matrix size.");
 
             string range = "(range: " + k_MinimumPixels + " to " +
                            k_MaximumPixels + ")";
-            int rows = InputUtil.InputUtil.Convert("Number of Rows: "
+            byte rows = InputUtil.InputUtil.Convert("Number of Rows: "
                                                    + range, k_MinimumPixels,
                 k_MaximumPixels);
-            int cols = InputUtil.InputUtil.Convert(
+            byte cols = InputUtil.InputUtil.Convert(
                 "Number of Columns: " + range, k_MinimumPixels,
                 k_MaximumPixels);
 
-            // Update matrix in database:
+            // Create a matrix in database:
             Database.MatrixWrapper = new MatrixWrapper(rows, cols);
         }
     }

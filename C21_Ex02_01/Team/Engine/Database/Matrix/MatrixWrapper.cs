@@ -2,16 +2,16 @@
 {
     public class MatrixWrapper
     {
-        public MatrixWrapper(int i_Rows, int i_Cols)
+        public MatrixWrapper(byte i_Rows, byte i_Cols)
         {
             Rows = i_Rows;
             Cols = i_Cols;
             Matrix = new char[i_Rows, i_Cols];
         }
 
-        private static int Rows { get; set; }
+        private static byte Rows { get; set; }
 
-        private static int Cols { get; set; }
+        private static byte Cols { get; set; }
 
         private char[,] Matrix { get; }
 
