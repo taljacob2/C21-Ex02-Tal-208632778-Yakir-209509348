@@ -15,11 +15,11 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
             Matrix = new char[i_Rows, i_Cols];
         }
 
-        private static byte Rows { get; set; }
+        public byte Rows { get; }
 
-        private static byte Cols { get; set; }
+        public byte Cols { get; }
 
-        private char[,] Matrix { get; }
+        public char[,] Matrix { get; }
 
         public override string ToString()
         {
