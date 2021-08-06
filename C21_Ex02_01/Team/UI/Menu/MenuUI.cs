@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using C21_Ex02_01.Team.Engine.Database.Matrix;
 
 #endregion
 
@@ -31,6 +32,13 @@ namespace C21_Ex02_01.Team.UI
 
             Console.Out.WriteLine("rows = {0}", rows); // debug check 
             Console.Out.WriteLine("cols = {0}", cols); // debug check
+
+            Matrix matrix = new Matrix(rows, cols);
+
+            // Engine.Engine.Database.Matrix = matrix;
+
+            // Console.Out.WriteLine("Matrix = {0}", Engine.Engine.Database.Matrix);
+            Console.Out.WriteLine("Matrix = {0}", matrix);
         }
     }
 }
