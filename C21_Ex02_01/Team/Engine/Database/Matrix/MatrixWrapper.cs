@@ -67,6 +67,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
         {
             if (i_Row > Rows || i_Col > Cols)
             {
+                printOutOfBoundsErrorMessage(i_Row, i_Col);
                 return false;
             }
 
@@ -80,12 +81,19 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
         /// <returns>default, when the request is of out of bounds.</returns>
         public T GetElement(byte i_Row, byte i_Col)
         {
-            if (i_Row > Rows || i_Col > Cols)
+            if (i_Row <= Rows && i_Col <= Cols)
             {
-                return default(T);
+                return Matrix[i_Row, i_Col];
             }
 
-            return Matrix[i_Row, i_Col];
+            printOutOfBoundsErrorMessage(i_Row, i_Col);
+            return default(T);
+        }
+
+        private static void printOutOfBoundsErrorMessage(byte i_Row, byte i_Col)
+        {
+            Console.Error.WriteLine("Out of bounds: " + "[" + i_Row + ", " +
+                                    i_Col + "]");
         }
     }
 }
