@@ -2,11 +2,11 @@
 
 using System;
 using System.Text;
-using C21_Ex02_01.Team.Engine.Database.Matrix;
+using C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper;
 
 #endregion
 
-namespace C21_Ex02_01.Team.Engine.Database
+namespace C21_Ex02_01.Team.Engine.Database.Board
 {
     public class Board : MatrixWrapper<char>
     {

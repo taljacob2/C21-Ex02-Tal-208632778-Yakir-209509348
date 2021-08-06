@@ -47,9 +47,14 @@
     <ItemGroup>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Team\Engine\Database\Board.cs" />
+        <Compile Include="Team\Engine\Database\Board\Board.cs" />
+        <Compile Include="Team\Engine\Database\Board\Matrix\Wrapper\MatrixWrapper.cs" />
         <Compile Include="Team\Engine\Database\Database.cs" />
-        <Compile Include="Team\Engine\Database\Matrix\MatrixWrapper.cs" />
+        <Compile Include="Team\Engine\Database\Player\Computer\ComputerPlayer.cs" />
+        <Compile Include="Team\Engine\Database\Player\Human\HumanPlayer.cs" />
+        <Compile Include="Team\Engine\Database\Player\Wrapper\PlayersWrapper.cs" />
+        <Compile Include="Team\Engine\Database\Player\Player.cs" />
+        <Compile Include="Team\Engine\Database\Player\Wrapper\Settings\PlayersManagerSettings.cs" />
         <Compile Include="Team\Engine\Engine.cs" />
         <Compile Include="Team\UI\InputUtil\InputUtil.cs" />
         <Compile Include="Team\UI\Menu\MenuUI.cs" />

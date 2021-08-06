@@ -6,7 +6,7 @@ using System.Text;
 
 #endregion
 
-namespace C21_Ex02_01.Team.Engine.Database.Matrix
+namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
 {
     public class MatrixWrapper<T>
     {
