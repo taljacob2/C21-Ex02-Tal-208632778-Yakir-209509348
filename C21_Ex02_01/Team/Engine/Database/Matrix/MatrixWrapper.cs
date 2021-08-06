@@ -111,10 +111,8 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
         private void printOutOfBoundsErrorMessage(byte i_Row, byte i_Col)
         {
             // Print Message.
-            Console.Error.WriteLine("Out of bounds: " + "[" + i_Row + ", " +
-                                    i_Col + "]" +
-                                    " -> Matrix is: " + "[" + Rows + ", " +
-                                    Cols + "]");
+            Console.Error.WriteLine(
+                $"Out of bounds: [{i_Row}, {i_Col}] -> Matrix is: [{Rows}, {Cols}]");
 
             // Print stack trace info.
             StackTrace stackTrace = new StackTrace(true);
