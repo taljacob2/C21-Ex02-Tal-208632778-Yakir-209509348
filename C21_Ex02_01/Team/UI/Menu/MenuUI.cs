@@ -17,20 +17,14 @@ namespace C21_Ex02_01.Team.UI
     {
         public static void RunGame()
         {
-            initializeDatabase();
+            requestAndConstructDatabase();
         }
 
-        private static void initializeDatabase()
+        private static void requestAndConstructDatabase()
         {
-            requestBoard(out byte rows, out byte cols);
-            requestOpponentPlayer(out eOpponent opponent);
-
-            // Initialize Database: when its members are readonly:
-            Board board = new Board(rows, cols);
-            PlayersWrapper playersWrapper =
-                new PlayersWrapper(new PlayersWrapperSettings(opponent));
-
-            Engine.Engine.Database = new Database(board, playersWrapper);
+            requestDatabase(out byte rows, out byte cols,
+                out eOpponent opponent);
+            constructDatabase(rows, cols, opponent);
         }
 
         private static void requestBoard(out byte o_Rows, out byte o_Cols)
@@ -64,6 +58,24 @@ namespace C21_Ex02_01.Team.UI
 
     public static partial class MenuUI
     {
+        private static void requestDatabase(out byte io_Rows, out byte io_Cols,
+            out eOpponent io_Opponent)
+        {
+            requestBoard(out io_Rows, out io_Cols);
+            requestOpponentPlayer(out io_Opponent);
+        }
+
+        private static void constructDatabase(byte i_Rows, byte i_Cols,
+            eOpponent i_Opponent)
+        {
+            // Initialize Database: when its members are readonly:
+            Board board = new Board(i_Rows, i_Cols);
+            PlayersWrapper playersWrapper =
+                new PlayersWrapper(new PlayersWrapperSettings(i_Opponent));
+
+            Engine.Engine.Database = new Database(board, playersWrapper);
+        }
+
         private static string requestOpponentPlayerToString(
             string i_MainMessage,
             byte i_MinimumRange,
