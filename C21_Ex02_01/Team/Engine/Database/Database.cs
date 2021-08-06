@@ -1,18 +1,16 @@
 ﻿#region
 
-using C21_Ex02_01.Team.Engine.Database.Matrix;
-
 #endregion
 
 namespace C21_Ex02_01.Team.Engine.Database
 {
     public class Database
     {
-        public Database(MatrixWrapper<char> i_MatrixWrapper)
+        public Database(Board i_Board)
         {
-            MatrixWrapper = i_MatrixWrapper;
+            Board = i_Board;
         }
 
-        public MatrixWrapper<char> MatrixWrapper { get; }
+        public Board Board { get; }
     }
 }

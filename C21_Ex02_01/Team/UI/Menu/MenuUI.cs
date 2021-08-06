@@ -2,7 +2,6 @@
 
 using System;
 using C21_Ex02_01.Team.Engine.Database;
-using C21_Ex02_01.Team.Engine.Database.Matrix;
 using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
 
 #endregion
@@ -16,9 +15,9 @@ namespace C21_Ex02_01.Team.UI
             requestMatrix();
 
             // DEBUG print matrix
-            Engine.Engine.Database.MatrixWrapper.Fill('X');
-            Console.Out.WriteLine("Database.MatrixWrapper = {0}",
-                Engine.Engine.Database.MatrixWrapper);
+            Engine.Engine.Database.Board.Fill('X');
+            Console.Out.WriteLine("Database.Board = {0}",
+                Engine.Engine.Database.Board);
         }
 
         private static void requestMatrix()
@@ -39,7 +38,7 @@ namespace C21_Ex02_01.Team.UI
 
             // Initialize Database: Create a new readonly matrix in database:
             Engine.Engine.Database =
-                new Database(new MatrixWrapper<char>(rows, cols));
+                new Database(new Board(rows, cols));
         }
     }
 }

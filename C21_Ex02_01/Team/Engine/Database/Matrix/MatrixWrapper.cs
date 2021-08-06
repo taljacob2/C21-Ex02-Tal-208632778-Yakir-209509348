@@ -17,6 +17,8 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
             Matrix = new T[i_Rows, i_Cols];
         }
 
+        protected MatrixWrapper() {}
+
         public byte Rows { get; }
 
         public byte Cols { get; }
@@ -24,7 +26,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
         /// <summary>
         ///     private for encapsulation and safety of Matrix.
         /// </summary>
-        private T[,] Matrix { get; }
+        protected T[,] Matrix { get; }
 
         public override string ToString()
         {
