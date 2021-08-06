@@ -25,7 +25,7 @@ namespace C21_Ex02_01.Team.UI
             requestBoard(out byte rows, out byte cols);
             requestOpponentPlayer(out eOpponent opponent);
 
-            // Initialize Database: Create a new readonly matrix in database:
+            // Initialize Database: when its members are readonly:
             Board board = new Board(rows, cols);
             PlayersWrapper playersWrapper =
                 new PlayersWrapper(new PlayersWrapperSettings(opponent));
