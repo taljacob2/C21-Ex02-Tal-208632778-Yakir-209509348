@@ -11,6 +11,8 @@ namespace C21_Ex02_01.Team.Engine.Database
     public class Board : MatrixWrapper<char>
     {
         private const char k_Space = ' ';
+        private const char k_Delimiter = '|';
+        private const string k_RowSeperator = "=";
 
         public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols) {}
 
@@ -24,19 +26,42 @@ namespace C21_Ex02_01.Team.Engine.Database
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(Environment.NewLine);
             appendRowOfNumbers(stringBuilder);
-            for (int i = 0; i < Rows; i++)
+            for (byte i = 0; i < Rows; i++)
             {
-                for (int j = 0; j < Cols; j++)
-                {
-                    stringBuilder.Append(k_Space);
-                    stringBuilder.Append(Matrix[i, j]);
-                    stringBuilder.Append(k_Space);
-                }
-
-                stringBuilder.Append(Environment.NewLine);
+                appendRowOfElements(stringBuilder, i);
+                appendRowOfRowSeperators(stringBuilder);
             }
 
             return stringBuilder.ToString();
+        }
+
+        private void appendRowOfElements(StringBuilder io_StringBuilder,
+            byte io_CurrentRow)
+        {
+            for (int j = 0; j < Cols; j++)
+            {
+                io_StringBuilder.Append(k_Delimiter);
+                io_StringBuilder.Append(k_Space);
+                io_StringBuilder.Append(Matrix[io_CurrentRow, j]);
+                io_StringBuilder.Append(k_Space);
+            }
+
+            io_StringBuilder.Append(k_Delimiter);
+            io_StringBuilder.Append(Environment.NewLine);
+        }
+
+        private void appendRowOfRowSeperators(StringBuilder io_StringBuilder)
+        {
+            for (int j = 0; j < Cols; j++)
+            {
+                io_StringBuilder.Append(k_RowSeperator);
+                io_StringBuilder.Append(k_RowSeperator);
+                io_StringBuilder.Append(k_RowSeperator);
+                io_StringBuilder.Append(k_RowSeperator);
+            }
+
+            io_StringBuilder.Append(k_RowSeperator);
+            io_StringBuilder.Append(Environment.NewLine);
         }
 
         private void appendRowOfNumbers(StringBuilder io_StringBuilder)
@@ -44,10 +69,12 @@ namespace C21_Ex02_01.Team.Engine.Database
             for (int i = 0; i < Cols; i++)
             {
                 io_StringBuilder.Append(k_Space);
+                io_StringBuilder.Append(k_Space);
                 io_StringBuilder.Append(i + 1);
                 io_StringBuilder.Append(k_Space);
             }
 
+            io_StringBuilder.Append(k_Space); // may be redundant
             io_StringBuilder.Append(Environment.NewLine);
         }
     }
