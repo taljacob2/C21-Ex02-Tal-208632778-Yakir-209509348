@@ -33,12 +33,24 @@ namespace C21_Ex02_01.Team.UI
             Engine.Engine.Database = new Database(board, playersWrapper);
         }
 
-        private static void requestPlayers(
-            out eOpponent i_Opponent)
+        private static void requestPlayers(out eOpponent o_Opponent)
         {
-            // TODO : need to implement:
-            Console.Out.WriteLine("Please enter a matrix size.");
-            i_Opponent = eOpponent.Human;
+            const byte k_MinimumRange = 1;
+            const byte k_MaximumRange = 2;
+            string titleMessage =
+                "Please choose an opponent." + Environment.NewLine;
+            string humanMessage = $"{k_MinimumRange}. {eOpponent.Human}" +
+                                  Environment.NewLine;
+            string computerMessage = $"{k_MaximumRange}. {eOpponent.Computer}" +
+                                     Environment.NewLine;
+            string mainMessage = titleMessage + humanMessage + computerMessage;
+
+
+            byte byteOpponent =
+                Convert(mainMessage, k_MinimumRange, k_MaximumRange);
+            byteOpponent -= k_MinimumRange;
+            string stringOpponent = $"{(eOpponent) byteOpponent:G}";
+            Enum.TryParse(stringOpponent, out o_Opponent);
         }
 
         private static void requestBoard(out byte o_Rows, out byte o_Cols)
