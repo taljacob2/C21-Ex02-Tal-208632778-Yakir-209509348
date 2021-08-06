@@ -41,8 +41,7 @@ namespace C21_Ex02_01.Team.UI
                 "Please choose an opponent." + Environment.NewLine;
             string humanMessage = $"{k_MinimumRange}. {eOpponent.Human}" +
                                   Environment.NewLine;
-            string computerMessage = $"{k_MaximumRange}. {eOpponent.Computer}" +
-                                     Environment.NewLine;
+            string computerMessage = $"{k_MaximumRange}. {eOpponent.Computer}";
             string mainMessage = titleMessage + humanMessage + computerMessage;
 
 
