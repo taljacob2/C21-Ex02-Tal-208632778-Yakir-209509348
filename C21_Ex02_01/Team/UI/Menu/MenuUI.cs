@@ -15,9 +15,9 @@ namespace C21_Ex02_01.Team.UI
             requestMatrix();
 
             // DEBUG print matrix
+            Engine.Engine.Database.MatrixWrapper.Fill('X');
             Console.Out.WriteLine("Database.MatrixWrapper = {0}",
                 Engine.Engine.Database.MatrixWrapper);
-            Engine.Engine.Database.MatrixWrapper.PrintMatrix();
         }
 
         private static void requestMatrix()
