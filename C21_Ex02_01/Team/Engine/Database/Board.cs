@@ -11,7 +11,7 @@ namespace C21_Ex02_01.Team.Engine.Database
     public class Board : MatrixWrapper<char>
     {
         private const char k_Delimiter = '|';
-        private const string k_RowSeperator = "=";
+        private const char k_RowSeperator = '=';
 
         public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols) {}
 
