@@ -71,7 +71,13 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
         /// <returns>true on success, false on fail.</returns>
         public bool SetElement(byte i_Row, byte i_Col, T i_ElementToSet)
         {
-            if (i_Row > Rows || i_Col > Cols)
+            if (i_Row > Rows)
+            {
+                printOutOfBoundsErrorMessage(i_Row, i_Col);
+                return false;
+            }
+
+            if (i_Col > Cols)
             {
                 printOutOfBoundsErrorMessage(i_Row, i_Col);
                 return false;
@@ -87,13 +93,19 @@ namespace C21_Ex02_01.Team.Engine.Database.Matrix
         /// <returns>default, when the request is of out of bounds.</returns>
         public T GetElement(byte i_Row, byte i_Col)
         {
-            if (i_Row <= Rows && i_Col <= Cols)
+            if (i_Row > Rows)
             {
-                return Matrix[i_Row, i_Col];
+                printOutOfBoundsErrorMessage(i_Row, i_Col);
+                return default(T);
             }
 
-            printOutOfBoundsErrorMessage(i_Row, i_Col);
-            return default(T);
+            if (i_Col > Cols)
+            {
+                printOutOfBoundsErrorMessage(i_Row, i_Col);
+                return default(T);
+            }
+
+            return Matrix[i_Row, i_Col];
         }
 
         private void printOutOfBoundsErrorMessage(byte i_Row, byte i_Col)

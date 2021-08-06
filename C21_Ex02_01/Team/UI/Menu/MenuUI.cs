@@ -10,7 +10,7 @@ namespace C21_Ex02_01.Team.UI
 {
     public static class MenuUI
     {
-        public static void Run()
+        public static void RunGame()
         {
             requestMatrix();
 
@@ -27,13 +27,11 @@ namespace C21_Ex02_01.Team.UI
 
             Console.Out.WriteLine("Please enter a matrix size.");
 
-            string range = "(range: " + k_MinimumPixels + " to " +
-                           k_MaximumPixels + ")";
-            byte rows = Convert("Number of Rows: "
-                                + range, k_MinimumPixels,
+            string range = $"(range: {k_MinimumPixels} to {k_MaximumPixels})";
+            byte rows = Convert($"Number of Rows: {range}", k_MinimumPixels,
                 k_MaximumPixels);
             byte cols = Convert(
-                "Number of Columns: " + range, k_MinimumPixels,
+                $"Number of Columns: {range}", k_MinimumPixels,
                 k_MaximumPixels);
 
             // Initialize Database: Create a new readonly matrix in database:
