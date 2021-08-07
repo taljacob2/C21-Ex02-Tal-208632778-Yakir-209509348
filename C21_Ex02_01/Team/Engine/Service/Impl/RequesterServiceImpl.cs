@@ -29,10 +29,21 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             r_Requester.RequestChosenColumnHumanPlayer(io_HumanPlayer);
         }
 
+        /// <summary>
+        /// <remarks>
+        /// Implemented in Engine's-side (and not UI-side).
+        /// </remarks>
+        /// </summary>
+        /// <param name="io_ComputerPlayer" />
+        /// <param name="i_MaxColumnNumber" />
         public void ChooseColumnAsComputerPlayer(
-            ComputerPlayer io_ComputerPlayer)
+            ComputerPlayer io_ComputerPlayer, byte i_MaxColumnNumber)
         {
-            
+            Random random = new Random();
+
+            // (`i_MinColumnNumber` is 0 by default.)
+            byte nextColumn = (byte) (random.Next() % i_MaxColumnNumber);
+            io_ComputerPlayer.ChosenColumn = nextColumn;
         }
     }
 }

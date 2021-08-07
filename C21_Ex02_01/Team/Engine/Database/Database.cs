@@ -11,5 +11,7 @@
         public Board.Board Board { get; }
 
         public Players.Players Players { get; }
+
+        public bool Win { get; set; } = false;
     }
 }
