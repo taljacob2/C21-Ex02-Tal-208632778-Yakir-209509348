@@ -19,9 +19,9 @@ namespace C21_Ex02_01.Team.Engine
 
         public Database.Database Database { get; set; }
 
-        public IRequesterService RequesterService { get; }
+        public static IRequesterService RequesterService { get; set; }
 
-        public IResponderService ResponderService { get; }
+        public static IResponderService ResponderService { get; set; }
 
         public void RunGame()
         {
