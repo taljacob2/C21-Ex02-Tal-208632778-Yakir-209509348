@@ -37,16 +37,16 @@ namespace C21_Ex02_01.Team.Engine
             {
                 ResponderService.PrintBoard();
                 Database.Players.PlayTurn();
-                checkIfThereIsWin();
+                checkIfThereIsWin(); // Check for algorithm WIN here <-.
                 if (Database.Win)
                 {
                     return;
                 }
 
                 /*
-                 * TODO: after playing the turn:
-                 * 1. Check for algorithm win here <-.
-                 * 2. Print Response here <-.        
+                 * TODO LIST: after playing the turn:
+                 * 1. Check for algorithm win.
+                 * 2. Print Response.
                  */
             }
         }
