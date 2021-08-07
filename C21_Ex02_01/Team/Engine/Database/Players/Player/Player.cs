@@ -14,7 +14,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player
             ID = i_ID;
         }
 
-        public eID ID { get; }
+        public eID ID { get; } // Unique
 
         public char Char { get; }
 
