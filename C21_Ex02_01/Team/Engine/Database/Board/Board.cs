@@ -1,6 +1,8 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper;
 
@@ -8,17 +10,34 @@ using C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper;
 
 namespace C21_Ex02_01.Team.Engine.Database.Board
 {
-    public class Board : MatrixWrapper<char>
+    public class Board : MatrixWrapper<char>, IBoardActuator
     {
         private const char k_Delimiter = '|';
         private const char k_RowSeparator = '=';
 
         public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols) {}
 
+        public void InsertCoin(byte i_ColumnToInsertTo, char i_CharCoin)
+        {
+            List<object> emptyBoxedElementsInColumn =
+                GetBoxedEmptyElementsInColumn
+                    (i_ColumnToInsertTo);
+            List<char> emptyElementsInColumn =
+                emptyBoxedElementsInColumn.Select(i_Object => (char) i_Object)
+                    .ToList();
+
+            // Update last empty element in column:
+            emptyElementsInColumn[emptyElementsInColumn.Count - 1] = i_CharCoin;
+
+            // DEBUG TEST:
+            Engine.ResponderService.PrintBoard();
+        }
+
         public override string ToString()
         {
             return matrixToString();
         }
+
 
         private string matrixToString()
         {
@@ -36,10 +55,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             return stringBuilder.ToString();
         }
 
-        public void InsertCoin()
-        {
-            throw new NotImplementedException(); // TODO: need to implement.
-        }
 
         private struct RowAppender
         {

@@ -48,6 +48,7 @@
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Team\Engine\Database\Board\Board.cs" />
+        <Compile Include="Team\Engine\Database\Board\IBoardActuator.cs" />
         <Compile Include="Team\Engine\Database\Board\Matrix\Wrapper\MatrixWrapper.cs" />
         <Compile Include="Team\Engine\Database\Database.cs" />
         <Compile Include="Team\Engine\Database\Players\Players.cs" />

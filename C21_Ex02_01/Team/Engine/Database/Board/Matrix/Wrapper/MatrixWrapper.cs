@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
@@ -117,6 +118,33 @@ namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
             // Print stack trace info.
             StackTrace stackTrace = new StackTrace(true);
             Console.Error.WriteLine(stackTrace);
+        }
+
+
+        /// <summary>
+        ///     Returns a list of all the `boxed` empty elements in the column, such that
+        ///     the
+        ///     `head` of the list is the `topmost` element available in the column,
+        ///     and the `tail` of the list is the `bottommost` element available in the
+        ///     column.
+        /// </summary>
+        /// <param name="i_Column">The column to get its empty elements.</param>
+        /// <returns>A List of all the `boxed` empty elements in the column.</returns>
+        public List<object> GetBoxedEmptyElementsInColumn(byte i_Column)
+        {
+            List<object> columnLinkedList = new List<object>();
+            for (int i = 0; i < Rows; i++)
+            {
+                T currentElement = Matrix[i, i_Column];
+                if (currentElement != null)
+                {
+                    break;
+                }
+
+                columnLinkedList.Add(Matrix[i, i_Column]);
+            }
+
+            return columnLinkedList;
         }
     }
 }
