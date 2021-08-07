@@ -35,7 +35,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
         }
 
         /// ReSharper disable once FlagArgument
-        public void SetPlayerOne(ePlayerType i_PlayerType, char i_Char)
+        private void setPlayerOne(ePlayerType i_PlayerType, char i_Char)
         {
             if (i_PlayerType == ePlayerType.Human)
             {
@@ -58,7 +58,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
         /// <param name="i_PlayerType">Note: May be a <see cref="Computer" /></param>
         /// <param name="i_Char" />
         /// ReSharper disable once FlagArgument
-        public void SetPlayerTwo(ePlayerType i_PlayerType, char i_Char)
+        private void setPlayerTwo(ePlayerType i_PlayerType, char i_Char)
         {
             if (i_PlayerType == ePlayerType.Human)
             {
