@@ -17,7 +17,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
         public PlayersWrapper(PlayersWrapperSettings i_PlayersWrapperSettings)
         {
             PlayersWrapperSettings = i_PlayersWrapperSettings;
-            setPlayers();
+            initializePlayers();
         }
 
         public ePlayerTurn CurrentPlayerTurn { get; set; }
@@ -26,31 +26,32 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
 
         /// <summary>
         ///     Places a <see cref="Human" /> as the first player,
-        ///     and <i>may</i> place a <see cref="Computer" /> as the second player.
+        ///     and <i>may</i> place a <see cref="Human" /> or a <see cref="Computer" /> as
+        ///     the second player.
         /// </summary>
         private Player[] Players { get; } = new Player[k_NumberOfPlayers];
 
-        private void setPlayers()
+        private void initializePlayers()
         {
             const char k_PlayerOneChar = 'O'; // Set arbitrarily
             const char k_PlayerTwoChar = 'X'; // Set arbitrarily
 
             if (PlayersWrapperSettings.OpponentType == ePlayerType.Human)
             {
-                initalizePlayerTwo(ePlayerType.Human, k_PlayerTwoChar);
+                initializePlayerTwo(ePlayerType.Human, k_PlayerTwoChar);
             }
             else if (PlayersWrapperSettings.OpponentType ==
                      ePlayerType.Computer)
             {
-                initalizePlayerTwo(ePlayerType.Computer, k_PlayerTwoChar);
+                initializePlayerTwo(ePlayerType.Computer, k_PlayerTwoChar);
             }
 
             initializePlayerOne(ePlayerType.Human, k_PlayerOneChar);
         }
 
-        private Player getPlayerOne()
+        private ref Player getRefPlayerOne()
         {
-            return Players[0];
+            return ref Players[0];
         }
 
         /// ReSharper disable once FlagArgument
@@ -58,34 +59,34 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
         {
             if (i_PlayerType == ePlayerType.Human)
             {
-                Players[0] = new HumanPlayer(i_Char);
+                getRefPlayerOne() = new HumanPlayer(i_Char);
             }
             else if (i_PlayerType == ePlayerType.Computer)
             {
-                Players[0] = new ComputerPlayer(i_Char);
+                getRefPlayerOne() = new ComputerPlayer(i_Char);
             }
         }
 
         /// <summary />
         /// <returns>Note: May return a <see cref="Computer" /></returns>
-        private Player getPlayerTwo()
+        private ref Player getRefPlayerTwo()
         {
-            return Players[1];
+            return ref Players[1];
         }
 
         /// <summary />
         /// <param name="i_PlayerType">Note: May be a <see cref="Computer" /></param>
         /// <param name="i_Char" />
         /// ReSharper disable once FlagArgument
-        private void initalizePlayerTwo(ePlayerType i_PlayerType, char i_Char)
+        private void initializePlayerTwo(ePlayerType i_PlayerType, char i_Char)
         {
             if (i_PlayerType == ePlayerType.Human)
             {
-                Players[1] = new HumanPlayer(i_Char);
+                getRefPlayerTwo() = new HumanPlayer(i_Char);
             }
             else if (i_PlayerType == ePlayerType.Computer)
             {
-                Players[1] = new ComputerPlayer(i_Char);
+                getRefPlayerTwo() = new ComputerPlayer(i_Char);
             }
         }
     }
