@@ -17,7 +17,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Player
         public eID ID { get; }
 
         public char Char { get; }
-
+        
 
         public abstract void PlayTurn();
 
