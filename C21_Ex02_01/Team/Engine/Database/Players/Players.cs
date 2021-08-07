@@ -37,15 +37,15 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             const char k_PlayerOneChar = 'O'; // Set arbitrarily.
             const char k_PlayerTwoChar = 'X'; // Set arbitrarily.
 
-            switch (Settings.OpponentPlayerType)
+            switch (Settings.OpponentType)
             {
-                case ePlayerType.Human:
+                case eType.Human:
                     r_PlayersGetterNestedService.GetRefPlayerTwo() =
                         new HumanPlayer(
                             eID.Two,
                             k_PlayerTwoChar);
                     break;
-                case ePlayerType.Computer:
+                case eType.Computer:
                     r_PlayersGetterNestedService.GetRefPlayerTwo() =
                         new ComputerPlayer(
                             eID.Two,

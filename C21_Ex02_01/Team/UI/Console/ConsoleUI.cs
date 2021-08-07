@@ -26,26 +26,26 @@ namespace C21_Ex02_01.Team.UI
             private void requestAndConstructEngineDatabase()
             {
                 requestDatabase(out byte rows, out byte cols,
-                    out ePlayerType opponent);
+                    out eType opponent);
                 constructEngineDatabase(rows, cols, opponent);
             }
 
             private static void requestDatabase(out byte io_Rows,
                 out byte io_Cols,
-                out ePlayerType i_PlayerType)
+                out eType i_Type)
             {
                 requestBoard(out io_Rows, out io_Cols);
-                requestOpponentPlayer(out i_PlayerType);
+                requestOpponentPlayer(out i_Type);
             }
 
             private void constructEngineDatabase(byte i_Rows,
-                byte i_Cols, ePlayerType i_PlayerType)
+                byte i_Cols, eType i_Type)
             {
                 // Initialize Database: when its members are readonly:
                 Board board = new Board(i_Rows, i_Cols);
                 Players players =
                     new Players(
-                        new Settings(i_PlayerType));
+                        new Settings(i_Type));
 
                 Engine.Engine.Database = new Database(board, players);
             }
@@ -65,11 +65,11 @@ namespace C21_Ex02_01.Team.UI
                     k_MaximumRange);
             }
 
-            private static void requestOpponentPlayer(out ePlayerType
-                i_PlayerType)
+            private static void requestOpponentPlayer(out eType
+                i_Type)
             {
-                const byte k_MinimumRange = (byte) ePlayerType.Human + 1;
-                const byte k_MaximumRange = (byte) ePlayerType.Computer + 1;
+                const byte k_MinimumRange = (byte) eType.Human + 1;
+                const byte k_MaximumRange = (byte) eType.Computer + 1;
                 string mainMessage =
                     requestOpponentPlayerMainMessage(k_MinimumRange,
                         k_MaximumRange);
@@ -78,7 +78,7 @@ namespace C21_Ex02_01.Team.UI
                     requestOpponentPlayerToString(
                         mainMessage,
                         k_MinimumRange, k_MaximumRange);
-                Enum.TryParse(stringOpponent, out i_PlayerType);
+                Enum.TryParse(stringOpponent, out i_Type);
             }
 
             private static string requestOpponentPlayerMainMessage(
@@ -86,10 +86,10 @@ namespace C21_Ex02_01.Team.UI
             {
                 string titleMessage =
                     "Please choose an opponent." + Environment.NewLine;
-                string humanMessage = $"{i_MinimumRange}. {ePlayerType.Human}" +
+                string humanMessage = $"{i_MinimumRange}. {eType.Human}" +
                                       Environment.NewLine;
                 string computerMessage =
-                    $"{i_MaximumRange}. {ePlayerType.Computer}";
+                    $"{i_MaximumRange}. {eType.Computer}";
                 string mainMessage =
                     titleMessage + humanMessage + computerMessage;
                 return mainMessage;
@@ -103,7 +103,7 @@ namespace C21_Ex02_01.Team.UI
                 byte byteOpponent =
                     Convert(i_MainMessage, i_MinimumRange, i_MaximumRange);
                 byteOpponent -= i_MinimumRange;
-                string stringOpponent = $"{(ePlayerType) byteOpponent:G}";
+                string stringOpponent = $"{(eType) byteOpponent:G}";
                 return stringOpponent;
             }
 

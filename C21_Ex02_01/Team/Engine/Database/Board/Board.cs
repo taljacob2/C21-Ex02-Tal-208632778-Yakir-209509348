@@ -25,9 +25,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             Coin.Coin emptyElementInColumn =
                 GetBottommostEmptyElementInColumn(i_ColumnToInsertTo);
             emptyElementInColumn.Char = i_CharCoin;
-
-            // DEBUG TEST:
-            Engine.ResponderService.PrintBoard();
         }
 
         public void FillCoins(char i_CharToFill)
