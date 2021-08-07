@@ -1,18 +1,14 @@
-﻿namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings
+﻿using C21_Ex02_01.Team.Engine.Database.Player.Type;
+
+namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings
 {
     public class PlayersWrapperSettings
     {
-        public enum ePlayerType
+        public PlayersWrapperSettings(ePlayerType i_OpponentType)
         {
-            Human,
-            Computer
+            OpponentType = i_OpponentType;
         }
 
-        public PlayersWrapperSettings(ePlayerType i_PlayerType)
-        {
-            PlayerType = i_PlayerType;
-        }
-
-        public ePlayerType PlayerType { get; }
+        public ePlayerType OpponentType { get; }
     }
 }

@@ -2,9 +2,9 @@
 
 using C21_Ex02_01.Team.Engine.Database.Player.Computer;
 using C21_Ex02_01.Team.Engine.Database.Player.Human;
+using C21_Ex02_01.Team.Engine.Database.Player.Turn;
+using C21_Ex02_01.Team.Engine.Database.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings;
-using static C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings.
-    PlayersWrapperSettings;
 
 #endregion
 
@@ -19,6 +19,8 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
             PlayersWrapperSettings = i_PlayersWrapperSettings;
         }
 
+        public ePlayerTurn CurrentPlayerTurn { get; set; }
+
         public PlayersWrapperSettings PlayersWrapperSettings { get; }
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
         /// </summary>
         private Player[] Players { get; } = new Player[k_NumberOfPlayers];
 
-        public Player GetPlayerOne()
+        private Player getPlayerOne()
         {
             return Players[0];
         }
@@ -47,7 +49,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
 
         /// <summary />
         /// <returns>Note: May return a <see cref="Computer" /></returns>
-        public Player GetPlayerTwo()
+        private Player getPlayerTwo()
         {
             return Players[1];
         }

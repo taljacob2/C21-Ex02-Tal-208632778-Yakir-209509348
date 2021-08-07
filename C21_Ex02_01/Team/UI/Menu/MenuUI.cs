@@ -3,6 +3,7 @@
 using System;
 using C21_Ex02_01.Team.Engine.Database;
 using C21_Ex02_01.Team.Engine.Database.Board;
+using C21_Ex02_01.Team.Engine.Database.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Player.Wrapper;
 using C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings;
 using static C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings.
