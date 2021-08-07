@@ -119,7 +119,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
             Console.Error.WriteLine(stackTrace);
         }
 
-
         /// <summary />
         /// <param name="i_Column">The column to get its bottommost empty element.</param>
         /// <returns>The bottommost empty element in the column.</returns>
