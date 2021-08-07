@@ -1,4 +1,4 @@
-﻿namespace C21_Ex02_01.Team.Engine.Database.Player.Type
+﻿namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Type
 {
     public enum ePlayerType
     {

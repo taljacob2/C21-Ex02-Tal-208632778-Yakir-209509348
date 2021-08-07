@@ -1,15 +1,15 @@
 ﻿#region
 
 using System;
-using C21_Ex02_01.Team.Engine.Database.Player.ID;
+using C21_Ex02_01.Team.Engine.Database.Players.Player.ID;
 
 #endregion
 
-namespace C21_Ex02_01.Team.Engine.Database.Player.Human
+namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Computer
 {
-    public class HumanPlayer : Player
+    public class ComputerPlayer : Player
     {
-        public HumanPlayer(eID i_ID, char i_Char) : base(i_ID, i_Char) {}
+        public ComputerPlayer(eID i_ID, char i_Char) : base(i_ID, i_Char) {}
 
         public override void PlayTurn()
         {

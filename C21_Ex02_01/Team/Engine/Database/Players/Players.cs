@@ -1,15 +1,16 @@
 ﻿#region
 
 using System;
-using C21_Ex02_01.Team.Engine.Database.Player.Computer;
-using C21_Ex02_01.Team.Engine.Database.Player.Human;
-using C21_Ex02_01.Team.Engine.Database.Player.ID;
-using C21_Ex02_01.Team.Engine.Database.Player.Type;
-using C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings;
+using C21_Ex02_01.Team.Engine.Database.Players.Player;
+using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
+using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
+using C21_Ex02_01.Team.Engine.Database.Players.Player.ID;
+using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
+using C21_Ex02_01.Team.Engine.Database.Players.Settings;
 
 #endregion
 
-namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
+namespace C21_Ex02_01.Team.Engine.Database.Players
 {
     /// <summary>
     ///     This is a wrapper class for a group of <see cref="Player" />s.
@@ -58,13 +59,14 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
                 k_PlayerOneChar);
         }
 
-        public void PlayTurn(Player i_Player)
+        public void PlayTurn(Player.Player i_Player)
         {
             i_Player.PlayTurn();
             switchCurrentPlayerTurn(i_Player);
         }
 
-        private void switchCurrentPlayerTurn(Player i_CurrentPlayingPlayer)
+        private void switchCurrentPlayerTurn(
+            Player.Player i_CurrentPlayingPlayer)
         {
             switch (i_CurrentPlayingPlayer.ID)
             {
@@ -82,20 +84,21 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
         private class PlayersGetter
         {
             /// <summary>
-            ///     Places a <see cref="Human" /> as the first player,
-            ///     and <i>may</i> place a <see cref="Human" /> or a <see cref="Computer" /> as
-            ///     the second player.
+            ///     Places a <see cref="HumanPlayer" /> as the first player,
+            ///     and <i>may</i> place a <see cref="HumanPlayer" /> or a
+            /// <see cref="ComputerPlayer" /> as the second player.
             /// </summary>
-            private Player[] Players { get; } = new Player[k_NumberOfPlayers];
+            private Player.Player[] Players { get; } =
+                new Player.Player[k_NumberOfPlayers];
 
-            internal ref Player GetRefPlayerOne()
+            internal ref Player.Player GetRefPlayerOne()
             {
                 return ref Players[(byte) eID.One];
             }
 
             /// <summary />
-            /// <returns>Note: May return a <see cref="Computer" /></returns>
-            internal ref Player GetRefPlayerTwo()
+            /// <returns>Note: May return a <see cref="ComputerPlayer" /></returns>
+            internal ref Player.Player GetRefPlayerTwo()
             {
                 return ref Players[(byte) eID.Two];
             }

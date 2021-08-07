@@ -1,10 +1,10 @@
 ﻿#region
 
-using C21_Ex02_01.Team.Engine.Database.Player.ID;
+using C21_Ex02_01.Team.Engine.Database.Players.Player.ID;
 
 #endregion
 
-namespace C21_Ex02_01.Team.Engine.Database.Player
+namespace C21_Ex02_01.Team.Engine.Database.Players.Player
 {
     public abstract class Player
     {
