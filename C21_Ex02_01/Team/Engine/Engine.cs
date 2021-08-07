@@ -15,7 +15,7 @@ namespace C21_Ex02_01.Team.Engine
         public Engine()
         {
             // Caution: the order here is important:
-            RequesterService = new RequesterServiceImpl(this);
+            RequesterService = new RequesterServiceImpl();
             RequesterService.ConstructEngine();
             ResponderService = new ResponderServiceImpl();
         }

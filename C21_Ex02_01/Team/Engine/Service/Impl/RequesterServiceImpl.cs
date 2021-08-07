@@ -13,10 +13,10 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
     {
         private readonly ConsoleUI.Requester r_Requester;
 
-        public RequesterServiceImpl(Engine i_Engine)
+        public RequesterServiceImpl()
         {
             // UI: Choose from which platform to construct the Engine:
-            r_Requester = new ConsoleUI.Requester(i_Engine);
+            r_Requester = new ConsoleUI.Requester();
         }
 
         public void ConstructEngine()

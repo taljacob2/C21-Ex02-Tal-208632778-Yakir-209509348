@@ -18,13 +18,6 @@ namespace C21_Ex02_01.Team.UI
     {
         public class Requester
         {
-            public Requester(Engine.Engine i_Engine)
-            {
-                Engine = i_Engine;
-            }
-
-            public Engine.Engine Engine { get; }
-
             public void RequestAndConstructEngine()
             {
                 requestAndConstructEngineDatabase();
@@ -54,7 +47,7 @@ namespace C21_Ex02_01.Team.UI
                     new Players(
                         new Settings(i_PlayerType));
 
-                Team.Engine.Engine.Database = new Database(board, players);
+                Engine.Engine.Database = new Database(board, players);
             }
 
             private static void requestBoard(out byte o_Rows, out byte o_Cols)
@@ -118,7 +111,7 @@ namespace C21_Ex02_01.Team.UI
                 HumanPlayer io_HumanPlayer)
             {
                 const byte k_MinimumRange = 0;
-                Database database = Team.Engine.Engine.Database;
+                Database database = Engine.Engine.Database;
                 byte cols = database.Board.Cols;
                 string message =
                     requestChosenColumnHumanPlayerMessage(io_HumanPlayer,
