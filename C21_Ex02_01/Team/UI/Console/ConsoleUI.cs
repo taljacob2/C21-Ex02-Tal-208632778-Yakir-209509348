@@ -137,7 +137,7 @@ namespace C21_Ex02_01.Team.UI
                 }
 
                 string range =
-                    $"A number between {i_MinimumRange} to {i_Database.Board.Cols},";
+                    $"a number between {i_MinimumRange} to {i_Database.Board.Cols},";
                 string title =
                     $"Player {i_HumanPlayer.ID}, it's your turn.{Environment.NewLine}";
                 string message = title +
