@@ -30,9 +30,9 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         }
 
         /// <summary>
-        /// <remarks>
-        /// Implemented in Engine's-side (and not UI-side).
-        /// </remarks>
+        ///     <remarks>
+        ///         Implemented in Engine's-side (and not UI-side).
+        ///     </remarks>
         /// </summary>
         /// <param name="io_ComputerPlayer" />
         /// <param name="i_MaxColumnNumber" />

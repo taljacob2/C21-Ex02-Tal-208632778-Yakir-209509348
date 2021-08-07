@@ -4,7 +4,6 @@ using System;
 using C21_Ex02_01.Team.Engine.Database;
 using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Players.Settings;
@@ -146,7 +145,6 @@ namespace C21_Ex02_01.Team.UI
                                  $"Press {range} to insert a coin to that column.";
                 return message;
             }
-            
         }
 
         public class Responder
