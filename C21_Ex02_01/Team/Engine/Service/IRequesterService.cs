@@ -2,6 +2,6 @@
 {
     public interface IRequesterService
     {
-        void RequestAndConstructEngine();
+        void ConstructEngine();
     }
 }

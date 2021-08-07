@@ -13,7 +13,7 @@ namespace C21_Ex02_01.Team.Engine
         {
             // Caution: the order here is important:
             RequesterService = new RequesterServiceImpl(this);
-            RequesterService.RequestAndConstructEngine();
+            RequesterService.ConstructEngine();
             ResponderService = new ResponderServiceImpl(this);
         }
 
@@ -26,6 +26,11 @@ namespace C21_Ex02_01.Team.Engine
         public void RunGame()
         {
             ResponderService.PrintBoard();
+        }
+
+        private void playTurn()
+        {
+            
         }
     }
 }
