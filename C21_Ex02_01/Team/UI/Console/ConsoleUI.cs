@@ -50,7 +50,7 @@ namespace C21_Ex02_01.Team.UI
                 Board board = new Board(i_Rows, i_Cols);
                 Players players =
                     new Players(
-                        new PlayersSettings(i_PlayerType));
+                        new Settings(i_PlayerType));
 
                 Engine.Database = new Database(board, players);
             }

@@ -6,7 +6,6 @@ using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.ID;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
-using C21_Ex02_01.Team.Engine.Database.Players.Settings;
 
 #endregion
 
@@ -22,23 +21,23 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         private readonly PlayersGetter r_PlayersGetter =
             new PlayersGetter();
 
-        public Players(PlayersSettings i_PlayersSettings)
+        public Players(Settings.Settings i_Settings)
         {
-            PlayersSettings = i_PlayersSettings;
+            Settings = i_Settings;
             initializePlayers();
         }
 
         // Set arbitrarily the starting player.
         public eID CurrentPlayerTurn { get; set; } = eID.One;
 
-        public PlayersSettings PlayersSettings { get; }
+        public Settings.Settings Settings { get; }
 
         private void initializePlayers()
         {
             const char k_PlayerOneChar = 'O'; // Set arbitrarily.
             const char k_PlayerTwoChar = 'X'; // Set arbitrarily.
 
-            switch (PlayersSettings.OpponentPlayerType)
+            switch (Settings.OpponentPlayerType)
             {
                 case ePlayerType.Human:
                     r_PlayersGetter.GetRefPlayerTwo() = new HumanPlayer(

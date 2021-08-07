@@ -6,9 +6,9 @@ using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
 
 namespace C21_Ex02_01.Team.Engine.Database.Players.Settings
 {
-    public class PlayersSettings
+    public class Settings
     {
-        public PlayersSettings(ePlayerType i_OpponentPlayerType)
+        public Settings(ePlayerType i_OpponentPlayerType)
         {
             OpponentPlayerType = i_OpponentPlayerType;
         }

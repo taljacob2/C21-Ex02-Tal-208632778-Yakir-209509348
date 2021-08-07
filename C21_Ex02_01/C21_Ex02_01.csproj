@@ -56,7 +56,7 @@
         <Compile Include="Team\Engine\Database\Players\Player\ID\eID.cs" />
         <Compile Include="Team\Engine\Database\Players\Player\Player.cs" />
         <Compile Include="Team\Engine\Database\Players\Player\Type\ePlayerType.cs" />
-        <Compile Include="Team\Engine\Database\Players\Settings\PlayersSettings.cs" />
+        <Compile Include="Team\Engine\Database\Players\Settings\Settings.cs" />
         <Compile Include="Team\Engine\Engine.cs" />
         <Compile Include="Team\UI\InputUtil\InputUtil.cs" />
         <Compile Include="Team\UI\Console\ConsoleUI.cs" />
