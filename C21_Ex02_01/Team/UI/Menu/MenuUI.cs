@@ -6,8 +6,6 @@ using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Player.Wrapper;
 using C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings;
-using static C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings.
-    PlayersWrapperSettings;
 using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
 
 #endregion
@@ -60,8 +58,8 @@ namespace C21_Ex02_01.Team.UI
                 out byte io_Cols,
                 out ePlayerType i_PlayerType)
             {
-                MenuUI.requestBoard(out io_Rows, out io_Cols);
-                MenuUI.requestOpponentPlayer(out i_PlayerType);
+                requestBoard(out io_Rows, out io_Cols);
+                requestOpponentPlayer(out i_PlayerType);
             }
 
             internal static void ConstructDatabase(byte i_Rows, byte i_Cols,

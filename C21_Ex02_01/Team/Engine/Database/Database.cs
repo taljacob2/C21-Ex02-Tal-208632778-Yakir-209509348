@@ -1,6 +1,5 @@
 ﻿#region
 
-using C21_Ex02_01.Team.Engine.Database.Player.Turn;
 using C21_Ex02_01.Team.Engine.Database.Player.Wrapper;
 
 #endregion
@@ -18,6 +17,5 @@ namespace C21_Ex02_01.Team.Engine.Database
         public Board.Board Board { get; }
 
         public PlayersWrapper PlayersWrapper { get; }
-        
     }
 }
