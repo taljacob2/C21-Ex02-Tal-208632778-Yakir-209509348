@@ -14,42 +14,11 @@ namespace C21_Ex02_01.Team.UI
 {
     public static class MenuUI
     {
-        public static void RequestAndConstructDatabase()
+        public static void RequestAndConstructEngineDatabase()
         {
             MenuUIRequester.RequestDatabase(out byte rows, out byte cols,
                 out ePlayerType opponent);
-            MenuUIRequester.ConstructDatabase(rows, cols, opponent);
-        }
-
-        private static void requestBoard(out byte o_Rows, out byte o_Cols)
-        {
-            const byte k_MinimumRange = 4;
-            const byte k_MaximumRange = 8;
-
-            Console.Out.WriteLine("Please enter a matrix size.");
-
-            string range = $"(range: {k_MinimumRange} to {k_MaximumRange})";
-            o_Rows = Convert($"Number of Rows: {range}", k_MinimumRange,
-                k_MaximumRange);
-            o_Cols = Convert(
-                $"Number of Columns: {range}", k_MinimumRange,
-                k_MaximumRange);
-        }
-
-        private static void requestOpponentPlayer(out ePlayerType i_PlayerType)
-        {
-            const byte k_MinimumRange = 1;
-            const byte k_MaximumRange = 2;
-            string mainMessage =
-                MenuUIRequester.RequestOpponentPlayerMainMessage(
-                    k_MinimumRange,
-                    k_MaximumRange);
-
-            string stringOpponent =
-                MenuUIRequester.RequestOpponentPlayerToString(
-                    mainMessage,
-                    k_MinimumRange, k_MaximumRange);
-            Enum.TryParse(stringOpponent, out i_PlayerType);
+            MenuUIRequester.ConstructEngineDatabase(rows, cols, opponent);
         }
 
         private static class MenuUIRequester
@@ -62,8 +31,8 @@ namespace C21_Ex02_01.Team.UI
                 requestOpponentPlayer(out i_PlayerType);
             }
 
-            internal static void ConstructDatabase(byte i_Rows, byte i_Cols,
-                ePlayerType i_PlayerType)
+            internal static void ConstructEngineDatabase(byte i_Rows,
+                byte i_Cols, ePlayerType i_PlayerType)
             {
                 // Initialize Database: when its members are readonly:
                 Board board = new Board(i_Rows, i_Cols);
@@ -74,7 +43,38 @@ namespace C21_Ex02_01.Team.UI
                 Engine.Engine.Database = new Database(board, playersWrapper);
             }
 
-            internal static string RequestOpponentPlayerToString(
+            private static void requestBoard(out byte o_Rows, out byte o_Cols)
+            {
+                const byte k_MinimumRange = 4;
+                const byte k_MaximumRange = 8;
+
+                Console.Out.WriteLine("Please enter a matrix size.");
+
+                string range = $"(range: {k_MinimumRange} to {k_MaximumRange})";
+                o_Rows = Convert($"Number of Rows: {range}", k_MinimumRange,
+                    k_MaximumRange);
+                o_Cols = Convert(
+                    $"Number of Columns: {range}", k_MinimumRange,
+                    k_MaximumRange);
+            }
+
+            private static void requestOpponentPlayer(out ePlayerType
+                i_PlayerType)
+            {
+                const byte k_MinimumRange = 1;
+                const byte k_MaximumRange = 2;
+                string mainMessage =
+                    requestOpponentPlayerMainMessage(k_MinimumRange,
+                        k_MaximumRange);
+
+                string stringOpponent =
+                    requestOpponentPlayerToString(
+                        mainMessage,
+                        k_MinimumRange, k_MaximumRange);
+                Enum.TryParse(stringOpponent, out i_PlayerType);
+            }
+
+            private static string requestOpponentPlayerToString(
                 string i_MainMessage,
                 byte i_MinimumRange,
                 byte i_MaximumRange)
@@ -86,7 +86,7 @@ namespace C21_Ex02_01.Team.UI
                 return stringOpponent;
             }
 
-            internal static string RequestOpponentPlayerMainMessage(
+            private static string requestOpponentPlayerMainMessage(
                 byte i_MinimumRange, byte i_MaximumRange)
             {
                 string titleMessage =

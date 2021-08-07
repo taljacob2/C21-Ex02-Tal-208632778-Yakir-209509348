@@ -15,7 +15,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Computer
             throw new NotImplementedException();
         }
 
-        public override byte ChooseColumn()
+        protected override byte ChooseColumn()
         {
             throw new NotImplementedException();
         }

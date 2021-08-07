@@ -89,5 +89,18 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
                 getRefPlayerTwo() = new ComputerPlayer(i_Char);
             }
         }
+
+        // ReSharper disable once FlagArgument
+        public void PlayTurn(ePlayerTurn i_PlayerTurn)
+        {
+            if (i_PlayerTurn == ePlayerTurn.One)
+            {
+                getRefPlayerOne().PlayTurn();
+            }
+            else if (i_PlayerTurn == ePlayerTurn.Two)
+            {
+                getRefPlayerTwo().PlayTurn();
+            }
+        }
     }
 }

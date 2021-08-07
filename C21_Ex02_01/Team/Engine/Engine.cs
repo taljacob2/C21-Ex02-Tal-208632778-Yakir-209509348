@@ -1,20 +1,20 @@
-﻿using C21_Ex02_01.Team.UI;
+﻿#region
+
+using C21_Ex02_01.Team.UI;
+
+#endregion
 
 namespace C21_Ex02_01.Team.Engine
 {
     public class Engine
     {
-        public static Database.Database Database { get; set; }
-
         public Engine()
         {
-            MenuUI.RequestAndConstructDatabase();
+            MenuUI.RequestAndConstructEngineDatabase();
         }
 
-        public void RunGame()
-        {
-            
-        }
-        
+        public static Database.Database Database { get; set; }
+
+        public void RunGame() {}
     }
 }

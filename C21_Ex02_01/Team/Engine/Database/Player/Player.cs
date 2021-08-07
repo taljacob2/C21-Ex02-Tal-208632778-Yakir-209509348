@@ -11,6 +11,6 @@
 
         public abstract void PlayTurn();
 
-        public abstract byte ChooseColumn();
+        protected abstract byte ChooseColumn();
     }
 }
