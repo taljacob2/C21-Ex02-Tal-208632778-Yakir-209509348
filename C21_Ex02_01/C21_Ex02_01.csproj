@@ -58,6 +58,8 @@
         <Compile Include="Team\Engine\Database\Players\Player\Type\ePlayerType.cs" />
         <Compile Include="Team\Engine\Database\Players\Settings\Settings.cs" />
         <Compile Include="Team\Engine\Engine.cs" />
+        <Compile Include="Team\Engine\Service\Impl\ResponderServiceImpl.cs" />
+        <Compile Include="Team\Engine\Service\IResponderService.cs" />
         <Compile Include="Team\UI\InputUtil\InputUtil.cs" />
         <Compile Include="Team\UI\Console\ConsoleUI.cs" />
     </ItemGroup>

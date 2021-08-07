@@ -6,6 +6,7 @@ using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Players.Settings;
+using Ex02.ConsoleUtils;
 using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
 
 #endregion
@@ -125,6 +126,12 @@ namespace C21_Ex02_01.Team.UI
             public void PrintBoard()
             {
                 Console.Out.WriteLine(r_Engine.Database.Board);
+            }
+
+            public void PrintBoardWithScreenClearBeforePrint()
+            {
+                Screen.Clear();
+                PrintBoard();
             }
         }
     }

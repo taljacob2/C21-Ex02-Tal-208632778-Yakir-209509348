@@ -1,5 +1,7 @@
 ﻿#region
 
+using C21_Ex02_01.Team.Engine.Service;
+using C21_Ex02_01.Team.Engine.Service.Impl;
 using C21_Ex02_01.Team.UI;
 
 #endregion
@@ -11,9 +13,12 @@ namespace C21_Ex02_01.Team.Engine
         public Engine()
         {
             constructEngineFromConsoleUI();
+            ResponderService = new ResponderServiceImpl(this);
         }
 
         public Database.Database Database { get; set; }
+
+        public IResponderService ResponderService { get; }
 
         private void constructEngineFromConsoleUI()
         {
@@ -25,15 +30,7 @@ namespace C21_Ex02_01.Team.Engine
 
         public void RunGame()
         {
-            PrintEngineToConsoleUI();
-        }
-
-        public void PrintEngineToConsoleUI()
-        {
-            // Choose whom to respond this Engine:
-            ConsoleUI.Responder
-                responder = new ConsoleUI.Responder(this); // UI.
-            responder.PrintBoard();
+            ResponderService.PrintEngineToConsoleUI();
         }
     }
 }
