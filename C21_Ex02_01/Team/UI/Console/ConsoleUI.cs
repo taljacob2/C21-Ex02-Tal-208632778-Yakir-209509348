@@ -68,8 +68,8 @@ namespace C21_Ex02_01.Team.UI
             private static void requestOpponentPlayer(out ePlayerType
                 i_PlayerType)
             {
-                const byte k_MinimumRange = 1;
-                const byte k_MaximumRange = 2;
+                const byte k_MinimumRange = (byte) ePlayerType.Human + 1;
+                const byte k_MaximumRange = (byte) ePlayerType.Computer + 1;
                 string mainMessage =
                     requestOpponentPlayerMainMessage(k_MinimumRange,
                         k_MaximumRange);
@@ -110,15 +110,16 @@ namespace C21_Ex02_01.Team.UI
             public void RequestChosenColumnHumanPlayer(
                 HumanPlayer io_HumanPlayer)
             {
-                const byte k_MinimumRange = 0;
+                const byte k_MinimumRange = 1;
                 Database database = Engine.Engine.Database;
-                byte cols = database.Board.Cols;
+                byte maxColumnsRange = database.Board.Cols;
                 string message =
                     requestChosenColumnHumanPlayerMessage(io_HumanPlayer,
                         k_MinimumRange, database);
 
                 byte chosenColumn =
-                    Convert(message, k_MinimumRange, cols);
+                    Convert(message, k_MinimumRange, maxColumnsRange);
+                chosenColumn -= k_MinimumRange;
                 io_HumanPlayer.ChosenColumn = chosenColumn;
             }
 

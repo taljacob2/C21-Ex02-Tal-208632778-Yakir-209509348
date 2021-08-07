@@ -1,7 +1,6 @@
 ﻿#region
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
@@ -121,30 +120,24 @@ namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
         }
 
 
-        /// <summary>
-        ///     Returns a list of all the `boxed` empty elements in the column, such that
-        ///     the
-        ///     `head` of the list is the `topmost` element available in the column,
-        ///     and the `tail` of the list is the `bottommost` element available in the
-        ///     column.
-        /// </summary>
-        /// <param name="i_Column">The column to get its empty elements.</param>
-        /// <returns>A List of all the `boxed` empty elements in the column.</returns>
-        public List<object> GetBoxedEmptyElementsInColumn(byte i_Column)
+        /// <summary />
+        /// <param name="i_Column">The column to get its bottommost empty element.</param>
+        /// <returns>The bottommost empty element in the column.</returns>
+        public T GetBottommostEmptyElementInColumn(byte i_Column)
         {
-            List<object> columnLinkedList = new List<object>();
-            for (int i = 0; i < Rows; i++)
+            T returnElement = default(T);
+
+            // Scans from bottom to top.
+            for (int i = Rows - 1; i >= 0; i--)
             {
-                T currentElement = Matrix[i, i_Column];
-                if (currentElement != null)
+                returnElement = Matrix[i, i_Column];
+                if (returnElement == null)
                 {
                     break;
                 }
-
-                columnLinkedList.Add(Matrix[i, i_Column]);
             }
 
-            return columnLinkedList;
+            return returnElement;
         }
     }
 }

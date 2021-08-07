@@ -1,8 +1,6 @@
 ﻿#region
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper;
 
@@ -10,34 +8,69 @@ using C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper;
 
 namespace C21_Ex02_01.Team.Engine.Database.Board
 {
-    public class Board : MatrixWrapper<char>, IBoardActuator
+    public class Board : MatrixWrapper<Coin.Coin>, IBoardActuator
     {
         private const char k_Delimiter = '|';
         private const char k_RowSeparator = '=';
+        private const char k_EmptyCoin = ' ';
 
-        public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols) {}
+        public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols)
+        {
+            FillCoins(k_EmptyCoin);
+        }
 
         public void InsertCoin(byte i_ColumnToInsertTo, char i_CharCoin)
         {
-            List<object> emptyBoxedElementsInColumn =
-                GetBoxedEmptyElementsInColumn
-                    (i_ColumnToInsertTo);
-            List<char> emptyElementsInColumn =
-                emptyBoxedElementsInColumn.Select(i_Object => (char) i_Object)
-                    .ToList();
-
-            // Update last empty element in column:
-            emptyElementsInColumn[emptyElementsInColumn.Count - 1] = i_CharCoin;
+            // Update bottommost empty element in column:
+            Coin.Coin emptyElementInColumn =
+                GetBottommostEmptyElementInColumn(i_ColumnToInsertTo);
+            emptyElementInColumn.Char = i_CharCoin;
 
             // DEBUG TEST:
             Engine.ResponderService.PrintBoard();
+        }
+
+        public void FillCoins(char i_CharToFill)
+        {
+            for (byte i = 0; i < Rows; i++)
+            {
+                for (byte j = 0; j < Cols; j++)
+                {
+                    Matrix[i, j] =
+                        new Coin.Coin(new Coordinate.Coordinate(i, j),
+                            i_CharToFill);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Returns the bottommost `empty` Coin in the column, if exists.
+        ///     (Its `Char` should be <see cref="k_EmptyCoin" />).
+        ///     In case the column is full, the method will return a `nonEmpty` Coin.
+        /// </summary>
+        /// <param name="i_Column">The column to get its bottommost empty element.</param>
+        /// <returns>The bottommost empty element in the column.</returns>
+        public new Coin.Coin GetBottommostEmptyElementInColumn(byte i_Column)
+        {
+            Coin.Coin coinInColumn = null;
+
+            // Scans from bottom to top.
+            for (int i = Rows - 1; i >= 0; i--)
+            {
+                coinInColumn = Matrix[i, i_Column];
+                if (coinInColumn.Char == k_EmptyCoin)
+                {
+                    break;
+                }
+            }
+
+            return coinInColumn;
         }
 
         public override string ToString()
         {
             return matrixToString();
         }
-
 
         private string matrixToString()
         {
@@ -49,12 +82,11 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             for (byte i = 0; i < Rows; i++)
             {
                 rowAppender.AppendRowOfElements(stringBuilder, i);
-                rowAppender.AppendRowOfRowSeperators(stringBuilder);
+                rowAppender.AppendRowOfRowSeparators(stringBuilder);
             }
 
             return stringBuilder.ToString();
         }
-
 
         private struct RowAppender
         {
@@ -80,7 +112,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
                 io_StringBuilder.Append(Environment.NewLine);
             }
 
-            public void AppendRowOfRowSeperators(
+            public void AppendRowOfRowSeparators(
                 StringBuilder io_StringBuilder)
             {
                 for (int j = 0; j < r_Board.Cols; j++)
