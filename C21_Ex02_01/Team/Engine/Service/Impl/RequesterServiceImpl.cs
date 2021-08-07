@@ -32,7 +32,7 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         public void ChooseColumnAsComputerPlayer(
             ComputerPlayer io_ComputerPlayer)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
