@@ -45,6 +45,13 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
             }
         }
 
+        /// <summary />
+        /// <returns>Note: May return a <see cref="Computer" /></returns>
+        public Player GetPlayerTwo()
+        {
+            return Players[1];
+        }
+
         // ReSharper disable once FlagArgument
         public void SetPlayerTwo(ePlayerType i_PlayerType, char i_Char)
         {
@@ -56,13 +63,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
             {
                 Players[1] = new ComputerPlayer(i_Char);
             }
-        }
-
-        /// <summary />
-        /// <returns>Note: May return a <see cref="Computer" /></returns>
-        public Player GetPlayerTwo()
-        {
-            return Players[1];
         }
     }
 }
