@@ -74,18 +74,6 @@ namespace C21_Ex02_01.Team.UI
                 Enum.TryParse(stringOpponent, out i_PlayerType);
             }
 
-            private static string requestOpponentPlayerToString(
-                string i_MainMessage,
-                byte i_MinimumRange,
-                byte i_MaximumRange)
-            {
-                byte byteOpponent =
-                    Convert(i_MainMessage, i_MinimumRange, i_MaximumRange);
-                byteOpponent -= i_MinimumRange;
-                string stringOpponent = $"{(ePlayerType) byteOpponent:G}";
-                return stringOpponent;
-            }
-
             private static string requestOpponentPlayerMainMessage(
                 byte i_MinimumRange, byte i_MaximumRange)
             {
@@ -98,6 +86,18 @@ namespace C21_Ex02_01.Team.UI
                 string mainMessage =
                     titleMessage + humanMessage + computerMessage;
                 return mainMessage;
+            }
+
+            private static string requestOpponentPlayerToString(
+                string i_MainMessage,
+                byte i_MinimumRange,
+                byte i_MaximumRange)
+            {
+                byte byteOpponent =
+                    Convert(i_MainMessage, i_MinimumRange, i_MaximumRange);
+                byteOpponent -= i_MinimumRange;
+                string stringOpponent = $"{(ePlayerType) byteOpponent:G}";
+                return stringOpponent;
             }
         }
     }
