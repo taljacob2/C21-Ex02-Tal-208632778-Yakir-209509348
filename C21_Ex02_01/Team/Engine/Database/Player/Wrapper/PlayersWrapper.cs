@@ -17,6 +17,22 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
         public PlayersWrapper(PlayersWrapperSettings i_PlayersWrapperSettings)
         {
             PlayersWrapperSettings = i_PlayersWrapperSettings;
+            setPlayers();
+        }
+
+        private void setPlayers()
+        {
+            const char k_PlayerOneChar = 'O';
+            const char k_PlayerTwoChar = 'X';
+            
+            setPlayerTwo(ePlayerType.Human, k_PlayerTwoChar);
+            if (PlayersWrapperSettings.OpponentType ==
+                ePlayerType.Computer)
+            {
+                setPlayerTwo(ePlayerType.Computer, k_PlayerTwoChar);
+            }
+
+            setPlayerOne(ePlayerType.Human, k_PlayerOneChar);
         }
 
         public ePlayerTurn CurrentPlayerTurn { get; set; }
