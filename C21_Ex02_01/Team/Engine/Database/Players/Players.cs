@@ -28,9 +28,9 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         }
 
         // Set arbitrarily the starting player.
-        public static eID CurrentPlayerTurn { get; set; } = eID.One;
+        private static eID CurrentPlayerTurn { get; set; } = eID.One;
 
-        public Settings.Settings Settings { get; }
+        private Settings.Settings Settings { get; }
 
         private void initializePlayers()
         {
