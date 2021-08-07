@@ -53,6 +53,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
         /// <summary>
         ///     Generic comparison by range.
         ///     <see cref="Operator" />
+        ///     <seealso cref="MiscUtil" />
         /// </summary>
         /// <param name="i_Converted" />
         /// <param name="i_MinimumRange" />
