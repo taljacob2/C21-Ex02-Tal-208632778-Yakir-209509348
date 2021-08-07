@@ -11,7 +11,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
     public class Board : MatrixWrapper<char>
     {
         private const char k_Delimiter = '|';
-        private const char k_RowSeperator = '=';
+        private const char k_RowSeparator = '=';
 
         public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols) {}
 
@@ -70,13 +70,13 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             {
                 for (int j = 0; j < r_Board.Cols; j++)
                 {
-                    io_StringBuilder.Append(k_RowSeperator);
-                    io_StringBuilder.Append(k_RowSeperator);
-                    io_StringBuilder.Append(k_RowSeperator);
-                    io_StringBuilder.Append(k_RowSeperator);
+                    io_StringBuilder.Append(k_RowSeparator);
+                    io_StringBuilder.Append(k_RowSeparator);
+                    io_StringBuilder.Append(k_RowSeparator);
+                    io_StringBuilder.Append(k_RowSeparator);
                 }
 
-                io_StringBuilder.Append(k_RowSeperator);
+                io_StringBuilder.Append(k_RowSeparator);
                 io_StringBuilder.Append(Environment.NewLine);
             }
 
