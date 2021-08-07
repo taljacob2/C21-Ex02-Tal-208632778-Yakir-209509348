@@ -37,7 +37,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
             const char k_PlayerOneChar = 'O'; // Set arbitrarily.
             const char k_PlayerTwoChar = 'X'; // Set arbitrarily.
 
-            switch (PlayersSettings.OpponentType)
+            switch (PlayersSettings.OpponentPlayerType)
             {
                 case ePlayerType.Human:
                     r_PlayersGetter.GetRefPlayerTwo() = new HumanPlayer(

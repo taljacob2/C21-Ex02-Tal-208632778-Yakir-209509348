@@ -8,11 +8,11 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings
 {
     public class PlayersSettings
     {
-        public PlayersSettings(ePlayerType i_OpponentType)
+        public PlayersSettings(ePlayerType i_OpponentPlayerType)
         {
-            OpponentType = i_OpponentType;
+            OpponentPlayerType = i_OpponentPlayerType;
         }
 
-        public ePlayerType OpponentType { get; }
+        public ePlayerType OpponentPlayerType { get; }
     }
 }
