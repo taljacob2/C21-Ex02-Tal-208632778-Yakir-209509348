@@ -1,8 +1,4 @@
-﻿#region
-
-#endregion
-
-namespace C21_Ex02_01.Team.Engine.Database
+﻿namespace C21_Ex02_01.Team.Engine.Database
 {
     public class Database
     {

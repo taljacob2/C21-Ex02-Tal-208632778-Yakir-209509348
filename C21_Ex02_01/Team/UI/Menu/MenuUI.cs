@@ -12,18 +12,30 @@ using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
 
 namespace C21_Ex02_01.Team.UI
 {
-    public static class MenuUI
+    public class MenuUI
     {
-        public static void RequestAndConstructEngineDatabase()
+        public class Requester
         {
-            MenuUIRequester.RequestDatabase(out byte rows, out byte cols,
-                out ePlayerType opponent);
-            MenuUIRequester.ConstructEngineDatabase(rows, cols, opponent);
-        }
+            public Requester(Engine.Engine i_Engine)
+            {
+                Engine = i_Engine;
+            }
 
-        private static class MenuUIRequester
-        {
-            internal static void RequestDatabase(out byte io_Rows,
+            public Engine.Engine Engine { get; }
+
+            public void RequestAndConstructEngine()
+            {
+                requestAndConstructEngineDatabase();
+            }
+
+            private void requestAndConstructEngineDatabase()
+            {
+                requestDatabase(out byte rows, out byte cols,
+                    out ePlayerType opponent);
+                constructEngineDatabase(rows, cols, opponent);
+            }
+
+            private static void requestDatabase(out byte io_Rows,
                 out byte io_Cols,
                 out ePlayerType i_PlayerType)
             {
@@ -31,7 +43,7 @@ namespace C21_Ex02_01.Team.UI
                 requestOpponentPlayer(out i_PlayerType);
             }
 
-            internal static void ConstructEngineDatabase(byte i_Rows,
+            private void constructEngineDatabase(byte i_Rows,
                 byte i_Cols, ePlayerType i_PlayerType)
             {
                 // Initialize Database: when its members are readonly:
@@ -40,7 +52,7 @@ namespace C21_Ex02_01.Team.UI
                     new Players(
                         new PlayersSettings(i_PlayerType));
 
-                Engine.Engine.Database = new Database(board, players);
+                Engine.Database = new Database(board, players);
             }
 
             private static void requestBoard(out byte o_Rows, out byte o_Cols)
@@ -98,6 +110,21 @@ namespace C21_Ex02_01.Team.UI
                 byteOpponent -= i_MinimumRange;
                 string stringOpponent = $"{(ePlayerType) byteOpponent:G}";
                 return stringOpponent;
+            }
+        }
+
+        public class Responder
+        {
+            private readonly Engine.Engine r_Engine;
+
+            public Responder(Engine.Engine i_Engine)
+            {
+                r_Engine = i_Engine;
+            }
+
+            public void PrintBoard()
+            {
+                Console.Out.WriteLine(r_Engine.Database.Board);
             }
         }
     }

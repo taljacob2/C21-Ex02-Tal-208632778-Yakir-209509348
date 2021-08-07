@@ -86,7 +86,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             /// <summary>
             ///     Places a <see cref="HumanPlayer" /> as the first player,
             ///     and <i>may</i> place a <see cref="HumanPlayer" /> or a
-            /// <see cref="ComputerPlayer" /> as the second player.
+            ///     <see cref="ComputerPlayer" /> as the second player.
             /// </summary>
             private Player.Player[] Players { get; } =
                 new Player.Player[k_NumberOfPlayers];

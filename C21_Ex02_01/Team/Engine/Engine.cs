@@ -10,11 +10,17 @@ namespace C21_Ex02_01.Team.Engine
     {
         public Engine()
         {
-            MenuUI.RequestAndConstructEngineDatabase(); // UI request.
+            // Chose where to construct this Engine from:
+            MenuUI.Requester requester = new MenuUI.Requester(this); // UI.
+            requester.RequestAndConstructEngine();
         }
 
-        public static Database.Database Database { get; set; }
+        public Database.Database Database { get; set; }
 
-        public void RunGame() {}
+        public void RunGame()
+        {
+            MenuUI.Responder responder = new MenuUI.Responder(this); // UI.
+            responder.PrintBoard();
+        }
     }
 }
