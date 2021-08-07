@@ -30,7 +30,14 @@ namespace C21_Ex02_01.Team.Engine
 
         private void playTurn()
         {
+            ResponderService.PrintBoard();
             Database.Players.PlayTurn();
+
+            /*
+             * TODO: after playing the turn:
+             * 1. Check for algorithm win here <-.
+             * 2. Print Response here <-.        
+             */
         }
     }
 }
