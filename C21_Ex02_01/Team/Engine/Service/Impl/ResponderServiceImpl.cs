@@ -16,7 +16,7 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             r_Responder = new ConsoleUI.Responder(i_Engine);
         }
 
-        public void PrintEngineToConsoleUI()
+        public void PrintBoard()
         {
             r_Responder.PrintBoardWithScreenClearBeforePrint();
         }

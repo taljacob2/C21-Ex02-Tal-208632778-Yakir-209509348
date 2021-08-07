@@ -2,6 +2,6 @@
 {
     public interface IResponderService
     {
-        void PrintEngineToConsoleUI();
+        void PrintBoard();
     }
 }

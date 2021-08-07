@@ -24,7 +24,7 @@ namespace C21_Ex02_01.Team.Engine
 
         public void RunGame()
         {
-            ResponderService.PrintEngineToConsoleUI();
+            ResponderService.PrintBoard();
         }
     }
 }
