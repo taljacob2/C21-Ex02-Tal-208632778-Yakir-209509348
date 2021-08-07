@@ -4,6 +4,7 @@ using System;
 using C21_Ex02_01.Team.Engine.Database;
 using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
+using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Players.Settings;
 using Ex02.ConsoleUtils;
@@ -112,6 +113,43 @@ namespace C21_Ex02_01.Team.UI
                 string stringOpponent = $"{(ePlayerType) byteOpponent:G}";
                 return stringOpponent;
             }
+
+            public void RequestChosenColumnHumanPlayer(
+                HumanPlayer io_HumanPlayer)
+            {
+                const byte k_MinimumRange = 0;
+                Database database = Engine.Database;
+                byte cols = database.Board.Cols;
+                string message =
+                    requestChosenColumnHumanPlayerMessage(io_HumanPlayer,
+                        k_MinimumRange, database);
+
+                byte chosenColumn =
+                    Convert(message, k_MinimumRange, cols);
+                io_HumanPlayer.ChosenColumn = chosenColumn;
+            }
+
+            private static string requestChosenColumnHumanPlayerMessage(
+                HumanPlayer i_HumanPlayer, byte i_MinimumRange,
+                Database i_Database)
+            {
+                if (i_HumanPlayer == null)
+                {
+                    throw new ArgumentNullException(nameof(i_HumanPlayer));
+                }
+
+                if (i_Database == null)
+                {
+                    throw new ArgumentNullException(nameof(i_Database));
+                }
+
+                string range =
+                    $"A number between {i_MinimumRange} to {i_Database.Board.Cols},";
+                string title = $"Player {i_HumanPlayer.ID}, it's your turn.";
+                string message = title +
+                                 $"Press {range} to insert a coin to that column.";
+                return message;
+            }
         }
 
         public class Responder
@@ -123,7 +161,7 @@ namespace C21_Ex02_01.Team.UI
                 r_Engine = i_Engine;
             }
 
-            public void PrintBoard()
+            private void printBoard()
             {
                 Console.Out.WriteLine(r_Engine.Database.Board);
             }
@@ -131,7 +169,7 @@ namespace C21_Ex02_01.Team.UI
             public void PrintBoardWithScreenClearBeforePrint()
             {
                 Screen.Clear();
-                PrintBoard();
+                printBoard();
             }
         }
     }

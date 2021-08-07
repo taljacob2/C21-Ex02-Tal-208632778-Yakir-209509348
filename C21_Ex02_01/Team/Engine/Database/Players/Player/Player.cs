@@ -20,9 +20,5 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player
 
 
         public abstract void PlayTurn();
-
-        /// <summary />
-        /// <returns> Index byte of column chosen.</returns>
-        protected abstract byte ChooseColumn();
     }
 }

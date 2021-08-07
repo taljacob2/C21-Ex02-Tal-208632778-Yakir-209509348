@@ -36,6 +36,11 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             return stringBuilder.ToString();
         }
 
+        public void InsertCoin()
+        {
+            throw new NotImplementedException(); // TODO: need to implement.
+        }
+
         private struct RowAppender
         {
             private readonly Board r_Board;
