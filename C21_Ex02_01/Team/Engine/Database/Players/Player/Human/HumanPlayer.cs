@@ -18,7 +18,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
         {
             r_RequesterService.ChooseColumnAsHumanPlayer(this);
 
-            Database database = Engine.GetInstance().Database;
+            Database database = Engine.Database;
             database.Board.InsertCoin(ChosenColumn, Char);
         }
     }

@@ -10,10 +10,10 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
     {
         private readonly ConsoleUI.Responder r_Responder;
 
-        public ResponderServiceImpl(Engine i_Engine)
+        public ResponderServiceImpl()
         {
             // UI: Choose whom to respond the Engine:
-            r_Responder = new ConsoleUI.Responder(i_Engine);
+            r_Responder = new ConsoleUI.Responder();
         }
 
         public void PrintBoard()

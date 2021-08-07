@@ -12,31 +12,19 @@ namespace C21_Ex02_01.Team.Engine
     /// </summary>
     public class Engine
     {
-        // private static Engine s_Instance;
-
         public Engine()
         {
             // Caution: the order here is important:
             RequesterService = new RequesterServiceImpl(this);
             RequesterService.ConstructEngine();
-            ResponderService = new ResponderServiceImpl(this);
+            ResponderService = new ResponderServiceImpl();
         }
 
-        public Database.Database Database { get; set; }
+        public static Database.Database Database { get; set; }
 
-        public static IRequesterService RequesterService { get; set; }
+        public static IRequesterService RequesterService { get; private set; }
 
-        public static IResponderService ResponderService { get; set; }
-
-        // public static Engine GetInstance()
-        // {
-        //     if (s_Instance == null)
-        //     {
-        //         s_Instance = new Engine();
-        //     }
-        //
-        //     return s_Instance;
-        // }
+        public static IResponderService ResponderService { get; private set; }
 
         public void RunGame()
         {

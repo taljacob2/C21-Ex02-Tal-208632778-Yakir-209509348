@@ -54,7 +54,7 @@ namespace C21_Ex02_01.Team.UI
                     new Players(
                         new Settings(i_PlayerType));
 
-                Engine.Database = new Database(board, players);
+                Team.Engine.Engine.Database = new Database(board, players);
             }
 
             private static void requestBoard(out byte o_Rows, out byte o_Cols)
@@ -118,7 +118,7 @@ namespace C21_Ex02_01.Team.UI
                 HumanPlayer io_HumanPlayer)
             {
                 const byte k_MinimumRange = 0;
-                Database database = Engine.Database;
+                Database database = Team.Engine.Engine.Database;
                 byte cols = database.Board.Cols;
                 string message =
                     requestChosenColumnHumanPlayerMessage(io_HumanPlayer,
@@ -154,16 +154,9 @@ namespace C21_Ex02_01.Team.UI
 
         public class Responder
         {
-            private readonly Engine.Engine r_Engine;
-
-            public Responder(Engine.Engine i_Engine)
-            {
-                r_Engine = i_Engine;
-            }
-
             private void printBoard()
             {
-                Console.Out.WriteLine(r_Engine.Database.Board);
+                Console.Out.WriteLine(Engine.Engine.Database.Board);
             }
 
             public void PrintBoardWithScreenClearBeforePrint()
