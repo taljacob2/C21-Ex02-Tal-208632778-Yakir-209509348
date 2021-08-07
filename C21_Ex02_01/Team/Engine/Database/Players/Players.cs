@@ -18,8 +18,8 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
     {
         private const byte k_NumberOfPlayers = 2;
 
-        private readonly PlayersGetter r_PlayersGetter =
-            new PlayersGetter();
+        private readonly PlayersGetterNestedService r_PlayersGetterNestedService
+            = new PlayersGetterNestedService();
 
         public Players(Settings.Settings i_Settings)
         {
@@ -28,7 +28,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         }
 
         // Set arbitrarily the starting player.
-        public eID CurrentPlayerTurn { get; set; } = eID.One;
+        public static eID CurrentPlayerTurn { get; set; } = eID.One;
 
         public Settings.Settings Settings { get; }
 
@@ -40,12 +40,13 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             switch (Settings.OpponentPlayerType)
             {
                 case ePlayerType.Human:
-                    r_PlayersGetter.GetRefPlayerTwo() = new HumanPlayer(
-                        eID.Two,
-                        k_PlayerTwoChar);
+                    r_PlayersGetterNestedService.GetRefPlayerTwo() =
+                        new HumanPlayer(
+                            eID.Two,
+                            k_PlayerTwoChar);
                     break;
                 case ePlayerType.Computer:
-                    r_PlayersGetter.GetRefPlayerTwo() =
+                    r_PlayersGetterNestedService.GetRefPlayerTwo() =
                         new ComputerPlayer(
                             eID.Two,
                             k_PlayerTwoChar);
@@ -54,14 +55,21 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
                     throw new ArgumentOutOfRangeException();
             }
 
-            r_PlayersGetter.GetRefPlayerOne() = new HumanPlayer(eID.One,
+            r_PlayersGetterNestedService.GetRefPlayerOne() = new HumanPlayer(
+                eID.One,
                 k_PlayerOneChar);
         }
 
-        public void PlayTurn(Player.Player i_Player)
+        public void PlayTurn()
         {
-            i_Player.PlayTurn();
-            switchCurrentPlayerTurn(i_Player);
+            Player.Player currentPlayer = GetCurrentPlayer();
+            currentPlayer.PlayTurn();
+            switchCurrentPlayerTurn(currentPlayer);
+        }
+
+        protected Player.Player GetCurrentPlayer()
+        {
+            return r_PlayersGetterNestedService.GetCurrentPlayer();
         }
 
         private void switchCurrentPlayerTurn(
@@ -80,7 +88,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             }
         }
 
-        private class PlayersGetter
+        private class PlayersGetterNestedService
         {
             /// <summary>
             ///     Places a <see cref="HumanPlayer" /> as the first player,
@@ -100,6 +108,11 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             internal ref Player.Player GetRefPlayerTwo()
             {
                 return ref Players[(byte) eID.Two];
+            }
+
+            internal ref Player.Player GetCurrentPlayer()
+            {
+                return ref Players[(byte) CurrentPlayerTurn];
             }
         }
     }
