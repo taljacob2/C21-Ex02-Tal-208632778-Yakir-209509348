@@ -12,7 +12,7 @@ using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
 
 namespace C21_Ex02_01.Team.UI
 {
-    public class MenuUI
+    public class ConsoleUI
     {
         public class Requester
         {

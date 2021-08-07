@@ -59,7 +59,7 @@
         <Compile Include="Team\Engine\Database\Players\Settings\PlayersSettings.cs" />
         <Compile Include="Team\Engine\Engine.cs" />
         <Compile Include="Team\UI\InputUtil\InputUtil.cs" />
-        <Compile Include="Team\UI\Menu\MenuUI.cs" />
+        <Compile Include="Team\UI\Console\ConsoleUI.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

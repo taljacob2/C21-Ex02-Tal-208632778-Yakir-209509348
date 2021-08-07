@@ -10,16 +10,29 @@ namespace C21_Ex02_01.Team.Engine
     {
         public Engine()
         {
-            // Choose where to construct this Engine from:
-            MenuUI.Requester requester = new MenuUI.Requester(this); // UI.
-            requester.RequestAndConstructEngine();
+            constructEngineFromConsoleUI();
         }
 
         public Database.Database Database { get; set; }
 
+        private void constructEngineFromConsoleUI()
+        {
+            // Choose from which platform to construct this Engine:
+            ConsoleUI.Requester
+                requester = new ConsoleUI.Requester(this); // UI.
+            requester.RequestAndConstructEngine();
+        }
+
         public void RunGame()
         {
-            MenuUI.Responder responder = new MenuUI.Responder(this); // UI.
+            PrintEngineToConsoleUI();
+        }
+
+        public void PrintEngineToConsoleUI()
+        {
+            // Choose whom to respond this Engine:
+            ConsoleUI.Responder
+                responder = new ConsoleUI.Responder(this); // UI.
             responder.PrintBoard();
         }
     }
