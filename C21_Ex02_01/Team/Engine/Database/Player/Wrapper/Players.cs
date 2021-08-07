@@ -90,14 +90,14 @@ namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper
 
             internal ref Player GetRefPlayerOne()
             {
-                return ref Players[0];
+                return ref Players[(int) eID.One];
             }
 
             /// <summary />
             /// <returns>Note: May return a <see cref="Computer" /></returns>
             internal ref Player GetRefPlayerTwo()
             {
-                return ref Players[1];
+                return ref Players[(int) eID.Two];
             }
         }
     }
