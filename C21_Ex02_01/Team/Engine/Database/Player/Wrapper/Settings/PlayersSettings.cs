@@ -6,9 +6,9 @@ using C21_Ex02_01.Team.Engine.Database.Player.Type;
 
 namespace C21_Ex02_01.Team.Engine.Database.Player.Wrapper.Settings
 {
-    public class PlayersWrapperSettings
+    public class PlayersSettings
     {
-        public PlayersWrapperSettings(ePlayerType i_OpponentType)
+        public PlayersSettings(ePlayerType i_OpponentType)
         {
             OpponentType = i_OpponentType;
         }

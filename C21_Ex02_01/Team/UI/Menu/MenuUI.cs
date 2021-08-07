@@ -36,11 +36,11 @@ namespace C21_Ex02_01.Team.UI
             {
                 // Initialize Database: when its members are readonly:
                 Board board = new Board(i_Rows, i_Cols);
-                PlayersWrapper playersWrapper =
-                    new PlayersWrapper(
-                        new PlayersWrapperSettings(i_PlayerType));
+                Players players =
+                    new Players(
+                        new PlayersSettings(i_PlayerType));
 
-                Engine.Engine.Database = new Database(board, playersWrapper);
+                Engine.Engine.Database = new Database(board, players);
             }
 
             private static void requestBoard(out byte o_Rows, out byte o_Cols)

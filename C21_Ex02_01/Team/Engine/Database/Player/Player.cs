@@ -1,13 +1,23 @@
-﻿namespace C21_Ex02_01.Team.Engine.Database.Player
+﻿#region
+
+using C21_Ex02_01.Team.Engine.Database.Player.ID;
+
+#endregion
+
+namespace C21_Ex02_01.Team.Engine.Database.Player
 {
     public abstract class Player
     {
-        protected Player(char i_PlayerChar)
+        protected Player(eID i_ID, char i_Char)
         {
-            PlayerChar = i_PlayerChar;
+            Char = i_Char;
+            ID = i_ID;
         }
 
-        public char PlayerChar { get; }
+        public eID ID { get; }
+
+        public char Char { get; }
+
 
         public abstract void PlayTurn();
 

@@ -52,11 +52,11 @@
         <Compile Include="Team\Engine\Database\Database.cs" />
         <Compile Include="Team\Engine\Database\Player\Computer\ComputerPlayer.cs" />
         <Compile Include="Team\Engine\Database\Player\Human\HumanPlayer.cs" />
-        <Compile Include="Team\Engine\Database\Player\Turn\PlayerTurn.cs" />
+        <Compile Include="Team\Engine\Database\Player\ID\eID.cs" />
         <Compile Include="Team\Engine\Database\Player\Type\ePlayerType.cs" />
-        <Compile Include="Team\Engine\Database\Player\Wrapper\PlayersWrapper.cs" />
+        <Compile Include="Team\Engine\Database\Player\Wrapper\Players.cs" />
         <Compile Include="Team\Engine\Database\Player\Player.cs" />
-        <Compile Include="Team\Engine\Database\Player\Wrapper\Settings\PlayersWrapperSettings.cs" />
+        <Compile Include="Team\Engine\Database\Player\Wrapper\Settings\PlayersSettings.cs" />
         <Compile Include="Team\Engine\Engine.cs" />
         <Compile Include="Team\UI\InputUtil\InputUtil.cs" />
         <Compile Include="Team\UI\Menu\MenuUI.cs" />
