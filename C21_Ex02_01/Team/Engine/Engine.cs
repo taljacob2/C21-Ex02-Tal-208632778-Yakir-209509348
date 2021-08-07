@@ -10,7 +10,7 @@ namespace C21_Ex02_01.Team.Engine
     {
         public Engine()
         {
-            // Chose where to construct this Engine from:
+            // Choose where to construct this Engine from:
             MenuUI.Requester requester = new MenuUI.Requester(this); // UI.
             requester.RequestAndConstructEngine();
         }
