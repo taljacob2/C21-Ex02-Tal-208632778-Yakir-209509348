@@ -10,7 +10,7 @@ namespace C21_Ex02_01.Team.Engine
     {
         public Engine()
         {
-            MenuUI.RequestAndConstructEngineDatabase();
+            MenuUI.RequestAndConstructEngineDatabase(); // UI request.
         }
 
         public static Database.Database Database { get; set; }
