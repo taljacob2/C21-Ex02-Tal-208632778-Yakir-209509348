@@ -13,18 +13,13 @@ using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
 
 namespace C21_Ex02_01.Team.UI
 {
-    public static partial class MenuUI
+    public static class MenuUI
     {
-        public static void RunGame()
+        public static void RequestAndConstructDatabase()
         {
-            requestAndConstructDatabase();
-        }
-
-        private static void requestAndConstructDatabase()
-        {
-            requestDatabase(out byte rows, out byte cols,
-                out eOpponent opponent);
-            constructDatabase(rows, cols, opponent);
+            MenuUIRequester.RequestDatabase(out byte rows, out byte cols,
+                out ePlayerType opponent);
+            MenuUIRequester.ConstructDatabase(rows, cols, opponent);
         }
 
         private static void requestBoard(out byte o_Rows, out byte o_Cols)
@@ -42,62 +37,69 @@ namespace C21_Ex02_01.Team.UI
                 k_MaximumRange);
         }
 
-        private static void requestOpponentPlayer(out eOpponent o_Opponent)
+        private static void requestOpponentPlayer(out ePlayerType i_PlayerType)
         {
             const byte k_MinimumRange = 1;
             const byte k_MaximumRange = 2;
             string mainMessage =
-                requestOpponentPlayerMainMessage(k_MinimumRange,
+                MenuUIRequester.RequestOpponentPlayerMainMessage(
+                    k_MinimumRange,
                     k_MaximumRange);
 
-            string stringOpponent = requestOpponentPlayerToString(mainMessage,
-                k_MinimumRange, k_MaximumRange);
-            Enum.TryParse(stringOpponent, out o_Opponent);
-        }
-    }
-
-    public static partial class MenuUI
-    {
-        private static void requestDatabase(out byte io_Rows, out byte io_Cols,
-            out eOpponent io_Opponent)
-        {
-            requestBoard(out io_Rows, out io_Cols);
-            requestOpponentPlayer(out io_Opponent);
+            string stringOpponent =
+                MenuUIRequester.RequestOpponentPlayerToString(
+                    mainMessage,
+                    k_MinimumRange, k_MaximumRange);
+            Enum.TryParse(stringOpponent, out i_PlayerType);
         }
 
-        private static void constructDatabase(byte i_Rows, byte i_Cols,
-            eOpponent i_Opponent)
+        private static class MenuUIRequester
         {
-            // Initialize Database: when its members are readonly:
-            Board board = new Board(i_Rows, i_Cols);
-            PlayersWrapper playersWrapper =
-                new PlayersWrapper(new PlayersWrapperSettings(i_Opponent));
+            internal static void RequestDatabase(out byte io_Rows,
+                out byte io_Cols,
+                out ePlayerType i_PlayerType)
+            {
+                MenuUI.requestBoard(out io_Rows, out io_Cols);
+                MenuUI.requestOpponentPlayer(out i_PlayerType);
+            }
 
-            Engine.Engine.Database = new Database(board, playersWrapper);
-        }
+            internal static void ConstructDatabase(byte i_Rows, byte i_Cols,
+                ePlayerType i_PlayerType)
+            {
+                // Initialize Database: when its members are readonly:
+                Board board = new Board(i_Rows, i_Cols);
+                PlayersWrapper playersWrapper =
+                    new PlayersWrapper(
+                        new PlayersWrapperSettings(i_PlayerType));
 
-        private static string requestOpponentPlayerToString(
-            string i_MainMessage,
-            byte i_MinimumRange,
-            byte i_MaximumRange)
-        {
-            byte byteOpponent =
-                Convert(i_MainMessage, i_MinimumRange, i_MaximumRange);
-            byteOpponent -= i_MinimumRange;
-            string stringOpponent = $"{(eOpponent) byteOpponent:G}";
-            return stringOpponent;
-        }
+                Engine.Engine.Database = new Database(board, playersWrapper);
+            }
 
-        private static string requestOpponentPlayerMainMessage(
-            byte i_MinimumRange, byte i_MaximumRange)
-        {
-            string titleMessage =
-                "Please choose an opponent." + Environment.NewLine;
-            string humanMessage = $"{i_MinimumRange}. {eOpponent.Human}" +
-                                  Environment.NewLine;
-            string computerMessage = $"{i_MaximumRange}. {eOpponent.Computer}";
-            string mainMessage = titleMessage + humanMessage + computerMessage;
-            return mainMessage;
+            internal static string RequestOpponentPlayerToString(
+                string i_MainMessage,
+                byte i_MinimumRange,
+                byte i_MaximumRange)
+            {
+                byte byteOpponent =
+                    Convert(i_MainMessage, i_MinimumRange, i_MaximumRange);
+                byteOpponent -= i_MinimumRange;
+                string stringOpponent = $"{(ePlayerType) byteOpponent:G}";
+                return stringOpponent;
+            }
+
+            internal static string RequestOpponentPlayerMainMessage(
+                byte i_MinimumRange, byte i_MaximumRange)
+            {
+                string titleMessage =
+                    "Please choose an opponent." + Environment.NewLine;
+                string humanMessage = $"{i_MinimumRange}. {ePlayerType.Human}" +
+                                      Environment.NewLine;
+                string computerMessage =
+                    $"{i_MaximumRange}. {ePlayerType.Computer}";
+                string mainMessage =
+                    titleMessage + humanMessage + computerMessage;
+                return mainMessage;
+            }
         }
     }
 }

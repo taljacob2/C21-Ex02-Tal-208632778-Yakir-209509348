@@ -1,9 +1,16 @@
 ﻿namespace C21_Ex02_01.Team.Engine.Database.Player
 {
-    public interface IPlayer
+    public abstract class Player
     {
-        void PlayTurn();
+        protected Player(char i_PlayerChar)
+        {
+            PlayerChar = i_PlayerChar;
+        }
 
-        byte ChooseColumn();
+        public char PlayerChar { get; }
+
+        public abstract void PlayTurn();
+
+        public abstract byte ChooseColumn();
     }
 }

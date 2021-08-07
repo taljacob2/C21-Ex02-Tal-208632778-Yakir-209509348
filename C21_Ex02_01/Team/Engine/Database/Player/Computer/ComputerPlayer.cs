@@ -6,14 +6,16 @@ using System;
 
 namespace C21_Ex02_01.Team.Engine.Database.Player.Computer
 {
-    public class ComputerPlayer : IPlayer
+    public class ComputerPlayer : Player
     {
-        public void PlayTurn()
+        public ComputerPlayer(char i_PlayerChar) : base(i_PlayerChar) {}
+
+        public override void PlayTurn()
         {
             throw new NotImplementedException();
         }
 
-        public byte ChooseColumn()
+        public override byte ChooseColumn()
         {
             throw new NotImplementedException();
         }
