@@ -30,10 +30,10 @@ namespace C21_Ex02_01.Team.Engine
 
         public static IResponderService ResponderService { get; }
 
-        public static IAlgorithmActuatorService AlgorithmActuatorService
+        private static IAlgorithmActuatorService AlgorithmActuatorService
         {
             get;
-            private set;
+            set;
         }
 
         public void RunGame()
@@ -47,26 +47,33 @@ namespace C21_Ex02_01.Team.Engine
             {
                 ResponderService.PrintBoard();
 
-                if (!Database.Board.IsFull())
+                if (Database.Board.IsFull())
                 {
-                    Database.Players.PlayTurn();
-                    if (isContinuePlay())
-                    {
-                        continue;
-                    }
+                    // It is a TIE.
 
                     /*
                      * TODO: It is a TIE:
                      * 1. Increase `Score` of both Players
                      * 2. Respond UI here <- it is a tie.
                      */
-                    return; // if (isFull == true)
+                    break;
                 }
+
+                Database.Players.PlayTurn();
+
+                if (isNoWinnerYet())
+                {
+                    continue;
+                }
+
+                return;
             }
         }
 
-        private static bool isContinuePlay()
+        private static bool isNoWinnerYet()
         {
+            bool returnValue = false;
+
             // Check for algorithm WIN here:
             Player winnerPlayer =
                 /*
@@ -75,15 +82,18 @@ namespace C21_Ex02_01.Team.Engine
                  * with `null` if you want to skip the algorithm, for testing purposes.  
                  */
                 AlgorithmActuatorService.GetWinnerPlayer();
-
-            // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
+                // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
+                
             if (winnerPlayer == null)
             {
-                return true;
+                returnValue = true;
+            }
+            else
+            {
+                printResponseAfterWin(winnerPlayer);
             }
 
-            printResponseAfterWin(winnerPlayer);
-            return false;
+            return returnValue;
         }
 
         private static void printResponseAfterWin(Player i_WinnerPlayer)
