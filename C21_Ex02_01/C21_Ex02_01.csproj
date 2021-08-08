@@ -62,7 +62,7 @@
         <Compile Include="Team\Engine\Database\Players\Settings\Settings.cs" />
         <Compile Include="Team\Engine\Engine.cs" />
         <Compile Include="Team\Engine\Service\IAlgorithmActuatorService.cs" />
-        <Compile Include="Team\Engine\Service\Impl\IAlgorithmActuatorService.cs" />
+        <Compile Include="Team\Engine\Service\Impl\AlgorithmActuatorServiceImpl.cs" />
         <Compile Include="Team\Engine\Service\Impl\RequesterServiceImpl.cs" />
         <Compile Include="Team\Engine\Service\Impl\ResponderServiceImpl.cs" />
         <Compile Include="Team\Engine\Service\IRequesterService.cs" />
