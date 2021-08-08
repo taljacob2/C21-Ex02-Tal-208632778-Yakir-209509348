@@ -167,6 +167,18 @@ namespace C21_Ex02_01.Team.UI
                     $"Congrats, the winner is: Player {i_WinnerPlayer.ID}!");
                 Console.Out.WriteLine("Good Game!");
             }
+
+            public void PrintScores(Players i_Players)
+            {
+                Player playerOne = i_Players.GetPlayerOne();
+                Player playerTwo = i_Players.GetPlayerTwo();
+                string playerOneScoreString =
+                    $"Player {playerOne.ID} : {playerOne.Score}";
+                string playerTwoScoreString =
+                    $"Player {playerTwo.ID} : {playerTwo.Score}";
+                Console.Out.WriteLine(
+                    $"Scores are: [{playerOneScoreString} - {playerTwoScoreString}]");
+            }
         }
     }
 }

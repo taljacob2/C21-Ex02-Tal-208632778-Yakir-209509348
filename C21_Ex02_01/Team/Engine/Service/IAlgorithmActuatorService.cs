@@ -11,7 +11,7 @@ namespace C21_Ex02_01.Team.Engine.Service
         /// <summary>
         ///     Checks if there is a valid Series-of-Coins in the Board.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Winner player if exists. Else, returns null.</returns>
         Player GetWinnerPlayer();
     }
 }

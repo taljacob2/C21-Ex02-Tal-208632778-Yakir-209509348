@@ -88,6 +88,16 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             }
         }
 
+        public Player.Player GetPlayerOne()
+        {
+            return r_PlayersGetterNestedService.GetRefPlayerOne();
+        }
+        
+        public Player.Player GetPlayerTwo()
+        {
+            return r_PlayersGetterNestedService.GetRefPlayerTwo();
+        }
+
         private class PlayersGetterNestedService
         {
             /// <summary>

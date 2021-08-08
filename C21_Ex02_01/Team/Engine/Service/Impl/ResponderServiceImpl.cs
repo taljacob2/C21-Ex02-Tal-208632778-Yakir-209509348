@@ -1,5 +1,6 @@
 ﻿#region
 
+using C21_Ex02_01.Team.Engine.Database.Players;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
 using C21_Ex02_01.Team.UI;
 
@@ -25,6 +26,11 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         public void PrintWinner(Player i_WinnerPlayer)
         {
             r_Responder.PrintWinner(i_WinnerPlayer);
+        }
+
+        public void PrintScores(Players i_Players)
+        {
+            r_Responder.PrintScores(i_Players);
         }
     }
 }
