@@ -32,5 +32,10 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         {
             r_Responder.PrintScores(i_Players);
         }
+
+        public void PrintMessage(string i_Message)
+        {
+            r_Responder.PrintMessage(i_Message);
+        }
     }
 }

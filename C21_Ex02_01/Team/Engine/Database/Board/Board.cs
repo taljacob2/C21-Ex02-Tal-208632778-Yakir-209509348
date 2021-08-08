@@ -1,6 +1,8 @@
 ﻿#region
 
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 using C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper;
 
@@ -19,12 +21,27 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             FillCoins(k_EmptyCoin);
         }
 
+        /// <summary>
+        ///     Inserts a Coin into a column, while checking that the column is not full.
+        /// </summary>
+        /// <param name="i_ColumnToInsertTo">The column to insert the Coin into.</param>
+        /// <param name="i_CharCoin">Char of a coin, to insert into the column.</param>
+        /// <exception cref="IOException">In case the column is full.</exception>
         public void InsertCoin(byte i_ColumnToInsertTo, char i_CharCoin)
         {
             // Update bottommost empty element in column:
             Coin.Coin emptyElementInColumn =
                 GetBottommostEmptyElementInColumn(i_ColumnToInsertTo);
-            emptyElementInColumn.Char = i_CharCoin;
+
+            if (emptyElementInColumn != null)
+            {
+                emptyElementInColumn.Char = i_CharCoin;
+            }
+            else
+            {
+                throw new IOException(
+                    $"The column: {i_ColumnToInsertTo} is full.");
+            }
         }
 
         public void FillCoins(char i_CharToFill)
@@ -43,12 +60,13 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
         /// <summary>
         ///     Returns the bottommost `empty` Coin in the column, if exists.
         ///     (Its `Char` should be <see cref="k_EmptyCoin" />).
-        ///     In case the column is full, the method will return a `nonEmpty` Coin.
+        ///     In case the column is full, the method will return `null`.
         /// </summary>
         /// <param name="i_Column">The column to get its bottommost empty element.</param>
         /// <returns>The bottommost empty element in the column.</returns>
         public new Coin.Coin GetBottommostEmptyElementInColumn(byte i_Column)
         {
+            Coin.Coin returnValue = null;
             Coin.Coin coinInColumn = null;
 
             // Scans from bottom to top.
@@ -61,7 +79,14 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
                 }
             }
 
-            return coinInColumn;
+            Debug.Assert(coinInColumn != null,
+                nameof(coinInColumn) + " != null");
+            if (coinInColumn.Char == k_EmptyCoin)
+            {
+                returnValue = coinInColumn;
+            }
+
+            return returnValue;
         }
 
         public override string ToString()

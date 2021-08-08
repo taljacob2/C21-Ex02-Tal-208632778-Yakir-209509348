@@ -179,6 +179,11 @@ namespace C21_Ex02_01.Team.UI
                 Console.Out.WriteLine(
                     $"Scores are: [{playerOneScoreString} - {playerTwoScoreString}]");
             }
+
+            public void PrintMessage(string i_Message)
+            {
+                Console.Out.WriteLine(i_Message);
+            }
         }
     }
 }

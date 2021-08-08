@@ -10,12 +10,17 @@ namespace C21_Ex02_01.Team.Engine
 {
     public class Engine
     {
+        static Engine()
+        {
+            // Caution: `ResponderService` MUST be defined HERE:
+            ResponderService = new ResponderServiceImpl();
+        }
+
         public Engine()
         {
             // Caution: the order here is important:
             RequesterService = new RequesterServiceImpl();
             RequesterService.ConstructEngine();
-            ResponderService = new ResponderServiceImpl();
             AlgorithmActuatorService = new AlgorithmActuatorServiceImpl();
         }
 
@@ -23,7 +28,7 @@ namespace C21_Ex02_01.Team.Engine
 
         public static IRequesterService RequesterService { get; private set; }
 
-        public static IResponderService ResponderService { get; private set; }
+        public static IResponderService ResponderService { get; }
 
         public static IAlgorithmActuatorService AlgorithmActuatorService
         {
