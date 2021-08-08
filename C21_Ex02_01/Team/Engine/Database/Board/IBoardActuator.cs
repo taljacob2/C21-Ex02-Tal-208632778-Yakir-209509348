@@ -5,5 +5,7 @@
         void InsertCoin(byte i_ColumnIndexToInsertTo, char i_CharCoin);
 
         void FillCoins(char i_CharToFill);
+
+        bool IsFull();
     }
 }

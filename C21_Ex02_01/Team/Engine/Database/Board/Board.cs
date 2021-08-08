@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using C21_Ex02_01.Team.Engine.Database.Board.Coin;
 using C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper;
 
 #endregion
@@ -14,11 +15,10 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
     {
         private const char k_Delimiter = '|';
         private const char k_RowSeparator = '=';
-        private const char k_EmptyCoin = ' ';
 
         public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols)
         {
-            FillCoins(k_EmptyCoin);
+            FillCoins(Coin.Coin.k_EmptyCoin);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
         {
             // Update bottommost empty element in column:
             Coin.Coin emptyElementInColumn =
-                GetBottommostEmptyElementInColumn(i_ColumnIndexToInsertTo);
+                getBottommostEmptyElementInColumn(i_ColumnIndexToInsertTo);
 
             if (emptyElementInColumn != null)
             {
@@ -57,14 +57,43 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             }
         }
 
+        // ReSharper disable once MethodTooLong
+        public bool IsFull()
+        {
+            bool returnValue = true;
+
+            // Scans from top to bottom, to increase return value speed.
+            for (byte i = 0; i < Rows; i++)
+            {
+                for (byte j = 0; j < Cols; j++)
+                {
+                    Coin.Coin currentCoin = Matrix[i, j];
+                    if (!currentCoin.IsEmpty())
+                    {
+                        continue;
+                    }
+
+                    returnValue = false;
+                    break;
+                }
+
+                if (returnValue == false)
+                {
+                    break;
+                }
+            }
+
+            return returnValue;
+        }
+
         /// <summary>
         ///     Returns the bottommost `empty` Coin in the column, if exists.
-        ///     (Its `Char` should be <see cref="k_EmptyCoin" />).
+        ///     (Its `Char` should be <see cref="Coin.k_EmptyCoin" />).
         ///     In case the column is full, the method will return `null`.
         /// </summary>
         /// <param name="i_ColumnIndex">The column to get its bottommost empty element.</param>
         /// <returns>The bottommost empty element in the column.</returns>
-        public new Coin.Coin GetBottommostEmptyElementInColumn(
+        private Coin.Coin getBottommostEmptyElementInColumn(
             byte i_ColumnIndex)
         {
             Coin.Coin returnValue = null;
@@ -74,7 +103,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             for (int i = Rows - 1; i >= 0; i--)
             {
                 coinInColumn = Matrix[i, i_ColumnIndex];
-                if (coinInColumn.Char == k_EmptyCoin)
+                if (coinInColumn.Char == Coin.Coin.k_EmptyCoin)
                 {
                     break;
                 }
@@ -82,7 +111,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
 
             Debug.Assert(coinInColumn != null,
                 nameof(coinInColumn) + " != null");
-            if (coinInColumn.Char == k_EmptyCoin)
+            if (coinInColumn.Char == Coin.Coin.k_EmptyCoin)
             {
                 returnValue = coinInColumn;
             }

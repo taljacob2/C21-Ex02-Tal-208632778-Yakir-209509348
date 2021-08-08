@@ -2,6 +2,8 @@
 {
     public class Coin
     {
+        public const char k_EmptyCoin = ' ';
+
         public Coin(Coordinate.Coordinate i_Coordinate, char i_Char)
         {
             Coordinate = i_Coordinate;
@@ -15,6 +17,11 @@
         public override string ToString()
         {
             return $"{Char}";
+        }
+
+        public bool IsEmpty()
+        {
+            return Char == k_EmptyCoin;
         }
     }
 }

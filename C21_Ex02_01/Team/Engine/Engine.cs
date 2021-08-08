@@ -48,8 +48,12 @@ namespace C21_Ex02_01.Team.Engine
                 ResponderService.PrintBoard();
 
                 // TODO: need to implement: continue only if board is not full
-                Database.Players.PlayTurn();
+                if (Database.Board.IsFull())
+                {
+                    return;
+                }
 
+                Database.Players.PlayTurn();
                 if (isContinuePlay())
                 {
                     continue;
@@ -67,8 +71,9 @@ namespace C21_Ex02_01.Team.Engine
                  * Note: you may *replace* the below:`AlgorithmActuatorService.GetWinnerPlayer();`
                  * with `null` if you want to skip the algorithm, for testing purposes.  
                  */
-                AlgorithmActuatorService.GetWinnerPlayer(); 
-                // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
+                AlgorithmActuatorService.GetWinnerPlayer();
+
+            // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
             if (winnerPlayer == null)
             {
                 return true;
