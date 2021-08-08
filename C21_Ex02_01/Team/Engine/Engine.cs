@@ -34,10 +34,10 @@ namespace C21_Ex02_01.Team.Engine
 
         public void RunGame()
         {
-            playTurn();
+            whileRunGame();
         }
 
-        private void playTurn()
+        private void whileRunGame()
         {
             while (true)
             {
