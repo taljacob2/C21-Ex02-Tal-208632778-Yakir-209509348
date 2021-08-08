@@ -43,16 +43,11 @@ namespace C21_Ex02_01.Team.Engine
                 ResponderService.PrintBoard();
                 Database.Players.PlayTurn();
 
-                // Check for algorithm WIN here:
-                Player winnerPlayer =
-                    AlgorithmActuatorService.GetWinnerPlayer();
-                if (winnerPlayer == null)
+                if (isContinuePlay())
                 {
                     continue;
                 }
 
-                ResponderService.PrintWinner(winnerPlayer); // UI Response.
-                ResponderService.PrintScores(Database.Players); // UI Response.
                 return;
 
                 /*
@@ -61,6 +56,26 @@ namespace C21_Ex02_01.Team.Engine
                  * 2. Print Response.
                  */
             }
+        }
+
+        private static bool isContinuePlay()
+        {
+            // Check for algorithm WIN here:
+            Player winnerPlayer =
+                AlgorithmActuatorService.GetWinnerPlayer();
+            if (winnerPlayer == null)
+            {
+                return true;
+            }
+
+            printResponseAfterWin(winnerPlayer);
+            return false;
+        }
+
+        private static void printResponseAfterWin(Player i_WinnerPlayer)
+        {
+            ResponderService.PrintWinner(i_WinnerPlayer); // UI Response.
+            ResponderService.PrintScores(Database.Players); // UI Response.
         }
     }
 }
