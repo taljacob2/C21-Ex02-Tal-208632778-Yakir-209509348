@@ -61,8 +61,8 @@
         <Compile Include="Team\Engine\Database\Players\Player\Type\eType.cs" />
         <Compile Include="Team\Engine\Database\Players\Settings\Settings.cs" />
         <Compile Include="Team\Engine\Engine.cs" />
-        <Compile Include="Team\Engine\Service\IAlgorithmActuatorService.cs" />
-        <Compile Include="Team\Engine\Service\Impl\AlgorithmActuatorServiceImpl.cs" />
+        <Compile Include="Team\Engine\Service\IActuatorService.cs" />
+        <Compile Include="Team\Engine\Service\Impl\ActuatorServiceImpl.cs" />
         <Compile Include="Team\Engine\Service\Impl\RequesterServiceImpl.cs" />
         <Compile Include="Team\Engine\Service\Impl\ResponderServiceImpl.cs" />
         <Compile Include="Team\Engine\Service\IRequesterService.cs" />

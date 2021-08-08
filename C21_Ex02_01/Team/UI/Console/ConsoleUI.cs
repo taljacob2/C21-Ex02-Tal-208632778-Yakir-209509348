@@ -184,6 +184,12 @@ namespace C21_Ex02_01.Team.UI
             {
                 Console.Out.WriteLine(i_Message);
             }
+
+            public void PrintTie()
+            {
+                Console.Out.WriteLine("It is a tie!");
+                Console.Out.WriteLine("Good Game!");
+            }
         }
     }
 }

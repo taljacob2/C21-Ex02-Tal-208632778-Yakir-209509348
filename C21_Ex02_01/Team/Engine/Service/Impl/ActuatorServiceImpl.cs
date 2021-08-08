@@ -9,7 +9,7 @@ using C21_Ex02_01.Team.Engine.Database.Players.Player;
 
 namespace C21_Ex02_01.Team.Engine.Service.Impl
 {
-    public class AlgorithmActuatorServiceImpl : IAlgorithmActuatorService
+    public class ActuatorServiceImpl : IActuatorService
     {
         private const byte k_Series = 4;
 
@@ -40,6 +40,15 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             // return returnValue;
 
             throw new NotImplementedException();
+        }
+
+        public void SetTie()
+        {
+            Player playerOne = r_Players.GetPlayerOne();
+            Player playerTwo = r_Players.GetPlayerTwo();
+
+            playerOne.Score++;
+            playerTwo.Score++;
         }
 
         private void setAsWinnerAndIncreaseScoreByOne(Player i_WinnerPlayer)

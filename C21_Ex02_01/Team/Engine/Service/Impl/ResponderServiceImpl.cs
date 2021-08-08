@@ -37,5 +37,10 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         {
             r_Responder.PrintMessage(i_Message);
         }
+
+        public void PrintTie()
+        {
+            r_Responder.PrintTie();
+        }
     }
 }

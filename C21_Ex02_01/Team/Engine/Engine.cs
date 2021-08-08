@@ -21,7 +21,7 @@ namespace C21_Ex02_01.Team.Engine
             // Caution: the order here is important:
             RequesterService = new RequesterServiceImpl();
             RequesterService.ConstructEngine(); // UI Request.
-            AlgorithmActuatorService = new AlgorithmActuatorServiceImpl();
+            ActuatorService = new ActuatorServiceImpl();
         }
 
         public static Database.Database Database { get; set; }
@@ -30,11 +30,7 @@ namespace C21_Ex02_01.Team.Engine
 
         public static IResponderService ResponderService { get; }
 
-        private static IAlgorithmActuatorService AlgorithmActuatorService
-        {
-            get;
-            set;
-        }
+        private static IActuatorService ActuatorService { get; set; }
 
         public void RunGame()
         {
@@ -50,17 +46,11 @@ namespace C21_Ex02_01.Team.Engine
                 if (Database.Board.IsFull())
                 {
                     // It is a TIE.
-
-                    /*
-                     * TODO: It is a TIE:
-                     * 1. Increase `Score` of both Players
-                     * 2. Respond UI here <- it is a tie.
-                     */
+                    setTie();
                     break;
                 }
 
                 Database.Players.PlayTurn();
-
                 if (isNoWinnerYet())
                 {
                     continue;
@@ -68,6 +58,12 @@ namespace C21_Ex02_01.Team.Engine
 
                 return;
             }
+        }
+
+        private void setTie()
+        {
+            ActuatorService.SetTie(); // Database Update.
+            ResponderService.PrintTie(); // UI Response.
         }
 
         private static bool isNoWinnerYet()
@@ -81,9 +77,10 @@ namespace C21_Ex02_01.Team.Engine
                  * Note: you may *replace* the below:`AlgorithmActuatorService.GetWinnerPlayer();`
                  * with `null` if you want to skip the algorithm, for testing purposes.  
                  */
-                AlgorithmActuatorService.GetWinnerPlayer();
-                // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
-                
+                ActuatorService.GetWinnerPlayer(); // Database Update.
+
+            // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
+
             if (winnerPlayer == null)
             {
                 returnValue = true;
