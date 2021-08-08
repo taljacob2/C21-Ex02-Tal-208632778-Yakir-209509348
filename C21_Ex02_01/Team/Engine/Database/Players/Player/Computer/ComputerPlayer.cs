@@ -23,17 +23,23 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Computer
             List<byte> listOfIndexesOfNotFullColumns =
                 initializeListOfIndexesOfNotFullColumns(numberOfColumns);
 
+            chooseColumnAndTryToInsert(listOfIndexesOfNotFullColumns, database);
+        }
+
+        private void chooseColumnAndTryToInsert(
+            List<byte> i_ListOfIndexesOfNotFullColumns, Database i_Database)
+        {
             r_RequesterService.ChooseColumnAsComputerPlayer(this,
-                listOfIndexesOfNotFullColumns);
+                i_ListOfIndexesOfNotFullColumns);
             try
             {
-                database.Board.InsertCoin(ChosenColumnIndex, Char);
+                i_Database.Board.InsertCoin(ChosenColumnIndex, Char);
             }
             catch (Exception)
             {
-                listOfIndexesOfNotFullColumns.Remove(ChosenColumnIndex);
-                r_RequesterService.ChooseColumnAsComputerPlayer(this,
-                    listOfIndexesOfNotFullColumns);
+                i_ListOfIndexesOfNotFullColumns.Remove(ChosenColumnIndex);
+                chooseColumnAndTryToInsert(i_ListOfIndexesOfNotFullColumns,
+                    i_Database);
             }
         }
 
