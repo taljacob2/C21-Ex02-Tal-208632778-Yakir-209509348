@@ -37,9 +37,7 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         /// </summary>
         /// <param name="io_ComputerPlayer" />
         /// <param name="i_ListOfIndexesOfNotFullColumns">
-        ///     Each element represents a column.
-        ///     If an element is `true`, it means that the corresponding column is full.
-        ///     Else, element is `false`.
+        ///     Each element represents an index of a not-full column.
         /// </param>
         public void ChooseColumnAsComputerPlayer(
             ComputerPlayer io_ComputerPlayer,
