@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.ID;
 using C21_Ex02_01.Team.Engine.Service;
 
@@ -19,7 +20,14 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Computer
             Database database = Engine.Database;
             r_RequesterService.ChooseColumnAsComputerPlayer(this,
                 database.Board.Cols);
-            database.Board.InsertCoin(ChosenColumnIndex, Char);
+            try
+            {
+                database.Board.InsertCoin(ChosenColumnIndex, Char);
+            }
+            catch (Exception)
+            {
+                PlayTurn();
+            }
         }
     }
 }
