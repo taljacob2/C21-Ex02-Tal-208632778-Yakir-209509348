@@ -55,6 +55,11 @@ namespace C21_Ex02_01.Team.Engine
                         continue;
                     }
 
+                    /*
+                     * TODO: It is a TIE:
+                     * 1. Increase `Score` of both Players
+                     * 2. Respond UI here <- it is a tie.
+                     */
                     return; // if (isFull == true)
                 }
             }
