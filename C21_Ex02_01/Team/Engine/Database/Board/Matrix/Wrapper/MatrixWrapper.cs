@@ -71,20 +71,25 @@ namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
         /// <returns>true on success, false on fail.</returns>
         public bool SetElement(byte i_Row, byte i_Col, T i_ElementToSet)
         {
+            bool returnValue = true;
+
             if (i_Row > Rows)
             {
                 printOutOfBoundsErrorMessage(i_Row, i_Col);
-                return false;
+                returnValue = false;
             }
-
-            if (i_Col > Cols)
+            else if (i_Col > Cols)
             {
                 printOutOfBoundsErrorMessage(i_Row, i_Col);
-                return false;
+                returnValue = false;
             }
 
-            Matrix[i_Row, i_Col] = i_ElementToSet;
-            return true;
+            if (returnValue)
+            {
+                Matrix[i_Row, i_Col] = i_ElementToSet;
+            }
+
+            return returnValue;
         }
 
         /// <summary />
@@ -93,19 +98,21 @@ namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
         /// <returns>default, when the request is of out of bounds.</returns>
         public T GetElement(byte i_Row, byte i_Col)
         {
+            T returnValue = default(T);
+            bool fail = false;
+
             if (i_Row > Rows)
             {
                 printOutOfBoundsErrorMessage(i_Row, i_Col);
-                return default(T);
+                fail = true;
             }
-
-            if (i_Col > Cols)
+            else if (i_Col > Cols)
             {
                 printOutOfBoundsErrorMessage(i_Row, i_Col);
-                return default(T);
+                fail = true;
             }
 
-            return Matrix[i_Row, i_Col];
+            return fail ? returnValue : Matrix[i_Row, i_Col];
         }
 
         private void printOutOfBoundsErrorMessage(byte i_Row, byte i_Col)

@@ -64,12 +64,14 @@ namespace C21_Ex02_01.Team.Engine
         {
             // Check for algorithm WIN here:
             Player winnerPlayer =
-                /* TODO: need to implement: AlgorithmActuatorService.GetWinnerPlayer().
+                /*
+                 * TODO: need to implement: AlgorithmActuatorService.GetWinnerPlayer().
                  * Note: you may *replace* the below:`AlgorithmActuatorService.GetWinnerPlayer();`
                  * with `null` if you want to skip the algorithm, for testing purposes.  
                  */
                 AlgorithmActuatorService.GetWinnerPlayer();
-                // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
+
+            // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
             if (winnerPlayer == null)
             {
                 return true;
