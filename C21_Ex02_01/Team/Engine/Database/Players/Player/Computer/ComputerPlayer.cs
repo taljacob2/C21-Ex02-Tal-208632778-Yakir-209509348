@@ -19,7 +19,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Computer
             Database database = Engine.Database;
             r_RequesterService.ChooseColumnAsComputerPlayer(this,
                 database.Board.Cols);
-            database.Board.InsertCoin(ChosenColumn, Char);
+            database.Board.InsertCoin(ChosenColumnIndex, Char);
         }
     }
 }

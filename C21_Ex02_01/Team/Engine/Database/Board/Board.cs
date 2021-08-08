@@ -24,14 +24,14 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
         /// <summary>
         ///     Inserts a Coin into a column, while checking that the column is not full.
         /// </summary>
-        /// <param name="i_ColumnToInsertTo">The column to insert the Coin into.</param>
+        /// <param name="i_ColumnIndexToInsertTo">The column to insert the Coin into.</param>
         /// <param name="i_CharCoin">Char of a coin, to insert into the column.</param>
         /// <exception cref="IOException">In case the column is full.</exception>
-        public void InsertCoin(byte i_ColumnToInsertTo, char i_CharCoin)
+        public void InsertCoin(byte i_ColumnIndexToInsertTo, char i_CharCoin)
         {
             // Update bottommost empty element in column:
             Coin.Coin emptyElementInColumn =
-                GetBottommostEmptyElementInColumn(i_ColumnToInsertTo);
+                GetBottommostEmptyElementInColumn(i_ColumnIndexToInsertTo);
 
             if (emptyElementInColumn != null)
             {
@@ -40,7 +40,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             else
             {
                 throw new IOException(
-                    $"The column: {i_ColumnToInsertTo} is full.");
+                    $"The column: {i_ColumnIndexToInsertTo} is full.");
             }
         }
 
@@ -62,9 +62,10 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
         ///     (Its `Char` should be <see cref="k_EmptyCoin" />).
         ///     In case the column is full, the method will return `null`.
         /// </summary>
-        /// <param name="i_Column">The column to get its bottommost empty element.</param>
+        /// <param name="i_ColumnIndex">The column to get its bottommost empty element.</param>
         /// <returns>The bottommost empty element in the column.</returns>
-        public new Coin.Coin GetBottommostEmptyElementInColumn(byte i_Column)
+        public new Coin.Coin GetBottommostEmptyElementInColumn(
+            byte i_ColumnIndex)
         {
             Coin.Coin returnValue = null;
             Coin.Coin coinInColumn = null;
@@ -72,7 +73,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             // Scans from bottom to top.
             for (int i = Rows - 1; i >= 0; i--)
             {
-                coinInColumn = Matrix[i, i_Column];
+                coinInColumn = Matrix[i, i_ColumnIndex];
                 if (coinInColumn.Char == k_EmptyCoin)
                 {
                     break;

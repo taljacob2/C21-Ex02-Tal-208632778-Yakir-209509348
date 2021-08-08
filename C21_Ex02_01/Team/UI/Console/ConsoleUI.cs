@@ -121,7 +121,7 @@ namespace C21_Ex02_01.Team.UI
                 byte chosenColumn =
                     Convert(message, k_MinimumRange, maxColumnsRange);
                 chosenColumn -= k_MinimumRange;
-                io_HumanPlayer.ChosenColumn = chosenColumn;
+                io_HumanPlayer.ChosenColumnIndex = chosenColumn;
             }
 
             private static string requestChosenColumnHumanPlayerMessage(

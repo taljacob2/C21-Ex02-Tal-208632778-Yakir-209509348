@@ -2,7 +2,7 @@
 {
     public interface IBoardActuator
     {
-        void InsertCoin(byte i_ColumnToInsertTo, char i_CharCoin);
+        void InsertCoin(byte i_ColumnIndexToInsertTo, char i_CharCoin);
 
         void FillCoins(char i_CharToFill);
     }

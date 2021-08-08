@@ -20,16 +20,16 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
 
         public override void PlayTurn()
         {
-            r_RequesterService.ChooseColumnAsHumanPlayer(this);
+            r_RequesterService.ChooseColumnAsHumanPlayer(this); // UI Request.
 
             Database database = Engine.Database;
             try
             {
-                database.Board.InsertCoin(ChosenColumn, Char);
+                database.Board.InsertCoin(ChosenColumnIndex, Char);
             }
             catch (Exception e)
             {
-                r_ResponderService.PrintMessage(e.Message);
+                r_ResponderService.PrintMessage(e.Message); // UI Response.
                 PlayTurn();
             }
         }

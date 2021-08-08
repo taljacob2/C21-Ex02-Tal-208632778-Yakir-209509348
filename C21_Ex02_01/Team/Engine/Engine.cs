@@ -66,7 +66,8 @@ namespace C21_Ex02_01.Team.Engine
                  * with `null` if you want to skip the algorithm, for testing purposes.  
                  */
                 AlgorithmActuatorService.GetWinnerPlayer();
-                // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
+
+            // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
             if (winnerPlayer == null)
             {
                 return true;

@@ -43,7 +43,7 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
 
             // (`i_MinColumnNumber` is 0 by default.)
             byte nextColumn = (byte) (random.Next() % i_MaxColumnNumber);
-            io_ComputerPlayer.ChosenColumn = nextColumn;
+            io_ComputerPlayer.ChosenColumnIndex = nextColumn;
         }
     }
 }
