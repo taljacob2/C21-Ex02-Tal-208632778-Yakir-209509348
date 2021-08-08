@@ -13,9 +13,12 @@
 /httpRequests/
 
 
-# My addition
+# --- My addition: ---
 /.idea
 /.vs
 /**/bin
 /**/obj
+# DotSettings ignored files
 /*.user
+/*.DotSettings
+# --- My addition: ---
