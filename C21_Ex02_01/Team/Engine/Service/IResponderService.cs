@@ -16,7 +16,7 @@ namespace C21_Ex02_01.Team.Engine.Service
         void PrintScores(Players i_Players);
 
         void PrintMessage(string i_Message);
-        
+
         void PrintTie();
     }
 }

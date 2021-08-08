@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 using C21_Ex02_01.Team.UI;
@@ -35,15 +36,20 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         ///     </remarks>
         /// </summary>
         /// <param name="io_ComputerPlayer" />
-        /// <param name="i_MaxColumnNumber" />
+        /// <param name="i_ListOfIndexesOfNotFullColumns">
+        ///     Each element represents a column.
+        ///     If an element is `true`, it means that the corresponding column is full.
+        ///     Else, element is `false`.
+        /// </param>
         public void ChooseColumnAsComputerPlayer(
-            ComputerPlayer io_ComputerPlayer, byte i_MaxColumnNumber)
+            ComputerPlayer io_ComputerPlayer,
+            List<byte> i_ListOfIndexesOfNotFullColumns)
         {
             Random random = new Random();
-
-            // (`i_MinColumnNumber` is 0 by default.)
-            byte nextColumn = (byte) (random.Next() % i_MaxColumnNumber);
-            io_ComputerPlayer.ChosenColumnIndex = nextColumn;
+            int randomIndex =
+                random.Next(i_ListOfIndexesOfNotFullColumns.Count);
+            io_ComputerPlayer.ChosenColumnIndex =
+                i_ListOfIndexesOfNotFullColumns[(byte) randomIndex];
         }
     }
 }

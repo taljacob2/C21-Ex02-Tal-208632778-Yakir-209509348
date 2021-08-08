@@ -1,5 +1,6 @@
 ﻿#region
 
+using System.Collections.Generic;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 
@@ -14,6 +15,6 @@ namespace C21_Ex02_01.Team.Engine.Service
         void ChooseColumnAsHumanPlayer(HumanPlayer io_HumanPlayer);
 
         void ChooseColumnAsComputerPlayer(ComputerPlayer io_ComputerPlayer,
-            byte i_MaxColumnNumber);
+            List<byte> i_ListOfIndexesOfNotFullColumns);
     }
 }
