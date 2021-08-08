@@ -52,7 +52,7 @@ namespace C21_Ex02_01.Team.Engine
 
                 Database.Players.PlayTurn();
 
-                if (isWinnerPlayerHandled())
+                if (!isWinnerPlayerHandled())
                 {
                     continue;
                 }
