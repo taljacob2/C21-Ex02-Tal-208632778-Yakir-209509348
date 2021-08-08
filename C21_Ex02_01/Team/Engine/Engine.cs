@@ -49,12 +49,6 @@ namespace C21_Ex02_01.Team.Engine
                 }
 
                 return;
-
-                /*
-                 * TODO LIST: after playing the turn:
-                 * 1. Check for algorithm win.
-                 * 2. Print Response.
-                 */
             }
         }
 
