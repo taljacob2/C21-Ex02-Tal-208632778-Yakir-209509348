@@ -46,10 +46,10 @@ namespace C21_Ex02_01.Team.Engine
             while (true)
             {
                 ResponderService.PrintBoard();
-
-                // TODO: need to implement: continue only if board is not full
+                
                 if (Database.Board.IsFull())
                 {
+                    // TODO: Respond UI a message here <- 
                     return;
                 }
 
