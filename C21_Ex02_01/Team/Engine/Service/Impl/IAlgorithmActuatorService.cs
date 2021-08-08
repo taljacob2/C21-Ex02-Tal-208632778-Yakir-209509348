@@ -27,14 +27,18 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         /// <returns>Winner player if exists. Else, returns null.</returns>
         public Player GetWinnerPlayer()
         {
+            Player returnValue = null;
             Player currentPlayer = r_Players.GetCurrentPlayer();
 
 
             // if ( /* TODO: NEED TO IMPLEMENT */)
             // {
+            //     returnValue = currentPlayer;
             //     setAsWinnerAndIncreaseScoreByOne(currentPlayer);
             // }
 
+            // return returnValue;
+            
             throw new NotImplementedException();
         }
 

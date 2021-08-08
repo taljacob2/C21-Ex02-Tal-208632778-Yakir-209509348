@@ -33,7 +33,7 @@ namespace C21_Ex02_01.Team.Engine
 
         public void RunGame()
         {
-            playTurn(); // TODO: need to continue implement
+            playTurn();
         }
 
         private void playTurn()
