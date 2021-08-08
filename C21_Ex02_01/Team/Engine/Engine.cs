@@ -1,5 +1,6 @@
 ﻿#region
 
+using C21_Ex02_01.Team.Engine.Database.Players.Player;
 using C21_Ex02_01.Team.Engine.Service;
 using C21_Ex02_01.Team.Engine.Service.Impl;
 
@@ -7,9 +8,6 @@ using C21_Ex02_01.Team.Engine.Service.Impl;
 
 namespace C21_Ex02_01.Team.Engine
 {
-    /// <summary>
-    ///     Singleton implemented.
-    /// </summary>
     public class Engine
     {
         public Engine()
@@ -18,6 +16,7 @@ namespace C21_Ex02_01.Team.Engine
             RequesterService = new RequesterServiceImpl();
             RequesterService.ConstructEngine();
             ResponderService = new ResponderServiceImpl();
+            AlgorithmActuatorService = new AlgorithmActuatorServiceImpl();
         }
 
         public static Database.Database Database { get; set; }
@@ -25,6 +24,12 @@ namespace C21_Ex02_01.Team.Engine
         public static IRequesterService RequesterService { get; private set; }
 
         public static IResponderService ResponderService { get; private set; }
+
+        public static IAlgorithmActuatorService AlgorithmActuatorService
+        {
+            get;
+            private set;
+        }
 
         public void RunGame()
         {
@@ -37,11 +42,17 @@ namespace C21_Ex02_01.Team.Engine
             {
                 ResponderService.PrintBoard();
                 Database.Players.PlayTurn();
-                checkIfThereIsWin(); // Check for algorithm WIN here <-.
-                if (Database.Win)
+
+                // Check for algorithm WIN here:
+                Player winnerPlayer =
+                    AlgorithmActuatorService.GetWinnerPlayer();
+                if (winnerPlayer == null)
                 {
-                    return;
+                    continue;
                 }
+
+                ResponderService.PrintWinner(winnerPlayer); // UI Response.
+                return;
 
                 /*
                  * TODO LIST: after playing the turn:
@@ -50,7 +61,5 @@ namespace C21_Ex02_01.Team.Engine
                  */
             }
         }
-
-        private void checkIfThereIsWin() {}
     }
 }

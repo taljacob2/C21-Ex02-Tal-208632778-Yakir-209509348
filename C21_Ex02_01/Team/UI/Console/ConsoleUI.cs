@@ -4,6 +4,7 @@ using System;
 using C21_Ex02_01.Team.Engine.Database;
 using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
+using C21_Ex02_01.Team.Engine.Database.Players.Player;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Players.Settings;
@@ -158,6 +159,13 @@ namespace C21_Ex02_01.Team.UI
             {
                 Screen.Clear();
                 printBoard();
+            }
+
+            public void PrintWinner(Player i_WinnerPlayer)
+            {
+                Console.Out.WriteLine(
+                    $"Congrats, the winner is: Player {i_WinnerPlayer.ID}!");
+                Console.Out.WriteLine("Good Game!");
             }
         }
     }

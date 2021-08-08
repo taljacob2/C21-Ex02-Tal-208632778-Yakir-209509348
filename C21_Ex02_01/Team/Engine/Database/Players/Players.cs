@@ -67,7 +67,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             switchCurrentPlayerTurn(currentPlayer);
         }
 
-        protected Player.Player GetCurrentPlayer()
+        public Player.Player GetCurrentPlayer()
         {
             return r_PlayersGetterNestedService.GetCurrentPlayer();
         }
