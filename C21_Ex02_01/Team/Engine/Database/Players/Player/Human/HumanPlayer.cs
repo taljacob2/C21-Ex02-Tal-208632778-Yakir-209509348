@@ -20,8 +20,12 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
 
         public override void PlayTurn()
         {
-            r_RequesterService.ChooseColumnAsHumanPlayer(this); // UI Request.
+            chooseColumnAndTryToInsert();
+        }
 
+        private void chooseColumnAndTryToInsert()
+        {
+            r_RequesterService.ChooseColumnAsHumanPlayer(this); // UI Request.
             Database database = Engine.Database;
             try
             {
@@ -30,7 +34,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
             catch (Exception e)
             {
                 r_ResponderService.PrintMessage(e.Message); // UI Response.
-                PlayTurn();
+                chooseColumnAndTryToInsert();
             }
         }
     }
