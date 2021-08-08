@@ -51,6 +51,7 @@ namespace C21_Ex02_01.Team.Engine
                 }
 
                 Database.Players.PlayTurn();
+                
                 if (isNoWinnerYet())
                 {
                     continue;
@@ -64,6 +65,7 @@ namespace C21_Ex02_01.Team.Engine
         {
             ActuatorService.SetTie(); // Database Update.
             ResponderService.PrintTie(); // UI Response.
+            ResponderService.PrintScores(Database.Players); // UI Response.
         }
 
         private static bool isNoWinnerYet()
@@ -86,13 +88,13 @@ namespace C21_Ex02_01.Team.Engine
             }
             else
             {
-                printResponseAfterWin(winnerPlayer);
+                printWinResponse(winnerPlayer);
             }
 
             return returnValue;
         }
 
-        private static void printResponseAfterWin(Player i_WinnerPlayer)
+        private static void printWinResponse(Player i_WinnerPlayer)
         {
             ResponderService.PrintWinner(i_WinnerPlayer); // UI Response.
             ResponderService.PrintScores(Database.Players); // UI Response.
