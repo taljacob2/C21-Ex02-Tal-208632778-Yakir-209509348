@@ -18,28 +18,20 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
 
         /// <summary>
         ///     Checks if there is a valid Series-of-Coins in the Board.
-        ///     <remarks>
-        ///         If there is a win, the method sets the winner player's `Win` field to
-        ///         `true`.
-        ///         <see cref="setAsWinnerAndIncreaseScoreByOne" />
-        ///     </remarks>
         /// </summary>
-        /// <returns>Winner player if exists. Else, returns null.</returns>
+        /// <returns>`Winner-Player` if exists. Else, returns `null`.</returns>
         public Player GetWinnerPlayer()
         {
             Player returnValue = null;
             Player currentPlayer = r_Players.GetCurrentPlayer();
 
+            if (isVictory())
+            {
+                returnValue = currentPlayer;
+                currentPlayer.Score++;
+            }
 
-            // if ( /* TODO: NEED TO IMPLEMENT */)
-            // {
-            //     returnValue = currentPlayer;
-            //     setAsWinnerAndIncreaseScoreByOne(currentPlayer);
-            // }
-
-            // return returnValue;
-
-            throw new NotImplementedException();
+            return returnValue;
         }
 
         public void SetTie()
@@ -51,10 +43,15 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             playerTwo.Score++;
         }
 
-        private void setAsWinnerAndIncreaseScoreByOne(Player i_WinnerPlayer)
+        /// <summary>
+        ///     Scans the `Board` <see cref="r_Board" /> for a victory.
+        ///     Means, looks up for a series of <see cref="k_Series" /> in a
+        ///     row/column/diagonal.
+        /// </summary>
+        /// <returns>`true`, if a series was found. Else, `false`.</returns>
+        private bool isVictory()
         {
-            i_WinnerPlayer.Win = true;
-            i_WinnerPlayer.Score++;
+            throw new NotImplementedException();
         }
     }
 }

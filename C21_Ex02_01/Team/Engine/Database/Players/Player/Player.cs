@@ -20,8 +20,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player
 
         public byte ChosenColumnIndex { get; set; }
 
-        public bool Win { get; set; } = false;
-
         public byte Score { get; set; } = 0;
 
         public abstract void PlayTurn();
