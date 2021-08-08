@@ -18,8 +18,11 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
 
         /// <summary>
         ///     Checks if there is a valid Series-of-Coins in the Board.
-        ///     If there is a win, the method sets the winner player's `Win` field to
-        ///     `true`.
+        ///     <remarks>
+        ///         If there is a win, the method sets the winner player's `Win` field to
+        ///         `true`.
+        ///         <see cref="setAsWinnerAndIncreaseScoreByOne" />
+        ///     </remarks>
         /// </summary>
         /// <returns>Winner player if exists. Else, returns null.</returns>
         public Player GetWinnerPlayer()
