@@ -51,12 +51,13 @@ namespace C21_Ex02_01.Team.Engine
                 }
 
                 Database.Players.PlayTurn();
-                
-                if (isNoWinnerYet())
+
+                if (isWinnerPlayerHandled())
                 {
                     continue;
                 }
 
+                // Winner found, and was handled.
                 return;
             }
         }
@@ -68,9 +69,9 @@ namespace C21_Ex02_01.Team.Engine
             ResponderService.PrintScores(Database.Players); // UI Response.
         }
 
-        private static bool isNoWinnerYet()
+        private static bool isWinnerPlayerHandled()
         {
-            bool returnValue = false;
+            bool returnValue = true;
 
             // Check for algorithm WIN here:
             Player winnerPlayer =
@@ -84,10 +85,11 @@ namespace C21_Ex02_01.Team.Engine
 
             if (winnerPlayer == null)
             {
-                returnValue = true;
+                returnValue = false;
             }
             else
             {
+                // Winner Found. Handle it.
                 printWinResponse(winnerPlayer);
             }
 
