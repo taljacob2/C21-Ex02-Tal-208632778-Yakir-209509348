@@ -92,7 +92,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         {
             return r_PlayersGetterNestedService.GetRefPlayerOne();
         }
-        
+
         public Player.Player GetPlayerTwo()
         {
             return r_PlayersGetterNestedService.GetRefPlayerTwo();

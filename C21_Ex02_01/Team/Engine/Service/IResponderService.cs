@@ -12,7 +12,7 @@ namespace C21_Ex02_01.Team.Engine.Service
         void PrintBoard();
 
         void PrintWinner(Player i_WinnerPlayer);
-        
+
         void PrintScores(Players i_Players);
     }
 }
