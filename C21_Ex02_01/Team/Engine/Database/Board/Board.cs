@@ -40,7 +40,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             else
             {
                 throw new IOException(
-                    $"The column: {i_ColumnIndexToInsertTo} is full.");
+                    $"The column `{i_ColumnIndexToInsertTo + 1}` is full.");
             }
         }
 

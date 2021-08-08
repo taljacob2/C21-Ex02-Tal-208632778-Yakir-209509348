@@ -46,20 +46,17 @@ namespace C21_Ex02_01.Team.Engine
             while (true)
             {
                 ResponderService.PrintBoard();
-                
-                if (Database.Board.IsFull())
-                {
-                    // TODO: Respond UI a message here <- 
-                    return;
-                }
 
-                Database.Players.PlayTurn();
-                if (isContinuePlay())
+                if (!Database.Board.IsFull())
                 {
-                    continue;
-                }
+                    Database.Players.PlayTurn();
+                    if (isContinuePlay())
+                    {
+                        continue;
+                    }
 
-                return;
+                    return; // if (isFull == true)
+                }
             }
         }
 
@@ -72,8 +69,7 @@ namespace C21_Ex02_01.Team.Engine
                  * with `null` if you want to skip the algorithm, for testing purposes.  
                  */
                 AlgorithmActuatorService.GetWinnerPlayer();
-
-            // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
+                // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
             if (winnerPlayer == null)
             {
                 return true;
