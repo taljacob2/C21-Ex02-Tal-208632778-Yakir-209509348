@@ -34,7 +34,15 @@ namespace C21_Ex02_01.Team.Engine
 
         public void RunGame()
         {
-            whileRunGame();
+            bool continuePlay;
+            do
+            {
+                Database.Players.SwitchCurrentPlayerTurn(Database.Players.GetPlayerTwo());
+                Database.Board.ResetBoard();
+                whileRunGame();
+                continuePlay = RequesterService.RequestNewGame();
+            }
+            while (continuePlay);
         }
 
         private void whileRunGame()
@@ -46,11 +54,11 @@ namespace C21_Ex02_01.Team.Engine
                 if (Database.Board.IsFull())
                 {
                     // It is a TIE.
-                    setTie();
+                    SetTie();
                     break;
                 }
-
                 Database.Players.PlayTurn();
+                Database.Players.SwitchCurrentPlayerTurn(Database.Players.GetCurrentPlayer());
 
                 if (!isWinnerPlayerHandled())
                 {
@@ -62,7 +70,7 @@ namespace C21_Ex02_01.Team.Engine
             }
         }
 
-        private void setTie()
+        private void SetTie()
         {
             ActuatorService.SetTie(); // Database Update.
             ResponderService.PrintTie(); // UI Response.
@@ -74,14 +82,7 @@ namespace C21_Ex02_01.Team.Engine
             bool returnValue = true;
 
             // Check for algorithm WIN here:
-            Player winnerPlayer =
-                /*
-                 * TODO: need to implement: AlgorithmActuatorService.isVictory().
-                 * Note: you may *replace* the below:`AlgorithmActuatorService.GetWinnerPlayer();`
-                 * with `null` if you want to skip the algorithm, for testing purposes.  
-                 */
-                ActuatorService.GetWinnerPlayer(); // Database Update.
-                // null; // TODO: Remove this. IT'S FOR TESTING PURPOSES ONLY
+            Player winnerPlayer = ActuatorService.GetWinnerPlayer(); // Database Update.
 
             if (winnerPlayer == null)
             {
@@ -98,6 +99,7 @@ namespace C21_Ex02_01.Team.Engine
 
         private static void printWinResponse(Player i_WinnerPlayer)
         {
+            ResponderService.PrintBoard();
             ResponderService.PrintWinner(i_WinnerPlayer); // UI Response.
             ResponderService.PrintScores(Database.Players); // UI Response.
         }

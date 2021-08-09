@@ -2,10 +2,9 @@
 {
     public interface IBoardActuator
     {
+        void ResetBoard();
         void InsertCoin(byte i_ColumnIndexToInsertTo, char i_CharCoin);
-
-        void FillCoins(char i_CharToFill);
-
+        bool isVictory();
         bool IsFull();
     }
 }

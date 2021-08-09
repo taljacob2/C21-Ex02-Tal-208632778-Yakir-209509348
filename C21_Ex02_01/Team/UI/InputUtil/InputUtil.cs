@@ -24,7 +24,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
                     TypeDescriptor.GetConverter(typeof(T));
 
                 // Cast ConvertFromString(string text) : object to (T)
-                return (T) converter.ConvertFromString(input);
+                return (T)converter.ConvertFromString(input);
             }
             catch (Exception)
             {

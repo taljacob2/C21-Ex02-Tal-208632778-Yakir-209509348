@@ -24,6 +24,17 @@ namespace C21_Ex02_01.Team.UI
                 requestAndConstructEngineDatabase();
             }
 
+            public bool RequestNewGame()
+            {
+                bool newGame = false;
+                Console.Out.Write("Do you want to play a new game? (Y/n): ");
+                char key = Console.ReadKey().KeyChar;
+                if (key == 'y' || key == 'Y')
+                {
+                    newGame = true;
+                }
+                return newGame;
+            }
             private void requestAndConstructEngineDatabase()
             {
                 requestDatabase(out byte rows, out byte cols,
@@ -69,8 +80,8 @@ namespace C21_Ex02_01.Team.UI
             private static void requestOpponentPlayer(out eType
                 i_Type)
             {
-                const byte k_MinimumRange = (byte) eType.Human + 1;
-                const byte k_MaximumRange = (byte) eType.Computer + 1;
+                const byte k_MinimumRange = (byte)eType.Human + 1;
+                const byte k_MaximumRange = (byte)eType.Computer + 1;
                 string mainMessage =
                     requestOpponentPlayerMainMessage(k_MinimumRange,
                         k_MaximumRange);
@@ -104,7 +115,7 @@ namespace C21_Ex02_01.Team.UI
                 byte byteOpponent =
                     Convert(i_MainMessage, i_MinimumRange, i_MaximumRange);
                 byteOpponent -= i_MinimumRange;
-                string stringOpponent = $"{(eType) byteOpponent:G}";
+                string stringOpponent = $"{(eType)byteOpponent:G}";
                 return stringOpponent;
             }
 

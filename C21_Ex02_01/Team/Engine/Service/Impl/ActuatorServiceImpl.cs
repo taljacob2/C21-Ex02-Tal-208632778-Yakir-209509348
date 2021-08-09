@@ -23,14 +23,13 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         public Player GetWinnerPlayer()
         {
             Player returnValue = null;
-            Player currentPlayer = r_Players.GetCurrentPlayer();
 
-            if (isVictory())
+            if (r_Board.isVictory())
             {
-                returnValue = currentPlayer;
-                currentPlayer.Score++;
+                Player nonCurrentPlayer = r_Players.GetNotCurrentPlayer();
+                returnValue = nonCurrentPlayer;
+                nonCurrentPlayer.Score++;
             }
-
             return returnValue;
         }
 
@@ -41,17 +40,6 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
 
             playerOne.Score++;
             playerTwo.Score++;
-        }
-
-        /// <summary>
-        ///     Scans the `Board` <see cref="r_Board" /> for a victory.
-        ///     Means, looks up for a series of <see cref="k_Series" /> in a
-        ///     row/column/diagonal.
-        /// </summary>
-        /// <returns>`true`, if a series was found. Else, `false`.</returns>
-        private bool isVictory()
-        {
-            throw new NotImplementedException();
         }
     }
 }

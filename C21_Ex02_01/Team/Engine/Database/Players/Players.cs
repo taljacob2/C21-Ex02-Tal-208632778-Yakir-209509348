@@ -64,7 +64,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         {
             Player.Player currentPlayer = GetCurrentPlayer();
             currentPlayer.PlayTurn();
-            switchCurrentPlayerTurn(currentPlayer);
         }
 
         public Player.Player GetCurrentPlayer()
@@ -72,7 +71,13 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             return r_PlayersGetterNestedService.GetCurrentPlayer();
         }
 
-        private void switchCurrentPlayerTurn(
+        public Player.Player GetNotCurrentPlayer()
+        {
+            Player.Player current = GetCurrentPlayer();
+            Player.Player nonCurrentPlayer = current == GetPlayerOne() ? GetPlayerTwo() : GetPlayerOne();
+            return nonCurrentPlayer;
+        }
+        public void SwitchCurrentPlayerTurn(
             Player.Player i_CurrentPlayingPlayer)
         {
             switch (i_CurrentPlayingPlayer.ID)
