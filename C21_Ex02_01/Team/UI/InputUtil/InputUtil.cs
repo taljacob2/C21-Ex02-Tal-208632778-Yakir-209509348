@@ -1,9 +1,11 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using MiscUtil;
+using MiscUtil.Collections;
 
 #endregion
 
@@ -126,6 +128,33 @@ namespace C21_Ex02_01.Team.UI.InputUtil
             params T[] i_PossibleValidValues)
         {
             return i_PossibleValidValues.Any(i_T =>
+                Operator.Equal(i_Converted, i_T));
+        }
+        
+        /// <summary>
+        ///     Converts a generic input char to an object, with given possible valid values.
+        /// </summary>
+        public static T ConvertKey<T>(string i_Message, List<T> i_List)
+        {
+            T converted = ConvertKey<T>(i_Message);
+            if (!isConvertedPossibleValidValue(converted, i_List)
+            )
+            {
+                Console.Out.WriteLine(k_BadInputMessage);
+                return ConvertKey(i_Message, i_List);
+            }
+
+            return converted;
+        }
+
+        /// <summary>
+        ///     Converts a generic input char to an object, with given possible valid values.
+        /// </summary>
+        private static bool isConvertedPossibleValidValue<T>(T 
+        i_Converted, List<T> i_List)
+        {
+
+            return i_List.Any(i_T =>
                 Operator.Equal(i_Converted, i_T));
         }
     }

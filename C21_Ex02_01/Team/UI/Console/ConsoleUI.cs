@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Linq;
 using C21_Ex02_01.Team.Engine.Database;
 using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
@@ -9,7 +10,9 @@ using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Players.Settings;
 using Ex02.ConsoleUtils;
+using MiscUtil.Collections;
 using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
+using Convert = System.Convert;
 
 #endregion
 
@@ -31,7 +34,7 @@ namespace C21_Ex02_01.Team.UI
                     ConvertKey<char>("Do you want to play a new game? (Y/N): ",
                         'y', 'Y', 'n', 'N');
                 string upperCaseString = keyPressed.ToString().ToUpper();
-                
+
                 if (upperCaseString.Equals("Y"))
                 {
                     newGame = true;
@@ -133,11 +136,13 @@ namespace C21_Ex02_01.Team.UI
                 string message =
                     requestChosenColumnHumanPlayerMessage(io_HumanPlayer,
                         k_MinimumRange, database);
+                int intChosenColumn =
+                    ConvertKey(message, Enumerable.Range(k_MinimumRange,
+                        maxColumnsRange).ToList());
+                byte byteChosenColumn = (byte) intChosenColumn;
 
-                byte chosenColumn =
-                    Convert(message, k_MinimumRange, maxColumnsRange);
-                chosenColumn -= k_MinimumRange;
-                io_HumanPlayer.ChosenColumnIndex = chosenColumn;
+                byteChosenColumn -= k_MinimumRange;
+                io_HumanPlayer.ChosenColumnIndex = byteChosenColumn;
             }
 
             private static string requestChosenColumnHumanPlayerMessage(
