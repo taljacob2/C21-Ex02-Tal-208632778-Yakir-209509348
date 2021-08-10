@@ -96,7 +96,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
                 return ConvertKey<T>(i_Message);
             }
         }
-        
+
         /// <summary>
         ///     Converts a generic input char to an object, with given possible valid values.
         /// </summary>
@@ -113,7 +113,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
 
             return converted;
         }
-        
+
         /// <summary>
         ///     Generic comparison, to check if the <param name="i_Converted"></param>
         ///     is a possible valid value.
@@ -130,7 +130,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
             return i_PossibleValidValues.Any(i_T =>
                 Operator.Equal(i_Converted, i_T));
         }
-        
+
         /// <summary>
         ///     Converts a generic input char to an object, with given possible valid values.
         /// </summary>
@@ -150,12 +150,17 @@ namespace C21_Ex02_01.Team.UI.InputUtil
         /// <summary>
         ///     Converts a generic input char to an object, with given possible valid values.
         /// </summary>
-        private static bool isConvertedPossibleValidValue<T>(T 
-        i_Converted, List<T> i_List)
+        private static bool isConvertedPossibleValidValue<T>(T
+            i_Converted, List<T> i_List)
         {
-
             return i_List.Any(i_T =>
                 Operator.Equal(i_Converted, i_T));
+        }
+
+        public static List<char> Range(char i_Start, char i_End)
+        {
+            return Enumerable.Range(i_Start, i_End - i_Start + 1)
+                .Select(i_C => (char) i_C).ToList();
         }
     }
 }

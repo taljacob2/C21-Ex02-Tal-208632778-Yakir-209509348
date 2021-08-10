@@ -13,6 +13,8 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         private readonly Board r_Board = Engine.Database.Board;
         private readonly Players r_Players = Engine.Database.Players;
 
+        public Player WinnerPlayer { get; set; }
+
         /// <summary>
         ///     Checks if there is a valid Series-of-Coins in the Board.
         /// </summary>
@@ -21,7 +23,11 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         {
             Player returnValue = null;
 
-            if (r_Board.IsVictory())
+            if (WinnerPlayer != null)
+            {
+                returnValue = WinnerPlayer;
+            }
+            else if (r_Board.IsVictory())
             {
                 Player nonCurrentPlayer = r_Players.GetNotCurrentPlayer();
                 returnValue = nonCurrentPlayer;
@@ -31,13 +37,23 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             return returnValue;
         }
 
+        public void Forfeit()
+        {
+            setWinnerPlayer(r_Players.GetNotCurrentPlayer());
+        }
+
         public void SetTie()
         {
             Player playerOne = r_Players.GetPlayerOne();
             Player playerTwo = r_Players.GetPlayerTwo();
-
             playerOne.Score++;
             playerTwo.Score++;
+        }
+
+        private void setWinnerPlayer(Player io_Player)
+        {
+            WinnerPlayer = io_Player;
+            WinnerPlayer.Score++;
         }
     }
 }

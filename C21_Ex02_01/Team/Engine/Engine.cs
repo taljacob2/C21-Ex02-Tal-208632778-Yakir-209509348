@@ -30,7 +30,7 @@ namespace C21_Ex02_01.Team.Engine
 
         public static IResponderService ResponderService { get; }
 
-        private static IActuatorService ActuatorService { get; set; }
+        public static IActuatorService ActuatorService { get; private set; }
 
         public void RunGame()
         {

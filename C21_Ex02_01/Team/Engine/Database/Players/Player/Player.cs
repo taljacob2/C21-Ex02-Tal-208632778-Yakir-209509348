@@ -23,5 +23,11 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player
         public byte Score { get; set; } = 0;
 
         public abstract void PlayTurn();
+
+        public override string ToString()
+        {
+            return
+                $"{nameof(ID)}: {ID}, {nameof(Char)}: {Char}, {nameof(Score)}: {Score}";
+        }
     }
 }

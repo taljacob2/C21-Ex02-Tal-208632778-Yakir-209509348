@@ -10,6 +10,8 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
 {
     public class HumanPlayer : Player
     {
+        public const byte k_QuitSignal = 99;
+
         private readonly IRequesterService r_RequesterService =
             Engine.RequesterService;
 
@@ -27,6 +29,12 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
         {
             r_RequesterService.ChooseColumnAsHumanPlayer(this); // UI Request.
             Database database = Engine.Database;
+            if (ChosenColumnIndex == k_QuitSignal)
+            {
+                Engine.ActuatorService.Forfeit();
+                return;
+            }
+
             try
             {
                 database.Board.InsertCoin(ChosenColumnIndex, Char);
@@ -36,6 +44,11 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
                 r_ResponderService.PrintMessage(e.Message); // UI Response.
                 chooseColumnAndTryToInsert();
             }
+        }
+
+        private void forfeit()
+        {
+            Engine.ActuatorService.Forfeit();
         }
     }
 }

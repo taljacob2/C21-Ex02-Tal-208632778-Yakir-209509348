@@ -14,6 +14,8 @@ namespace C21_Ex02_01.Team.Engine.Service
         /// <returns>Winner player if exists. Else, returns null.</returns>
         Player GetWinnerPlayer();
 
+        void Forfeit();
+
         void SetTie();
     }
 }

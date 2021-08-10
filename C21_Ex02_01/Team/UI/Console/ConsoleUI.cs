@@ -1,7 +1,7 @@
 ﻿#region
 
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using C21_Ex02_01.Team.Engine.Database;
 using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
@@ -10,9 +10,7 @@ using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
 using C21_Ex02_01.Team.Engine.Database.Players.Settings;
 using Ex02.ConsoleUtils;
-using MiscUtil.Collections;
 using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
-using Convert = System.Convert;
 
 #endregion
 
@@ -22,6 +20,8 @@ namespace C21_Ex02_01.Team.UI
     {
         public class Requester
         {
+            private const char k_QuitChar = 'Q';
+
             public void RequestAndConstructEngine()
             {
                 requestAndConstructEngineDatabase();
@@ -31,7 +31,7 @@ namespace C21_Ex02_01.Team.UI
             {
                 bool newGame = false;
                 char keyPressed =
-                    ConvertKey<char>("Do you want to play a new game? (Y/N): ",
+                    ConvertKey("Do you want to play a new game? (Y/N): ",
                         'y', 'Y', 'n', 'N');
                 string upperCaseString = keyPressed.ToString().ToUpper();
 
@@ -131,18 +131,46 @@ namespace C21_Ex02_01.Team.UI
                 HumanPlayer io_HumanPlayer)
             {
                 const byte k_MinimumRange = 1;
-                Database database = Engine.Engine.Database;
-                byte maxColumnsRange = database.Board.Cols;
-                string message =
-                    requestChosenColumnHumanPlayerMessage(io_HumanPlayer,
-                        k_MinimumRange, database);
-                int intChosenColumn =
-                    ConvertKey(message, Enumerable.Range(k_MinimumRange,
-                        maxColumnsRange).ToList());
-                byte byteChosenColumn = (byte) intChosenColumn;
+                char charChosenColumn =
+                    setCharChosenColumnRange(io_HumanPlayer, k_MinimumRange);
+
+                if (!isNumber(charChosenColumn) && charChosenColumn.ToString
+                    ().ToUpper().Equals(k_QuitChar.ToString()))
+                {
+                    io_HumanPlayer.ChosenColumnIndex = HumanPlayer.k_QuitSignal;
+                    return;
+                }
+
+                byte byteChosenColumn = (byte) charChosenColumn;
+                byteChosenColumn -= (byte) '0';
 
                 byteChosenColumn -= k_MinimumRange;
                 io_HumanPlayer.ChosenColumnIndex = byteChosenColumn;
+            }
+
+            private static char setCharChosenColumnRange(
+                HumanPlayer io_HumanPlayer,
+                byte i_MinimumRange)
+            {
+                char charMinimumRange = i_MinimumRange.ToString()[0];
+                Database database = Engine.Engine.Database;
+                byte maxColumnsRange = database.Board.Cols;
+                char charMaxColumnsRange = maxColumnsRange.ToString()[0];
+                string message =
+                    requestChosenColumnHumanPlayerMessage(io_HumanPlayer,
+                        i_MinimumRange, database);
+                List<char> validChars = Range(
+                    charMinimumRange,
+                    charMaxColumnsRange);
+                
+                validChars.Add(k_QuitChar.ToString().ToLower()[0]);
+                validChars.Add(k_QuitChar);
+                return ConvertKey(message, validChars);
+            }
+
+            private bool isNumber(char i_CharChosenColumn)
+            {
+                return i_CharChosenColumn >= '0' && i_CharChosenColumn <= '9';
             }
 
             private static string requestChosenColumnHumanPlayerMessage(
