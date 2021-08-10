@@ -18,7 +18,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player
 
         public char Char { get; }
 
-        public byte ChosenColumnIndex { get; set; }
+        public byte ChosenColumnIndex { get; set; } = 0;
 
         public byte Score { get; set; } = 0;
 

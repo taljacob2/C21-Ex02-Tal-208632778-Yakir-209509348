@@ -162,7 +162,7 @@ namespace C21_Ex02_01.Team.UI
                 List<char> validChars = Range(
                     charMinimumRange,
                     charMaxColumnsRange);
-                
+
                 validChars.Add(k_QuitChar.ToString().ToLower()[0]);
                 validChars.Add(k_QuitChar);
                 return ConvertKey(message, validChars);
@@ -192,7 +192,7 @@ namespace C21_Ex02_01.Team.UI
                 string title =
                     $"Player {i_HumanPlayer.ID}, it's your turn.{Environment.NewLine}";
                 string message = title +
-                                 $"Press {range} to insert a coin to that column.";
+                                 $"Press {range} to insert a coin to that column. (Press 'Q' to forfeit)";
                 return message;
             }
         }

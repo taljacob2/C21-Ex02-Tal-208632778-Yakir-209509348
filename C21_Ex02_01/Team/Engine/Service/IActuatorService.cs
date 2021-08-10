@@ -17,5 +17,7 @@ namespace C21_Ex02_01.Team.Engine.Service
         void Forfeit();
 
         void SetTie();
+        
+        void ResetForfeit();
     }
 }

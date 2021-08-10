@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
@@ -48,6 +49,14 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             Player playerTwo = r_Players.GetPlayerTwo();
             playerOne.Score++;
             playerTwo.Score++;
+        }
+
+        public void ResetForfeit()
+        {
+            foreach (Player player in r_Players)
+            {
+                player.ChosenColumnIndex = 0;
+            }
         }
 
         private void setWinnerPlayer(Player io_Player)

@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Collections;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
@@ -13,8 +14,9 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
 {
     /// <summary>
     ///     This is a wrapper class for a group of <see cref="Player" />s.
+    ///     <remarks> Implements <see cref="IEnumerable" />, thus iterable.</remarks>
     /// </summary>
-    public class Players
+    public class Players : IEnumerable
     {
         private const byte k_NumberOfPlayers = 2;
 
@@ -31,6 +33,12 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         private static eID CurrentPlayerTurn { get; set; } = eID.One;
 
         private Settings.Settings Settings { get; }
+
+        // IEnumerable Member  
+        public IEnumerator GetEnumerator()
+        {
+            return r_PlayersGetterNestedService.GetEnumerator();
+        }
 
         private void initializePlayers()
         {
@@ -106,15 +114,30 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             return r_PlayersGetterNestedService.GetRefPlayerTwo();
         }
 
-        private class PlayersGetterNestedService
+        private class PlayersGetterNestedService : IEnumerable
         {
             /// <summary>
             ///     Places a <see cref="HumanPlayer" /> as the first player,
             ///     and <i>may</i> place a <see cref="HumanPlayer" /> or a
             ///     <see cref="ComputerPlayer" /> as the second player.
+            ///     <remarks> Implements <see cref="IEnumerable" />, thus iterable.</remarks>
             /// </summary>
             private Player.Player[] Players { get; } =
                 new Player.Player[k_NumberOfPlayers];
+
+            // IEnumerable Member
+            public IEnumerator GetEnumerator()
+            {
+                foreach (object o in Players)
+                {
+                    if (o == null)
+                    {
+                        break;
+                    }
+
+                    yield return o;
+                }
+            }
 
             internal ref Player.Player GetRefPlayerOne()
             {

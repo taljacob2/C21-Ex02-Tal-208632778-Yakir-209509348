@@ -68,8 +68,14 @@ namespace C21_Ex02_01.Team.Engine
                 }
 
                 // Winner found, and was handled.
+                resetForfeit();
                 return;
             }
+        }
+
+        private void resetForfeit()
+        {
+            ActuatorService.ResetForfeit();
         }
 
         private void setTie()
