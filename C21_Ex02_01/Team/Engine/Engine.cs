@@ -74,7 +74,7 @@ namespace C21_Ex02_01.Team.Engine
 
         private static void resetForfeitAndWinner()
         {
-            ActuatorService.ResetForfeitAndWinner();
+            ActuatorService.ResetForfeitAndWinner(); // Database Update.
         }
 
         private void setTie()
@@ -100,7 +100,7 @@ namespace C21_Ex02_01.Team.Engine
             {
                 // Winner Found. Handle it.
                 printWinResponse(winnerPlayer);
-                resetForfeitAndWinner();
+                resetForfeitAndWinner(); // Database Update.
             }
 
             return returnValue;

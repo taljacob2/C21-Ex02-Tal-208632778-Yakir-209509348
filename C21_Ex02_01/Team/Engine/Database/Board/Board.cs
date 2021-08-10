@@ -104,11 +104,11 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
                 for (int j = 0; j < Cols - 3; j++)
                 {
                     bool isWiningSequence = Matrix[i, j].IsEmpty() == false
-                                          && Matrix[i, j] == Matrix[i, j + 1]
-                                          && Matrix[i, j + 1] ==
-                                          Matrix[i, j + 2]
-                                          && Matrix[i, j + 2] ==
-                                          Matrix[i, j + 3];
+                                            && Matrix[i, j] == Matrix[i, j + 1]
+                                            && Matrix[i, j + 1] ==
+                                            Matrix[i, j + 2]
+                                            && Matrix[i, j + 2] ==
+                                            Matrix[i, j + 3];
                     if (isWiningSequence)
                     {
                         foundWiningSequence = true;

@@ -44,7 +44,8 @@
 
         public bool Equals(Coin i_Other)
         {
-            return Coordinate.Equals(i_Other.Coordinate) && Char == i_Other.Char;
+            return Coordinate.Equals(i_Other.Coordinate) &&
+                   Char == i_Other.Char;
         }
 
         public override string ToString()

@@ -13,7 +13,7 @@ namespace C21_Ex02_01.Team.Engine.Service
         void ConstructEngine();
 
         bool RequestNewGame();
-        
+
         void ChooseColumnAsHumanPlayer(HumanPlayer io_HumanPlayer);
 
         void ChooseColumnAsComputerPlayer(ComputerPlayer io_ComputerPlayer,

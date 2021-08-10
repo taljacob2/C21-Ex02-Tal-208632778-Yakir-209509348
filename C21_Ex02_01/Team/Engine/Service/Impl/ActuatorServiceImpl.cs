@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
@@ -38,17 +37,17 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             return returnValue;
         }
 
-        public void Forfeit()
-        {
-            setWinnerPlayer(r_Players.GetNotCurrentPlayer());
-        }
-
         public void SetTie()
         {
             Player playerOne = r_Players.GetPlayerOne();
             Player playerTwo = r_Players.GetPlayerTwo();
             playerOne.Score++;
             playerTwo.Score++;
+        }
+
+        public void Forfeit()
+        {
+            setWinnerPlayer(r_Players.GetNotCurrentPlayer());
         }
 
         public void ResetForfeitAndWinner()

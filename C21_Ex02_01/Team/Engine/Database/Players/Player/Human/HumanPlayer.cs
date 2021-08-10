@@ -31,7 +31,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
             Database database = Engine.Database;
             if (ChosenColumnIndex == k_QuitSignal)
             {
-                Engine.ActuatorService.Forfeit();
+                Engine.ActuatorService.Forfeit(); // Database Update.
                 return;
             }
 
@@ -44,11 +44,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
                 r_ResponderService.PrintMessage(e.Message); // UI Response.
                 chooseColumnAndTryToInsert();
             }
-        }
-
-        private void forfeit()
-        {
-            Engine.ActuatorService.Forfeit();
         }
     }
 }

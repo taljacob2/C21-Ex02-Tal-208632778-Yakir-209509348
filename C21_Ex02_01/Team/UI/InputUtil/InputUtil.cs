@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using MiscUtil;
-using MiscUtil.Collections;
 
 #endregion
 
@@ -98,7 +97,8 @@ namespace C21_Ex02_01.Team.UI.InputUtil
         }
 
         /// <summary>
-        ///     Converts a generic input char to an object, with given possible valid values.
+        ///     Converts a generic input char to an object, with given possible valid
+        ///     values.
         /// </summary>
         public static T ConvertKey<T>(string i_Message, params
             T[] i_PossibleValidValues)
@@ -115,7 +115,8 @@ namespace C21_Ex02_01.Team.UI.InputUtil
         }
 
         /// <summary>
-        ///     Generic comparison, to check if the <param name="i_Converted"></param>
+        ///     Generic comparison, to check if the
+        ///     <param name="i_Converted"></param>
         ///     is a possible valid value.
         ///     <see cref="Operator" />
         ///     <seealso cref="MiscUtil" />
@@ -132,7 +133,8 @@ namespace C21_Ex02_01.Team.UI.InputUtil
         }
 
         /// <summary>
-        ///     Converts a generic input char to an object, with given possible valid values.
+        ///     Converts a generic input char to an object, with given possible valid
+        ///     values.
         /// </summary>
         public static T ConvertKey<T>(string i_Message, List<T> i_List)
         {
@@ -148,7 +150,8 @@ namespace C21_Ex02_01.Team.UI.InputUtil
         }
 
         /// <summary>
-        ///     Converts a generic input char to an object, with given possible valid values.
+        ///     Converts a generic input char to an object, with given possible valid
+        ///     values.
         /// </summary>
         private static bool isConvertedPossibleValidValue<T>(T
             i_Converted, List<T> i_List)
