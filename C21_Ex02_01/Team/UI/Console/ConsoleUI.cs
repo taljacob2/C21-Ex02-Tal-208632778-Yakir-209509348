@@ -39,6 +39,10 @@ namespace C21_Ex02_01.Team.UI
                 {
                     newGame = true;
                 }
+                else
+                {
+                    Console.Out.WriteLine("Good Bye.");
+                }
 
                 return newGame;
             }

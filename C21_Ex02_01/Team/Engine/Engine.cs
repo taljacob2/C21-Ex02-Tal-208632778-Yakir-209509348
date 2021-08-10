@@ -68,14 +68,13 @@ namespace C21_Ex02_01.Team.Engine
                 }
 
                 // Winner found, and was handled.
-                resetForfeit();
                 return;
             }
         }
 
-        private void resetForfeit()
+        private static void resetForfeitAndWinner()
         {
-            ActuatorService.ResetForfeit();
+            ActuatorService.ResetForfeitAndWinner();
         }
 
         private void setTie()
@@ -101,6 +100,7 @@ namespace C21_Ex02_01.Team.Engine
             {
                 // Winner Found. Handle it.
                 printWinResponse(winnerPlayer);
+                resetForfeitAndWinner();
             }
 
             return returnValue;

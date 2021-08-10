@@ -51,13 +51,14 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             playerTwo.Score++;
         }
 
-        public void ResetForfeit()
+        public void ResetForfeitAndWinner()
         {
             foreach (Player player in r_Players)
             {
-                Console.Out.WriteLine("player = {0}", player);
                 player.ChosenColumnIndex = 0;
             }
+
+            WinnerPlayer = null;
         }
 
         private void setWinnerPlayer(Player io_Player)
