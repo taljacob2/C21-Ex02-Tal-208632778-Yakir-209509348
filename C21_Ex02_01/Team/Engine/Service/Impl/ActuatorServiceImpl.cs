@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
@@ -11,8 +10,6 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
 {
     public class ActuatorServiceImpl : IActuatorService
     {
-        private const byte k_Series = 4;
-
         private readonly Board r_Board = Engine.Database.Board;
         private readonly Players r_Players = Engine.Database.Players;
 
@@ -24,12 +21,13 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         {
             Player returnValue = null;
 
-            if (r_Board.isVictory())
+            if (r_Board.IsVictory())
             {
                 Player nonCurrentPlayer = r_Players.GetNotCurrentPlayer();
                 returnValue = nonCurrentPlayer;
                 nonCurrentPlayer.Score++;
             }
+
             return returnValue;
         }
 

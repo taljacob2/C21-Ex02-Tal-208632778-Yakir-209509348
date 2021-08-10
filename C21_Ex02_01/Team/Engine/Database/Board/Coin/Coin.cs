@@ -2,39 +2,6 @@
 {
     public class Coin
     {
-        public override bool Equals(object obj)
-        {
-            if(ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if(ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if(obj.GetType() != this.GetType())
-            {
-                return false;
-            }
-
-            return Equals((Coin)obj);
-
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return (Coordinate.GetHashCode() * 397) ^ Char.GetHashCode();
-            }
-        }
-
-        public bool Equals(Coin other)
-        {
-            return Coordinate.Equals(other.Coordinate) && Char == other.Char;
-        }
         public const char k_EmptyCoin = ' ';
 
         public Coin(Coordinate.Coordinate i_Coordinate, char i_Char)
@@ -47,6 +14,39 @@
 
         public char Char { get; set; }
 
+        public override bool Equals(object i_Obj)
+        {
+            if (ReferenceEquals(null, i_Obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, i_Obj))
+            {
+                return true;
+            }
+
+            if (i_Obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((Coin) i_Obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (Coordinate.GetHashCode() * 397) ^ Char.GetHashCode();
+            }
+        }
+
+        public bool Equals(Coin i_Other)
+        {
+            return Coordinate.Equals(i_Other.Coordinate) && Char == i_Other.Char;
+        }
+
         public override string ToString()
         {
             return $"{Char}";
@@ -57,8 +57,14 @@
             return Char == k_EmptyCoin;
         }
 
-        public static bool operator ==(Coin i_A, Coin i_B) => i_A?.Char == i_B?.Char;
-        public static bool operator !=(Coin i_A, Coin i_B) => i_A?.Char != i_B?.Char;
+        public static bool operator ==(Coin i_A, Coin i_B)
+        {
+            return i_A?.Char == i_B?.Char;
+        }
 
+        public static bool operator !=(Coin i_A, Coin i_B)
+        {
+            return i_A?.Char != i_B?.Char;
+        }
     }
 }

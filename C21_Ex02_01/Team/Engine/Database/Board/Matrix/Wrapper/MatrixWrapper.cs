@@ -19,7 +19,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
             Matrix = new T[i_Rows, i_Cols];
         }
 
-        protected MatrixWrapper() { }
+        protected MatrixWrapper() {}
 
         public byte Rows { get; }
 

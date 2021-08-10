@@ -74,9 +74,12 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         public Player.Player GetNotCurrentPlayer()
         {
             Player.Player current = GetCurrentPlayer();
-            Player.Player nonCurrentPlayer = current == GetPlayerOne() ? GetPlayerTwo() : GetPlayerOne();
+            Player.Player nonCurrentPlayer = current == GetPlayerOne()
+                ? GetPlayerTwo()
+                : GetPlayerOne();
             return nonCurrentPlayer;
         }
+
         public void SwitchCurrentPlayerTurn(
             Player.Player i_CurrentPlayingPlayer)
         {

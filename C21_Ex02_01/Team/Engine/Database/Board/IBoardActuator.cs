@@ -4,7 +4,7 @@
     {
         void ResetBoard();
         void InsertCoin(byte i_ColumnIndexToInsertTo, char i_CharCoin);
-        bool isVictory();
+        bool IsVictory();
         bool IsFull();
     }
 }

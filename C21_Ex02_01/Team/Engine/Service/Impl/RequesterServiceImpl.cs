@@ -19,10 +19,12 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
             // UI: Choose from which platform to construct the Engine:
             r_Requester = new ConsoleUI.Requester();
         }
+
         public bool RequestNewGame()
         {
             return r_Requester.RequestNewGame();
         }
+
         public void ConstructEngine()
         {
             r_Requester.RequestAndConstructEngine();

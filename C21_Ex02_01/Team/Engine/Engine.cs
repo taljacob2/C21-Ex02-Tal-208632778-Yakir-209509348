@@ -37,12 +37,12 @@ namespace C21_Ex02_01.Team.Engine
             bool continuePlay;
             do
             {
-                Database.Players.SwitchCurrentPlayerTurn(Database.Players.GetPlayerTwo());
+                Database.Players.SwitchCurrentPlayerTurn(Database.Players
+                    .GetPlayerTwo());
                 Database.Board.ResetBoard();
                 whileRunGame();
                 continuePlay = RequesterService.RequestNewGame();
-            }
-            while (continuePlay);
+            } while (continuePlay);
         }
 
         private void whileRunGame()
@@ -54,11 +54,13 @@ namespace C21_Ex02_01.Team.Engine
                 if (Database.Board.IsFull())
                 {
                     // It is a TIE.
-                    SetTie();
+                    setTie();
                     break;
                 }
+
                 Database.Players.PlayTurn();
-                Database.Players.SwitchCurrentPlayerTurn(Database.Players.GetCurrentPlayer());
+                Database.Players.SwitchCurrentPlayerTurn(Database.Players
+                    .GetCurrentPlayer());
 
                 if (!isWinnerPlayerHandled())
                 {
@@ -70,7 +72,7 @@ namespace C21_Ex02_01.Team.Engine
             }
         }
 
-        private void SetTie()
+        private void setTie()
         {
             ActuatorService.SetTie(); // Database Update.
             ResponderService.PrintTie(); // UI Response.
@@ -82,7 +84,8 @@ namespace C21_Ex02_01.Team.Engine
             bool returnValue = true;
 
             // Check for algorithm WIN here:
-            Player winnerPlayer = ActuatorService.GetWinnerPlayer(); // Database Update.
+            Player winnerPlayer =
+                ActuatorService.GetWinnerPlayer(); // Database Update.
 
             if (winnerPlayer == null)
             {

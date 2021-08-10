@@ -44,136 +44,12 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             }
         }
 
-        private void fillCoins(char i_CharToFill)
-        {
-            for (byte i = 0; i < Rows; i++)
-            {
-                for (byte j = 0; j < Cols; j++)
-                {
-                    Matrix[i, j] =
-                        new Coin.Coin(new Coordinate.Coordinate(i, j),
-                            i_CharToFill);
-                }
-            }
-        }
         public void ResetBoard()
         {
             fillCoins(Coin.Coin.k_EmptyCoin);
         }
-        private bool checkRows()
-        {
-            bool foundWiningSequence = false;
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < Cols - 3; j++)
-                {
-                    bool winingSequence = Matrix[i, j].IsEmpty() == false
-                                          && Matrix[i, j] == Matrix[i, j + 1]
-                                          && Matrix[i, j + 1] == Matrix[i, j + 2]
-                                          && Matrix[i, j + 2] == Matrix[i, j + 3];
-                    if (winingSequence)
-                    {
-                        foundWiningSequence = true;
-                    }
-                }
-                if (foundWiningSequence) break;
-            }
-            return foundWiningSequence;
-        }
-        private bool checkCols()
-        {
-            bool foundWiningSequence = false;
-            for (int i = 0; i < Rows - 3; i++)
-            {
-                for (int j = 0; j < Cols; j++)
-                {
-                    bool winingSequence = Matrix[i, j].IsEmpty() == false
-                                          && Matrix[i, j] == Matrix[i + 1, j]
-                                          && Matrix[i + 1, j] == Matrix[i + 2, j]
-                                          && Matrix[i + 2, j] == Matrix[i + 3, j];
-                    if (winingSequence)
-                    {
-                        foundWiningSequence = true;
-                    }
-                }
-            }
-            return foundWiningSequence;
 
-        }
-        private bool checkDiagonalsUp()
-        {
-            bool foundWiningSequence = false;
-            for (int i = 3; i < Rows; i++)
-            {
-                for (int j = 0; j < Cols; j++)
-                {
-                    if (j >= 3)
-                    {
-                        bool winingSequence = Matrix[i, j].IsEmpty() == false
-                                              && Matrix[i, j] == Matrix[i - 1, j - 1]
-                                              && Matrix[i - 1, j - 1] == Matrix[i - 2, j - 2]
-                                              && Matrix[i - 2, j - 2] == Matrix[i - 3, j - 3];
-                        if (winingSequence)
-                        {
-                            foundWiningSequence = true;
-                        }
-                    }
-                    if (Cols - 1 - j >= 3)
-                    {
-                        bool winingSequence = Matrix[i, j].IsEmpty() == false
-                                              && Matrix[i, j] == Matrix[i - 1, j + 1]
-                                              && Matrix[i - 1, j + 1] == Matrix[i - 2, j + 2]
-                                              && Matrix[i - 2, j + 2] == Matrix[i - 3, j + 3];
-                        if (winingSequence)
-                        {
-                            foundWiningSequence = true;
-                        }
-                    }
-                }
-                if (foundWiningSequence) break;
-            }
-            return foundWiningSequence;
-        }
-        private bool checkDiagonalDown()
-        {
-            bool foundWiningSequence = false;
-            for (int i = 0; i < Rows - 3; i++)
-            {
-                for (int j = 0; j < Cols; j++)
-                {
-                    if (j >= 3)
-                    {
-                        bool winingSequence = Matrix[i, j].IsEmpty() == false
-                                              && Matrix[i, j] == Matrix[i + 1, j - 1]
-                                              && Matrix[i + 1, j - 1] == Matrix[i + 2, j - 2]
-                                              && Matrix[i + 2, j - 2] == Matrix[i + 3, j - 3];
-                        if (winingSequence)
-                        {
-                            foundWiningSequence = true;
-                        }
-                    }
-                    if (Cols - 1 - j >= 3)
-                    {
-                        bool winingSequence = Matrix[i, j].IsEmpty() == false
-                                              && Matrix[i, j] == Matrix[i + 1, j + 1]
-                                              && Matrix[i + 1, j + 1] == Matrix[i + 2, j + 2]
-                                              && Matrix[i + 2, j + 2] == Matrix[i + 3, j + 3];
-                        if (winingSequence)
-                        {
-                            foundWiningSequence = true;
-                        }
-                    }
-                }
-                if (foundWiningSequence) break;
-            }
-            return foundWiningSequence;
-        }
-
-        private bool checkDiagonals()
-        {
-            return checkDiagonalsUp() || checkDiagonalDown();
-        }
-        public bool isVictory()
+        public bool IsVictory()
         {
             return checkCols() || checkRows() || checkDiagonals();
         }
@@ -205,6 +81,169 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             }
 
             return returnValue;
+        }
+
+        private void fillCoins(char i_CharToFill)
+        {
+            for (byte i = 0; i < Rows; i++)
+            {
+                for (byte j = 0; j < Cols; j++)
+                {
+                    Matrix[i, j] =
+                        new Coin.Coin(new Coordinate.Coordinate(i, j),
+                            i_CharToFill);
+                }
+            }
+        }
+
+        private bool checkRows()
+        {
+            bool foundWiningSequence = false;
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols - 3; j++)
+                {
+                    bool isWiningSequence = Matrix[i, j].IsEmpty() == false
+                                          && Matrix[i, j] == Matrix[i, j + 1]
+                                          && Matrix[i, j + 1] ==
+                                          Matrix[i, j + 2]
+                                          && Matrix[i, j + 2] ==
+                                          Matrix[i, j + 3];
+                    if (isWiningSequence)
+                    {
+                        foundWiningSequence = true;
+                    }
+                }
+
+                if (foundWiningSequence)
+                {
+                    break;
+                }
+            }
+
+            return foundWiningSequence;
+        }
+
+        private bool checkCols()
+        {
+            bool foundWiningSequence = false;
+            for (int i = 0; i < Rows - 3; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    bool winingSequence = Matrix[i, j].IsEmpty() == false
+                                          && Matrix[i, j] == Matrix[i + 1, j]
+                                          && Matrix[i + 1, j] ==
+                                          Matrix[i + 2, j]
+                                          && Matrix[i + 2, j] ==
+                                          Matrix[i + 3, j];
+                    if (winingSequence)
+                    {
+                        foundWiningSequence = true;
+                    }
+                }
+            }
+
+            return foundWiningSequence;
+        }
+
+        private bool checkDiagonalsUp()
+        {
+            bool foundWiningSequence = false;
+            for (int i = 3; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    if (j >= 3)
+                    {
+                        bool winingSequence = Matrix[i, j].IsEmpty() == false
+                                              && Matrix[i, j] ==
+                                              Matrix[i - 1, j - 1]
+                                              && Matrix[i - 1, j - 1] ==
+                                              Matrix[i - 2, j - 2]
+                                              && Matrix[i - 2, j - 2] ==
+                                              Matrix[i - 3, j - 3];
+                        if (winingSequence)
+                        {
+                            foundWiningSequence = true;
+                        }
+                    }
+
+                    if (Cols - 1 - j >= 3)
+                    {
+                        bool winingSequence = Matrix[i, j].IsEmpty() == false
+                                              && Matrix[i, j] ==
+                                              Matrix[i - 1, j + 1]
+                                              && Matrix[i - 1, j + 1] ==
+                                              Matrix[i - 2, j + 2]
+                                              && Matrix[i - 2, j + 2] ==
+                                              Matrix[i - 3, j + 3];
+                        if (winingSequence)
+                        {
+                            foundWiningSequence = true;
+                        }
+                    }
+                }
+
+                if (foundWiningSequence)
+                {
+                    break;
+                }
+            }
+
+            return foundWiningSequence;
+        }
+
+        private bool checkDiagonalDown()
+        {
+            bool foundWiningSequence = false;
+            for (int i = 0; i < Rows - 3; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    if (j >= 3)
+                    {
+                        bool winingSequence = Matrix[i, j].IsEmpty() == false
+                                              && Matrix[i, j] ==
+                                              Matrix[i + 1, j - 1]
+                                              && Matrix[i + 1, j - 1] ==
+                                              Matrix[i + 2, j - 2]
+                                              && Matrix[i + 2, j - 2] ==
+                                              Matrix[i + 3, j - 3];
+                        if (winingSequence)
+                        {
+                            foundWiningSequence = true;
+                        }
+                    }
+
+                    if (Cols - 1 - j >= 3)
+                    {
+                        bool winingSequence = Matrix[i, j].IsEmpty() == false
+                                              && Matrix[i, j] ==
+                                              Matrix[i + 1, j + 1]
+                                              && Matrix[i + 1, j + 1] ==
+                                              Matrix[i + 2, j + 2]
+                                              && Matrix[i + 2, j + 2] ==
+                                              Matrix[i + 3, j + 3];
+                        if (winingSequence)
+                        {
+                            foundWiningSequence = true;
+                        }
+                    }
+                }
+
+                if (foundWiningSequence)
+                {
+                    break;
+                }
+            }
+
+            return foundWiningSequence;
+        }
+
+        private bool checkDiagonals()
+        {
+            return checkDiagonalsUp() || checkDiagonalDown();
         }
 
         /// <summary>

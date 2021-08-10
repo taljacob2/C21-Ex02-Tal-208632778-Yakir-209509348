@@ -1,6 +1,5 @@
 ﻿#region
 
-using System;
 using C21_Ex02_01.Team.Engine;
 
 #endregion
