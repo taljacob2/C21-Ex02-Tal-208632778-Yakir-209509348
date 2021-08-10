@@ -2,6 +2,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Linq;
 using MiscUtil;
 
 #endregion
@@ -10,6 +11,9 @@ namespace C21_Ex02_01.Team.UI.InputUtil
 {
     public static class InputUtil
     {
+        private const string k_BadInputMessage =
+            "Bad input. Please try again...";
+
         /// <summary>
         ///     Converts a generic input string to an object.
         /// </summary>
@@ -28,7 +32,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
             }
             catch (Exception)
             {
-                Console.Out.WriteLine("Bad input. Please try again...");
+                Console.Out.WriteLine(k_BadInputMessage);
                 return Convert<T>(i_Message);
             }
         }
@@ -43,7 +47,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
             if (!isConvertedInRange(converted, i_MinimumRange, i_MaximumRange)
             )
             {
-                Console.Out.WriteLine("Bad input. Please try again...");
+                Console.Out.WriteLine(k_BadInputMessage);
                 return Convert(i_Message, i_MinimumRange, i_MaximumRange);
             }
 
@@ -66,6 +70,47 @@ namespace C21_Ex02_01.Team.UI.InputUtil
             return Operator.LessThanOrEqual(i_Converted, i_MaximumRange) &&
                    Operator
                        .GreaterThanOrEqual(i_Converted, i_MinimumRange);
+        }
+
+        private static bool isConvertedPossibleValidValue<T>(T i_Converted,
+            params T[] i_PossibleValidValues)
+        {
+            return i_PossibleValidValues.Any(i_T =>
+                Operator.Equal(i_Converted, i_T));
+        }
+
+        public static T ConvertKey<T>(string i_Message)
+        {
+            Console.Out.WriteLine(i_Message);
+            char input = Console.ReadKey(true).KeyChar;
+            try
+            {
+                // Create converter
+                TypeConverter converter =
+                    TypeDescriptor.GetConverter(typeof(T));
+
+                // Cast ConvertFromString(string text) : object to (T)
+                return (T) converter.ConvertFromString(input.ToString());
+            }
+            catch (Exception)
+            {
+                Console.Out.WriteLine(k_BadInputMessage);
+                return ConvertKey<T>(i_Message);
+            }
+        }
+
+        public static T ConvertKey<T>(string i_Message, params
+            T[] i_PossibleValidValues)
+        {
+            T converted = ConvertKey<T>(i_Message);
+            if (!isConvertedPossibleValidValue(converted, i_PossibleValidValues)
+            )
+            {
+                Console.Out.WriteLine(k_BadInputMessage);
+                return ConvertKey(i_Message, i_PossibleValidValues);
+            }
+
+            return converted;
         }
     }
 }

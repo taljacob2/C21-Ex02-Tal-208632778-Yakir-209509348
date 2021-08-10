@@ -18,7 +18,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
 
         public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols)
         {
-            fillCoins(Coin.Coin.k_EmptyCoin);
+            // ResetBoard();
         }
 
         /// <summary>

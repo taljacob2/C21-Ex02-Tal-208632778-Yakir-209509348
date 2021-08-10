@@ -27,9 +27,12 @@ namespace C21_Ex02_01.Team.UI
             public bool RequestNewGame()
             {
                 bool newGame = false;
-                Console.Out.Write("Do you want to play a new game? (Y/n): ");
-                char key = Console.ReadKey().KeyChar;
-                if (key == 'y' || key == 'Y')
+
+                char keyPressed =
+                    ConvertKey<char>("Do you want to play a new game? (Y/N): ",
+                        'y', 'Y', 'n', 'N');
+                string upperCaseString = keyPressed.ToString().ToUpper();
+                if (upperCaseString.Equals("Y"))
                 {
                     newGame = true;
                 }
