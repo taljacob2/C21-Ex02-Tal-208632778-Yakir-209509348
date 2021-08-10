@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using C21_Ex02_01.Team.Engine.Service;
 
 #endregion
@@ -32,6 +33,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player
                 i_ListOfIndexesOfNotFullColumns);
             try
             {
+                Thread.Sleep(300); // Add delay for realism.
                 i_Database.Board.InsertCoin(ChosenColumnIndex, Char);
             }
             catch (Exception)

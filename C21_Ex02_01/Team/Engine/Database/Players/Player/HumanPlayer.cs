@@ -9,7 +9,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player
 {
     public class HumanPlayer : Player
     {
-        public const byte k_QuitSignal = 99;
+        public const byte k_QuitSignal = 255;
 
         private readonly IRequesterService r_RequesterService =
             Engine.RequesterService;
