@@ -62,7 +62,7 @@ namespace C21_Ex02_01.Team.UI.InputUtil
         /// <param name="i_Converted" />
         /// <param name="i_MinimumRange" />
         /// <param name="i_MaximumRange" />
-        /// <typeparam name="T">must be Comparable</typeparam>
+        /// <typeparam name="T">Must be Comparable</typeparam>
         /// <returns />
         private static bool isConvertedInRange<T>(T i_Converted,
             T i_MinimumRange, T i_MaximumRange)
@@ -72,13 +72,9 @@ namespace C21_Ex02_01.Team.UI.InputUtil
                        .GreaterThanOrEqual(i_Converted, i_MinimumRange);
         }
 
-        private static bool isConvertedPossibleValidValue<T>(T i_Converted,
-            params T[] i_PossibleValidValues)
-        {
-            return i_PossibleValidValues.Any(i_T =>
-                Operator.Equal(i_Converted, i_T));
-        }
-
+        /// <summary>
+        ///     Converts a generic input char to an object.
+        /// </summary>
         public static T ConvertKey<T>(string i_Message)
         {
             Console.Out.WriteLine(i_Message);
@@ -98,7 +94,10 @@ namespace C21_Ex02_01.Team.UI.InputUtil
                 return ConvertKey<T>(i_Message);
             }
         }
-
+        
+        /// <summary>
+        ///     Converts a generic input char to an object, with given possible valid values.
+        /// </summary>
         public static T ConvertKey<T>(string i_Message, params
             T[] i_PossibleValidValues)
         {
@@ -111,6 +110,23 @@ namespace C21_Ex02_01.Team.UI.InputUtil
             }
 
             return converted;
+        }
+        
+        /// <summary>
+        ///     Generic comparison, to check if the <param name="i_Converted"></param>
+        ///     is a possible valid value.
+        ///     <see cref="Operator" />
+        ///     <seealso cref="MiscUtil" />
+        /// </summary>
+        /// <param name="i_Converted" />
+        /// <param name="i_PossibleValidValues">All possible valid values.</param>
+        /// <typeparam name="T">Must be Comparable</typeparam>
+        /// <returns></returns>
+        private static bool isConvertedPossibleValidValue<T>(T i_Converted,
+            params T[] i_PossibleValidValues)
+        {
+            return i_PossibleValidValues.Any(i_T =>
+                Operator.Equal(i_Converted, i_T));
         }
     }
 }
