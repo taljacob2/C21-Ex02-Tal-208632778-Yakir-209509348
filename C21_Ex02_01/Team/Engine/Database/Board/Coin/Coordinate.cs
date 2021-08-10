@@ -1,4 +1,4 @@
-﻿namespace C21_Ex02_01.Team.Engine.Database.Board.Coordinate
+﻿namespace C21_Ex02_01.Team.Engine.Database.Board.Coin
 {
     public struct Coordinate
     {

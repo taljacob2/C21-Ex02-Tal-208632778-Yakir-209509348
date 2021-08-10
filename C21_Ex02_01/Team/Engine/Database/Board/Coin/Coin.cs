@@ -4,13 +4,13 @@
     {
         public const char k_EmptyCoin = ' ';
 
-        public Coin(Coordinate.Coordinate i_Coordinate, char i_Char)
+        public Coin(Coordinate i_Coordinate, char i_Char)
         {
             Coordinate = i_Coordinate;
             Char = i_Char;
         }
 
-        public Coordinate.Coordinate Coordinate { get; }
+        public Coordinate Coordinate { get; }
 
         public char Char { get; set; }
 

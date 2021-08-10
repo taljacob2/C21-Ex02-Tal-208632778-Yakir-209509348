@@ -90,7 +90,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
                 for (byte j = 0; j < Cols; j++)
                 {
                     Matrix[i, j] =
-                        new Coin.Coin(new Coordinate.Coordinate(i, j),
+                        new Coin.Coin(new Coordinate(i, j),
                             i_CharToFill);
                 }
             }

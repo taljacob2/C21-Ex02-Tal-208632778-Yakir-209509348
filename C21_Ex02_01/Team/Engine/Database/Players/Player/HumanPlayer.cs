@@ -1,12 +1,11 @@
 ﻿#region
 
 using System;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.ID;
 using C21_Ex02_01.Team.Engine.Service;
 
 #endregion
 
-namespace C21_Ex02_01.Team.Engine.Database.Players.Player.Human
+namespace C21_Ex02_01.Team.Engine.Database.Players.Player
 {
     public class HumanPlayer : Player
     {

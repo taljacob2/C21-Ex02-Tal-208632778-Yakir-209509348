@@ -3,10 +3,6 @@
 using System;
 using System.Collections;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.ID;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
 using C21_Ex02_01.Team.Misc;
 
 #endregion
@@ -24,7 +20,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         private readonly PlayersGetterNestedService r_PlayersGetterNestedService
             = new PlayersGetterNestedService();
 
-        public Players(Settings.Settings i_Settings)
+        public Players(Settings i_Settings)
         {
             Settings = i_Settings;
             initializePlayers();
@@ -33,7 +29,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
         // Set arbitrarily the starting player.
         private static eID CurrentPlayerTurn { get; set; } = eID.One;
 
-        private Settings.Settings Settings { get; }
+        private Settings Settings { get; }
 
         // IEnumerable Member  
         public IEnumerator GetEnumerator()

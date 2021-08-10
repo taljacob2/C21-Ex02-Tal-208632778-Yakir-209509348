@@ -1,8 +1,7 @@
 ﻿#region
 
 using System.Collections.Generic;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
+using C21_Ex02_01.Team.Engine.Database.Players.Player;
 
 #endregion
 

@@ -1,10 +1,10 @@
 ﻿#region
 
-using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
+using C21_Ex02_01.Team.Engine.Database.Players.Player;
 
 #endregion
 
-namespace C21_Ex02_01.Team.Engine.Database.Players.Settings
+namespace C21_Ex02_01.Team.Engine.Database.Players
 {
     public class Settings
     {
