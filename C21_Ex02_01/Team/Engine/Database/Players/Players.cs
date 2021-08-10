@@ -7,6 +7,7 @@ using C21_Ex02_01.Team.Engine.Database.Players.Player.Computer;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Human;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.ID;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.Type;
+using C21_Ex02_01.Team.Misc;
 
 #endregion
 
@@ -128,15 +129,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
             // IEnumerable Member
             public IEnumerator GetEnumerator()
             {
-                foreach (object o in Players)
-                {
-                    if (o == null)
-                    {
-                        break;
-                    }
-
-                    yield return o;
-                }
+                return EnumeratorGetter.GetEnumerator(Players);
             }
 
             internal ref Player.Player GetRefPlayerOne()

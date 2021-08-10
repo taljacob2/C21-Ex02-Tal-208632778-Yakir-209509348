@@ -67,6 +67,7 @@
     <Compile Include="Team\Engine\Service\Impl\ResponderServiceImpl.cs" />
     <Compile Include="Team\Engine\Service\IRequesterService.cs" />
     <Compile Include="Team\Engine\Service\IResponderService.cs" />
+    <Compile Include="Team\Misc\EnumeratorGetter.cs" />
     <Compile Include="Team\UI\InputUtil\InputUtil.cs" />
     <Compile Include="Team\UI\Console\ConsoleUI.cs" />
   </ItemGroup>

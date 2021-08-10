@@ -55,6 +55,7 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
         {
             foreach (Player player in r_Players)
             {
+                Console.Out.WriteLine("player = {0}", player);
                 player.ChosenColumnIndex = 0;
             }
         }
