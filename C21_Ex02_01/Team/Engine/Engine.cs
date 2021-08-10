@@ -102,7 +102,7 @@ namespace C21_Ex02_01.Team.Engine
 
         private static void printWinResponse(Player i_WinnerPlayer)
         {
-            ResponderService.PrintBoard();
+            ResponderService.PrintBoard(); // UI Response.
             ResponderService.PrintWinner(i_WinnerPlayer); // UI Response.
             ResponderService.PrintScores(Database.Players); // UI Response.
         }
