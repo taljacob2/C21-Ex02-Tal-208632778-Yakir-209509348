@@ -28,7 +28,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
         /// <summary>
         ///     private for encapsulation and safety of Matrix.
         /// </summary>
-        protected T[,] Matrix { get; }
+        protected T[,] Matrix { get; set; }
 
         public override string ToString()
         {

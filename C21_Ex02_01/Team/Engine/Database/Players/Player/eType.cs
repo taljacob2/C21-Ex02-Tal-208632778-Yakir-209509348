@@ -3,6 +3,7 @@
     public enum eType
     {
         Human,
-        Computer
+        Computer,
+        AI
     }
 }

@@ -15,6 +15,9 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
     /// </summary>
     public class Players : IEnumerable
     {
+        public const char k_PlayerOneChar = 'O'; // Set arbitrarily.
+        public const char k_PlayerTwoChar = 'X'; // Set arbitrarily.
+
         private const byte k_NumberOfPlayers = 2;
 
         private readonly PlayersGetterNestedService r_PlayersGetterNestedService
@@ -39,9 +42,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
 
         private void initializePlayers()
         {
-            const char k_PlayerOneChar = 'O'; // Set arbitrarily.
-            const char k_PlayerTwoChar = 'X'; // Set arbitrarily.
-
             switch (Settings.OpponentType)
             {
                 case eType.Human:
@@ -56,6 +56,12 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
                             eID.Two,
                             k_PlayerTwoChar);
                     break;
+                case eType.AI:
+                    r_PlayersGetterNestedService.GetRefPlayerTwo() =
+                        new AIPlayer(
+                            eID.Two,
+                            k_PlayerTwoChar);
+                    break;                
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -90,10 +90,11 @@ namespace C21_Ex02_01.Team.UI
                 i_Type)
             {
                 const byte k_MinimumRange = (byte) eType.Human + 1;
-                const byte k_MaximumRange = (byte) eType.Computer + 1;
+
+                // const byte k_MaximumRange = (byte) eType.Computer + 1;
+                const byte k_MaximumRange = (byte) eType.AI + 1;
                 string mainMessage =
-                    requestOpponentPlayerMainMessage(k_MinimumRange,
-                        k_MaximumRange);
+                    requestOpponentPlayerMainMessage();
 
                 string stringOpponent =
                     requestOpponentPlayerToString(
@@ -102,17 +103,19 @@ namespace C21_Ex02_01.Team.UI
                 Enum.TryParse(stringOpponent, out i_Type);
             }
 
-            private static string requestOpponentPlayerMainMessage(
-                byte i_MinimumRange, byte i_MaximumRange)
+            private static string requestOpponentPlayerMainMessage()
             {
                 string titleMessage =
                     "Please choose an opponent." + Environment.NewLine;
-                string humanMessage = $"{i_MinimumRange}. {eType.Human}" +
+                string humanMessage = $"{(byte) eType.Human + 1}. {eType.Human}" +
                                       Environment.NewLine;
                 string computerMessage =
-                    $"{i_MaximumRange}. {eType.Computer}";
+                    $"{(byte) eType.Computer + 1}. {eType.Computer}" +
+                    Environment.NewLine;
+                string aiMessage =
+                    $"{(byte) eType.AI + 1}. {eType.AI}";
                 string mainMessage =
-                    titleMessage + humanMessage + computerMessage;
+                    titleMessage + humanMessage + computerMessage + aiMessage;
                 return mainMessage;
             }
 

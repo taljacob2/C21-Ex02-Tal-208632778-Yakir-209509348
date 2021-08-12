@@ -1,11 +1,13 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 using C21_Ex02_01.Team.Engine.Database.Board.Coin;
 using C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper;
+using C21_Ex02_01.Team.Misc;
 
 #endregion
 
@@ -15,10 +17,34 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
     {
         private const char k_Delimiter = '|';
         private const char k_RowSeparator = '=';
+        private const byte k_Series = 4;
+
+
+        // TODO: may need to change size
+        private static readonly int[,] sr_EvaluationBoard =
+        {
+            {1, 1, 2, 3, 5, 3, 2, 1, 1},
+            {1, 3, 4, 5, 7, 5, 4, 3, 1},
+            {2, 4, 6, 8, 10, 8, 6, 4, 2},
+            {3, 5, 8, 11, 13, 11, 8, 5, 3},
+            {4, 5, 8, 11, 13, 11, 8, 5, 4},
+            {3, 4, 6, 8, 10, 8, 6, 4, 3},
+            {2, 3, 4, 5, 7, 5, 4, 3, 2},
+            {1, 1, 2, 3, 5, 3, 2, 1, 1}
+        };
 
         public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols)
         {
             // ResetBoard();
+        }
+
+        /// <summary>
+        ///     Constructor from another board by deep copy.
+        /// </summary>
+        /// <param name="i_Board"></param>
+        public Board(Board i_Board) : this(i_Board.Rows, i_Board.Cols)
+        {
+            this.Matrix = ObjectExtensions.Copy(i_Board.Matrix);
         }
 
         /// <summary>
@@ -81,6 +107,32 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             }
 
             return returnValue;
+        }
+
+        public List<byte> GetValidMoves()
+        {
+            List<byte> validMoves = new List<byte>();
+
+            for (byte i = 0; i < Cols; i++)
+            {
+                if (Matrix[0, i].Char == Coin.Coin.k_EmptyCoin)
+                {
+                    validMoves.Add(i);
+                }
+            }
+
+            return validMoves;
+        }
+
+        public static void CopyBoardMatrix(Board i_Source, Board i_Destination)
+        {
+            for (int i = 0; i < i_Source.Rows; i++)
+            {
+                for (int j = 0; j < i_Source.Cols; j++)
+                {
+                    i_Destination.Matrix[i, j] = i_Source.Matrix[i, j];
+                }
+            }
         }
 
         private void fillCoins(char i_CharToFill)
@@ -298,6 +350,46 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
             }
 
             return stringBuilder.ToString();
+        }
+
+        /// <summary>
+        ///     Function to evaluate a board from the given player perspective.
+        /// </summary>
+        /// <param name="i_Board"></param>
+        /// <param name="i_PlayerChar"></param>
+        /// <returns></returns>
+        public static double EvaluateBoard(Board i_Board, char i_PlayerChar)
+        {
+            if (i_Board.IsVictory())
+            {
+                return double.PositiveInfinity;
+            }
+
+            double score = 0;
+            for (int i = 0; i < i_Board.Rows; i++)
+            {
+                for (int j = 0; j < i_Board.Cols; j++)
+                {
+                    if (i_Board.Matrix[i, j].Char != Coin.Coin.k_EmptyCoin)
+                    {
+                        if (i_Board.Matrix[i, j].Char ==
+                            Players.Players.k_PlayerOneChar &&
+                            i_PlayerChar == Players.Players.k_PlayerOneChar)
+                        {
+                            score += sr_EvaluationBoard[i, j];
+                        }
+                        else if (i_Board.Matrix[i, j].Char ==
+                                 Players.Players.k_PlayerTwoChar &&
+                                 i_PlayerChar == Players.Players
+                                     .k_PlayerTwoChar)
+                        {
+                            score += sr_EvaluationBoard[i, j];
+                        }
+                    }
+                }
+            }
+
+            return score;
         }
 
         private struct RowAppender

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
+using C21_Ex02_01.Team.Engine.Database.Players.Player.AI;
 using C21_Ex02_01.Team.UI;
 
 #endregion
@@ -52,6 +53,12 @@ namespace C21_Ex02_01.Team.Engine.Service.Impl
                 random.Next(i_ListOfIndexesOfNotFullColumns.Count);
             io_ComputerPlayer.ChosenColumnIndex =
                 i_ListOfIndexesOfNotFullColumns[(byte) randomIndex];
+        }
+
+        public void ChooseColumnAsAIPlayer(AIPlayer i_AIPlayer,
+            List<byte> i_ListOfIndexesOfNotFullColumns)
+        {
+            throw new NotImplementedException();
         }
     }
 }
