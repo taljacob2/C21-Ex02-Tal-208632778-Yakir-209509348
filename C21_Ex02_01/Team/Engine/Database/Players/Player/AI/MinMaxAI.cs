@@ -41,28 +41,28 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.AI
             Player i_MaximizingPlayer,
             Player i_CurrentPlayer)
         {
-            double value;
-            
+            double returnValue;
+
             if (i_Depth == 0)
             {
-                value = Board.Board.EvaluateBoard(i_Node, i_CurrentPlayer
+                returnValue = Board.Board.EvaluateBoard(i_Node, i_CurrentPlayer
                     .Char);
             }
             else
             {
                 if (i_MaximizingPlayer.Char == i_CurrentPlayer.Char)
                 {
-                    value = valueOfMaximisingPlayer(i_Node, i_Depth,
+                    returnValue = valueOfMaximisingPlayer(i_Node, i_Depth,
                         i_MaximizingPlayer, i_CurrentPlayer);
                 }
                 else
                 {
-                    value = valueOfMinimizingPlayer(i_Node, i_Depth,
+                    returnValue = valueOfMinimizingPlayer(i_Node, i_Depth,
                         i_MaximizingPlayer, i_CurrentPlayer);
                 }
             }
 
-            return value;
+            return returnValue;
         }
 
         private double valueOfMinimizingPlayer(Board.Board i_Node, int i_Depth,
