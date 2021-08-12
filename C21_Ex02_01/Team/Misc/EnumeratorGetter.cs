@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿#region
+
+using System.Collections;
+
+#endregion
 
 namespace C21_Ex02_01.Team.Misc
 {

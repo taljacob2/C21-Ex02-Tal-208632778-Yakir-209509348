@@ -1,50 +1,54 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using C21_Ex02_01.Team.Misc.ArrayExtensions;
+
+#endregion
 
 namespace C21_Ex02_01.Team.Misc
 {
     public static class ObjectExtensions
     {
-        private static readonly MethodInfo CloneMethod =
+        private static readonly MethodInfo sr_CloneMethod =
             typeof(object).GetMethod("MemberwiseClone",
                 BindingFlags.NonPublic | BindingFlags.Instance);
 
-        public static bool IsPrimitive(this Type type)
+        public static bool IsPrimitive(this Type i_Type)
         {
-            if (type == typeof(string))
+            if (i_Type == typeof(string))
             {
                 return true;
             }
 
-            return type.IsValueType & type.IsPrimitive;
+            return i_Type.IsValueType & i_Type.IsPrimitive;
         }
 
-        public static object Copy(this object originalObject)
+        public static object Copy(this object i_OriginalObject)
         {
-            return InternalCopy(originalObject,
+            return internalCopy(i_OriginalObject,
                 new Dictionary<object, object>(
                     new ReferenceEqualityComparer()));
         }
 
-        private static object InternalCopy(object originalObject,
-            IDictionary<object, object> visited)
+        private static object internalCopy(object i_OriginalObject,
+            IDictionary<object, object> i_Visited)
         {
-            if (originalObject == null)
+            if (i_OriginalObject == null)
             {
                 return null;
             }
 
-            Type typeToReflect = originalObject.GetType();
+            Type typeToReflect = i_OriginalObject.GetType();
             if (IsPrimitive(typeToReflect))
             {
-                return originalObject;
+                return i_OriginalObject;
             }
 
-            if (visited.ContainsKey(originalObject))
+            if (i_Visited.ContainsKey(i_OriginalObject))
             {
-                return visited[originalObject];
+                return i_Visited[i_OriginalObject];
             }
 
             if (typeof(Delegate).IsAssignableFrom(typeToReflect))
@@ -52,54 +56,54 @@ namespace C21_Ex02_01.Team.Misc
                 return null;
             }
 
-            object cloneObject = CloneMethod.Invoke(originalObject, null);
+            object cloneObject = sr_CloneMethod.Invoke(i_OriginalObject, null);
             if (typeToReflect.IsArray)
             {
                 Type arrayType = typeToReflect.GetElementType();
                 if (IsPrimitive(arrayType) == false)
                 {
                     Array clonedArray = (Array) cloneObject;
-                    clonedArray.ForEach((array, indices) =>
-                        array.SetValue(
-                            InternalCopy(clonedArray.GetValue(indices),
-                                visited), indices));
+                    clonedArray.ForEach((i_Array, i_Indices) =>
+                        i_Array.SetValue(
+                            internalCopy(clonedArray.GetValue(i_Indices),
+                                i_Visited), i_Indices));
                 }
             }
 
-            visited.Add(originalObject, cloneObject);
-            CopyFields(originalObject, visited, cloneObject, typeToReflect);
-            RecursiveCopyBaseTypePrivateFields(originalObject, visited,
+            i_Visited.Add(i_OriginalObject, cloneObject);
+            copyFields(i_OriginalObject, i_Visited, cloneObject, typeToReflect);
+            recursiveCopyBaseTypePrivateFields(i_OriginalObject, i_Visited,
                 cloneObject, typeToReflect);
             return cloneObject;
         }
 
-        private static void RecursiveCopyBaseTypePrivateFields(
-            object originalObject, IDictionary<object, object> visited,
-            object cloneObject, Type typeToReflect)
+        private static void recursiveCopyBaseTypePrivateFields(
+            object i_OriginalObject, IDictionary<object, object> i_Visited,
+            object i_CloneObject, Type i_TypeToReflect)
         {
-            if (typeToReflect.BaseType != null)
+            if (i_TypeToReflect.BaseType != null)
             {
-                RecursiveCopyBaseTypePrivateFields(originalObject, visited,
-                    cloneObject, typeToReflect.BaseType);
-                CopyFields(originalObject, visited, cloneObject,
-                    typeToReflect.BaseType,
+                recursiveCopyBaseTypePrivateFields(i_OriginalObject, i_Visited,
+                    i_CloneObject, i_TypeToReflect.BaseType);
+                copyFields(i_OriginalObject, i_Visited, i_CloneObject,
+                    i_TypeToReflect.BaseType,
                     BindingFlags.Instance | BindingFlags.NonPublic,
-                    info => info.IsPrivate);
+                    i_Info => i_Info.IsPrivate);
             }
         }
 
-        private static void CopyFields(object originalObject,
-            IDictionary<object, object> visited, object cloneObject,
-            Type typeToReflect,
-            BindingFlags bindingFlags =
+        private static void copyFields(object i_OriginalObject,
+            IDictionary<object, object> i_Visited, object i_CloneObject,
+            Type i_TypeToReflect,
+            BindingFlags i_BindingFlags =
                 BindingFlags.Instance | BindingFlags.NonPublic |
                 BindingFlags.Public | BindingFlags.FlattenHierarchy,
-            Func<FieldInfo, bool> filter = null)
+            Func<FieldInfo, bool> i_Filter = null)
         {
-            foreach (FieldInfo fieldInfo in typeToReflect.GetFields(
-                bindingFlags))
+            foreach (FieldInfo fieldInfo in i_TypeToReflect.GetFields(
+                i_BindingFlags))
             {
-                if (filter != null && filter(fieldInfo) == false)
+                if (i_Filter != null && i_Filter(fieldInfo) == false)
                 {
                     continue;
                 }
@@ -109,34 +113,35 @@ namespace C21_Ex02_01.Team.Misc
                     continue;
                 }
 
-                object originalFieldValue = fieldInfo.GetValue(originalObject);
+                object originalFieldValue =
+                    fieldInfo.GetValue(i_OriginalObject);
                 object clonedFieldValue =
-                    InternalCopy(originalFieldValue, visited);
-                fieldInfo.SetValue(cloneObject, clonedFieldValue);
+                    internalCopy(originalFieldValue, i_Visited);
+                fieldInfo.SetValue(i_CloneObject, clonedFieldValue);
             }
         }
 
-        public static T Copy<T>(this T original)
+        public static T Copy<T>(this T i_Original)
         {
-            return (T) Copy((object) original);
+            return (T) Copy((object) i_Original);
         }
     }
 
     public class ReferenceEqualityComparer : EqualityComparer<object>
     {
-        public override bool Equals(object x, object y)
+        public override bool Equals(object i_X, object i_Y)
         {
-            return ReferenceEquals(x, y);
+            return ReferenceEquals(i_X, i_Y);
         }
 
-        public override int GetHashCode(object obj)
+        public override int GetHashCode(object i_Obj)
         {
-            if (obj == null)
+            if (i_Obj == null)
             {
                 return 0;
             }
 
-            return obj.GetHashCode();
+            return i_Obj.GetHashCode();
         }
     }
 
@@ -144,48 +149,48 @@ namespace C21_Ex02_01.Team.Misc
     {
         public static class ArrayExtensions
         {
-            public static void ForEach(this Array array,
-                Action<Array, int[]> action)
+            public static void ForEach(this Array i_Array,
+                Action<Array, int[]> i_Action)
             {
-                if (array.LongLength == 0)
+                if (i_Array.LongLength == 0)
                 {
                     return;
                 }
 
-                ArrayTraverse walker = new ArrayTraverse(array);
+                ArrayTraverse walker = new ArrayTraverse(i_Array);
                 do
                 {
-                    action(array, walker.Position);
+                    i_Action(i_Array, walker.m_Position);
                 } while (walker.Step());
             }
         }
 
         internal class ArrayTraverse
         {
-            private readonly int[] maxLengths;
-            public int[] Position;
+            private readonly int[] r_MaxLengths;
+            public int[] m_Position;
 
-            public ArrayTraverse(Array array)
+            public ArrayTraverse(Array i_Array)
             {
-                maxLengths = new int[array.Rank];
-                for (int i = 0; i < array.Rank; ++i)
+                r_MaxLengths = new int[i_Array.Rank];
+                for (int i = 0; i < i_Array.Rank; ++i)
                 {
-                    maxLengths[i] = array.GetLength(i) - 1;
+                    r_MaxLengths[i] = i_Array.GetLength(i) - 1;
                 }
 
-                Position = new int[array.Rank];
+                m_Position = new int[i_Array.Rank];
             }
 
             public bool Step()
             {
-                for (int i = 0; i < Position.Length; ++i)
+                for (int i = 0; i < m_Position.Length; ++i)
                 {
-                    if (Position[i] < maxLengths[i])
+                    if (m_Position[i] < r_MaxLengths[i])
                     {
-                        Position[i]++;
+                        m_Position[i]++;
                         for (int j = 0; j < i; j++)
                         {
-                            Position[j] = 0;
+                            m_Position[j] = 0;
                         }
 
                         return true;

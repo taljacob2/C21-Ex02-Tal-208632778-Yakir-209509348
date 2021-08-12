@@ -1,8 +1,4 @@
-﻿#region
-
-#endregion
-
-namespace C21_Ex02_01.Team.Engine.Database.Players.Player
+﻿namespace C21_Ex02_01.Team.Engine.Database.Players.Player
 {
     public abstract class Player
     {

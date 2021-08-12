@@ -61,7 +61,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players
                         new AIPlayer(
                             eID.Two,
                             k_PlayerTwoChar);
-                    break;                
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

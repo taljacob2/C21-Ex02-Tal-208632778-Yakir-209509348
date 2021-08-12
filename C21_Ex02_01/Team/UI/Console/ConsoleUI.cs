@@ -7,7 +7,7 @@ using C21_Ex02_01.Team.Engine.Database.Board;
 using C21_Ex02_01.Team.Engine.Database.Players;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
 using Ex02.ConsoleUtils;
-using static C21_Ex02_01.Team.UI.InputUtil.InputUtil;
+using static C21_Ex02_01.Team.Misc.InputUtil;
 
 #endregion
 
@@ -107,8 +107,9 @@ namespace C21_Ex02_01.Team.UI
             {
                 string titleMessage =
                     "Please choose an opponent." + Environment.NewLine;
-                string humanMessage = $"{(byte) eType.Human + 1}. {eType.Human}" +
-                                      Environment.NewLine;
+                string humanMessage =
+                    $"{(byte) eType.Human + 1}. {eType.Human}" +
+                    Environment.NewLine;
                 string computerMessage =
                     $"{(byte) eType.Computer + 1}. {eType.Computer}" +
                     Environment.NewLine;

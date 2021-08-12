@@ -8,7 +8,7 @@ using MiscUtil;
 
 #endregion
 
-namespace C21_Ex02_01.Team.UI.InputUtil
+namespace C21_Ex02_01.Team.Misc
 {
     public static class InputUtil
     {

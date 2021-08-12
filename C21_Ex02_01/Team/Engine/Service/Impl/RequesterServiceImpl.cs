@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using C21_Ex02_01.Team.Engine.Database.Players.Player;
-using C21_Ex02_01.Team.Engine.Database.Players.Player.AI;
 using C21_Ex02_01.Team.UI;
 
 #endregion

@@ -38,6 +38,7 @@
         {
             unchecked
             {
+                // ReSharper disable once NonReadonlyMemberInGetHashCode
                 return (Coordinate.GetHashCode() * 397) ^ Char.GetHashCode();
             }
         }

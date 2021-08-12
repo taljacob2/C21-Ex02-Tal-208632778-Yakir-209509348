@@ -17,8 +17,6 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
     {
         private const char k_Delimiter = '|';
         private const char k_RowSeparator = '=';
-        private const byte k_Series = 4;
-
 
         // TODO: may need to change size
         private static readonly int[,] sr_EvaluationBoard =
@@ -44,7 +42,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
         /// <param name="i_Board"></param>
         public Board(Board i_Board) : this(i_Board.Rows, i_Board.Cols)
         {
-            this.Matrix = ObjectExtensions.Copy(i_Board.Matrix);
+            Matrix = i_Board.Matrix.Copy();
         }
 
         /// <summary>

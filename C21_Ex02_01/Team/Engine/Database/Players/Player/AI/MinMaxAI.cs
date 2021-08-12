@@ -1,5 +1,8 @@
-﻿using System;
-using C21_Ex02_01.Team.Misc;
+﻿#region
+
+using System;
+
+#endregion
 
 namespace C21_Ex02_01.Team.Engine.Database.Players.Player.AI
 {
@@ -9,7 +12,7 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.AI
 
         public MinMaxAI(int i_Depth)
         {
-            this.r_Depth = i_Depth;
+            r_Depth = i_Depth;
         }
 
         public byte GetBestMove(Player i_CurrentPlayer, Board.Board i_Board)
