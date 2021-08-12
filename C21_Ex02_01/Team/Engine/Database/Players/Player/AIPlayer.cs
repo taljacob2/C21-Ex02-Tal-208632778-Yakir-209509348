@@ -1,6 +1,5 @@
 ﻿#region
 
-using System.Threading;
 using C21_Ex02_01.Team.Engine.Database.Players.Player.AI;
 
 #endregion
@@ -17,10 +16,10 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player
         public override void PlayTurn()
         {
             Database database = Engine.Database;
-            Thread.Sleep(300); // Add delay for realism.
+
+            // Thread.Sleep(300); // Add delay for realism.
             database.Board.InsertCoin(GetBestMove(), Char);
         }
-
 
         public byte GetBestMove()
         {

@@ -19,20 +19,12 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
         private const char k_RowSeparator = '=';
 
         // TODO: may need to change size
-        private static readonly int[,] sr_EvaluationBoard =
-        {
-            {1, 1, 2, 3, 5, 3, 2, 1, 1},
-            {1, 3, 4, 5, 7, 5, 4, 3, 1},
-            {2, 4, 6, 8, 10, 8, 6, 4, 2},
-            {3, 5, 8, 11, 13, 11, 8, 5, 3},
-            {4, 5, 8, 11, 13, 11, 8, 5, 4},
-            {3, 4, 6, 8, 10, 8, 6, 4, 3},
-            {2, 3, 4, 5, 7, 5, 4, 3, 2},
-            {1, 1, 2, 3, 5, 3, 2, 1, 1}
-        };
+        private static EvaluationBoard s_EvaluationBoard;
 
         public Board(byte i_Rows, byte i_Cols) : base(i_Rows, i_Cols)
         {
+            s_EvaluationBoard = new EvaluationBoard(i_Rows, i_Cols);
+
             // ResetBoard();
         }
 
@@ -374,14 +366,14 @@ namespace C21_Ex02_01.Team.Engine.Database.Board
                             Players.Players.k_PlayerOneChar &&
                             i_PlayerChar == Players.Players.k_PlayerOneChar)
                         {
-                            score += sr_EvaluationBoard[i, j];
+                            score += s_EvaluationBoard.Matrix[i, j];
                         }
                         else if (i_Board.Matrix[i, j].Char ==
                                  Players.Players.k_PlayerTwoChar &&
                                  i_PlayerChar == Players.Players
                                      .k_PlayerTwoChar)
                         {
-                            score += sr_EvaluationBoard[i, j];
+                            score += s_EvaluationBoard.Matrix[i, j];
                         }
                     }
                 }

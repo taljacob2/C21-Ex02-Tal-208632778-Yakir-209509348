@@ -37,13 +37,19 @@ namespace C21_Ex02_01.Team.Engine.Database.Board.Matrix.Wrapper
 
         private string matrixToString()
         {
+            return MatrixToString(Matrix, Rows, Cols);
+        }
+
+        public static string MatrixToString(T[,] i_Matrix, byte i_Rows,
+            byte i_Cols)
+        {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(Environment.NewLine);
-            for (int i = 0; i < Rows; i++)
+            for (int i = 0; i < i_Rows; i++)
             {
-                for (int j = 0; j < Cols; j++)
+                for (int j = 0; j < i_Cols; j++)
                 {
-                    stringBuilder.Append(Matrix[i, j]);
+                    stringBuilder.Append(i_Matrix[i, j]);
                     stringBuilder.Append(k_Space);
                 }
 
