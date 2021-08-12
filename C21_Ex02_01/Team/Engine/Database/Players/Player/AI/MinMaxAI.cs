@@ -41,44 +41,66 @@ namespace C21_Ex02_01.Team.Engine.Database.Players.Player.AI
             Player i_MaximizingPlayer,
             Player i_CurrentPlayer)
         {
+            double value;
+            
             if (i_Depth == 0)
             {
-                return Board.Board.EvaluateBoard(i_Node, i_CurrentPlayer
+                value = Board.Board.EvaluateBoard(i_Node, i_CurrentPlayer
                     .Char);
-            }
-
-            if (i_MaximizingPlayer.Char == i_CurrentPlayer.Char)
-            {
-                double value = double.NegativeInfinity;
-                foreach (byte move in i_Node.GetValidMoves())
-                {
-                    Board.Board child = new Board.Board(i_Node);
-                    child.InsertCoin(move, i_CurrentPlayer.Char);
-                    AIPlayer newCurrentPlayer = new AIPlayer(eID.Two,
-                        i_CurrentPlayer.Char);
-                    value = Math.Max(value,
-                        minmax(child, i_Depth - 1, i_MaximizingPlayer,
-                            newCurrentPlayer));
-                }
-
-                return value;
             }
             else
             {
-                double value = double.PositiveInfinity;
-                foreach (byte move in i_Node.GetValidMoves())
+                if (i_MaximizingPlayer.Char == i_CurrentPlayer.Char)
                 {
-                    Board.Board child = new Board.Board(i_Node);
-                    child.InsertCoin(move, i_CurrentPlayer.Char);
-                    AIPlayer newCurrentPlayer = new AIPlayer(eID.Two,
-                        i_CurrentPlayer.Char);
-                    value = Math.Min(value,
-                        minmax(child, i_Depth - 1, i_MaximizingPlayer,
-                            newCurrentPlayer));
+                    value = valueOfMaximisingPlayer(i_Node, i_Depth,
+                        i_MaximizingPlayer, i_CurrentPlayer);
                 }
-
-                return value;
+                else
+                {
+                    value = valueOfMinimizingPlayer(i_Node, i_Depth,
+                        i_MaximizingPlayer, i_CurrentPlayer);
+                }
             }
+
+            return value;
+        }
+
+        private double valueOfMinimizingPlayer(Board.Board i_Node, int i_Depth,
+            Player i_MaximizingPlayer, Player i_CurrentPlayer)
+        {
+            double value = double.PositiveInfinity;
+
+            foreach (byte move in i_Node.GetValidMoves())
+            {
+                Board.Board child = new Board.Board(i_Node);
+                child.InsertCoin(move, i_CurrentPlayer.Char);
+                AIPlayer newCurrentPlayer = new AIPlayer(eID.Two,
+                    i_CurrentPlayer.Char);
+                value = Math.Min(value,
+                    minmax(child, i_Depth - 1, i_MaximizingPlayer,
+                        newCurrentPlayer));
+            }
+
+            return value;
+        }
+
+        private double valueOfMaximisingPlayer(Board.Board i_Node, int i_Depth,
+            Player i_MaximizingPlayer, Player i_CurrentPlayer)
+        {
+            double value = double.NegativeInfinity;
+
+            foreach (byte move in i_Node.GetValidMoves())
+            {
+                Board.Board child = new Board.Board(i_Node);
+                child.InsertCoin(move, i_CurrentPlayer.Char);
+                AIPlayer newCurrentPlayer = new AIPlayer(eID.Two,
+                    i_CurrentPlayer.Char);
+                value = Math.Max(value,
+                    minmax(child, i_Depth - 1, i_MaximizingPlayer,
+                        newCurrentPlayer));
+            }
+
+            return value;
         }
     }
 }
